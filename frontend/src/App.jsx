@@ -61,7 +61,7 @@ export default function App() {
             <FaTelegram />
           </a>
           <a
-            href="https://linkedin.com/"
+            href="https://www.linkedin.com/company/memoruz"
             aria-label="LinkedIn"
             target="_blank"
             rel="noreferrer"
@@ -69,7 +69,7 @@ export default function App() {
             <FaLinkedin />
           </a>
           <a
-            href="https://instagram.com/"
+            href="https://www.instagram.com/memor.uz_/"
             aria-label="Instagram"
             target="_blank"
             rel="noreferrer"
