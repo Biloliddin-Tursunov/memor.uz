@@ -12,7 +12,7 @@ const MEMBERS = [
     },
   },
   {
-    name: "Otabek Isayev",
+    name: "Otabek Isoyev",
     email: "otabek@memor.uz",
     avatar: "/avatars/otabek.jpg",
     links: {
