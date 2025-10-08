@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Down_arrow from "../assets/icons/down_arrow.svg";
 import Center_strip from "../assets/patterns/center_strip.svg";
 
@@ -17,9 +18,9 @@ export default function Links() {
             <div className="flex-1 flex items-center justify-center">
                 <div className="flex flex-wrap justify-center gap-[clamp(16px,3vw,32px)] px-[clamp(16px,4vw,40px)] max-w-[110rem]">
                     {items.map(({ href, label }) => (
-                        <a
+                        <Link
                             key={href}
-                            href={href}
+                            to={href}
                             className="
                 flex items-center justify-center
                 rounded-[58px] border border-white/10 bg-[#D9D9D9]/15 hover:border-white/20 transition
@@ -30,7 +31,7 @@ export default function Links() {
                             <span className="font-[MajorMonoMemor] tracking-[0.2em] text-[clamp(16px,2vw,30px)] text-center">
                                 {label}
                             </span>
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>
