@@ -54,14 +54,14 @@ export default function TeamSection() {
             {/* ===== CONTENT LAYER (z-10) ===== */}
             <div className="relative z-10 min-h-svh flex flex-col items-center justify-between">
                 {/* title */}
-                <div className="pt-[clamp(24px,6vh,64px)] px-[clamp(16px,4vw,40px)] text-center">
-                    {/* <h2 className="text-white/90 font-serif italic text-[clamp(22px,4vw,44px)]">
-                        Dunyoni go‘zallashtirish uchun!
-                    </h2> */}
+                <div className="pt-[clamp(24px,6vh,64px)] px-[clamp(16px,4vw,40px)] text-center mt-[140px]">
+                    <h2 className="font-[Lucida] text-white/90 font-normal  italic text-[clamp(22px,4vw,44px)]">
+                        Dunyoni <br /> go‘zallashtirish uchun!
+                    </h2>
                 </div>
 
                 {/* “JAMOAMIZ:” */}
-                <div className="text-center mt-[clamp(8px,2vh,16px)] mb-[-200px]">
+                <div className="text-center mt-[clamp(8px,2vh,16px)] mb-[-80px] ">
                     <p className="font-[MajorMonoMemor] tracking-[0.3em] text-[clamp(14px,1.6vw,30px)] text-white/70">
                         Jamoamiz:
                     </p>
@@ -73,12 +73,12 @@ export default function TeamSection() {
                         {/* DONAT (Major, matnli, doira) */}
                         <button
                             className="flex items-center justify-center rounded-full bg-white/5 border border-white/10
-                         w-[clamp(64px,8vw,96px)] h-[clamp(64px,8vw,96px)]
+                         w-[clamp(68px,8vw,102px)] h-[clamp(68px,8vw,102px)]
                          hover:bg-white/10 transition"
                             title="Donat"
                         >
                             <span className="font-[MajorMonoMemor] tracking-[0.2em] text-white/80 text-[clamp(10px,1.2vw,12px)]">
-                                Donat
+                                Join us!
                             </span>
                         </button>
 
@@ -117,12 +117,12 @@ export default function TeamSection() {
                         {/* QO‘SHILISH (Major, matnli, doira) */}
                         <button
                             className="flex items-center justify-center rounded-full bg-white/5 border border-white/10
-                         w-[clamp(64px,8vw,96px)] h-[clamp(64px,8vw,96px)]
+                         w-[clamp(68px,8vw,102px)] h-[clamp(68px,8vw,102px)]
                          hover:bg-white/10 transition"
                             title="Qo‘shilish"
                         >
                             <span className="font-[MajorMonoMemor] tracking-[0.2em] text-white/80 text-[clamp(10px,1.2vw,12px)]">
-                                Join
+                                Support?
                             </span>
                         </button>
                     </div>
