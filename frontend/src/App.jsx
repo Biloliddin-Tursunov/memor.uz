@@ -6,7 +6,15 @@ import Creation from "./pages/Creation";
 
 export default function App() {
     return (
-        <main className="bg-black text-white scrroll-smooth">
+        <main
+            style={{
+                background:
+                    "linear-gradient(164deg, rgba(107, 107, 107, 0.30) 0%, rgba(0, 0, 0, 0.00) 100%), #000",
+                minHeight: "100vh",
+                width: "100%",
+            }}
+            className="bg-black  text-white scrroll-smooth"
+        >
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/knowledge" element={<Knowledge />} />
