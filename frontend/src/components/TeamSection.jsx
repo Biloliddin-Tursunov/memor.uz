@@ -3,15 +3,21 @@ import Ornament from "../assets/patterns/members_section.svg"; // bitta .svg
 import Biloliddin from "../assets/avatars/biloliddin.jpg";
 import Otabek from "../assets/avatars/otabek.jpg";
 import Aminaxon from "../assets/avatars/aminaxon.jpg";
+import Bunyod from "../assets/avatars/Bunyod.png";
 
 export default function TeamSection() {
     const team = [
+        { img: Otabek, name: "Otabek Isoev", role: "Designer" },
         {
             img: Biloliddin,
             name: "Biloliddin Tursunov",
             role: "Software Engineer",
         },
-        { img: Otabek, name: "Otabek Isoev", role: "Designer" },
+        {
+            img: Bunyod,
+            name: "Bunyod Akbaraliyev",
+            role: "Creative Partner",
+        },
         {
             img: Aminaxon,
             name: "Aminaxon Yahyoxonova",
@@ -55,7 +61,7 @@ export default function TeamSection() {
                 </div>
 
                 {/* “JAMOAMIZ:” */}
-                <div className="text-center mt-[clamp(8px,2vh,16px)]">
+                <div className="text-center mt-[clamp(8px,2vh,16px)] mb-[-200px]">
                     <p className="font-[MajorMonoMemor] tracking-[0.3em] text-[clamp(14px,1.6vw,30px)] text-white/70">
                         Jamoamiz:
                     </p>
@@ -63,7 +69,7 @@ export default function TeamSection() {
 
                 {/* team + side buttons (layout) */}
                 <div className="w-full px-[clamp(16px,4vw,40px)] my-[clamp(20px,5vh,48px)]">
-                    <div className="flex items-center justify-center gap-[clamp(12px,3vw,32px)] flex-wrap">
+                    <div className="flex items-center justify-center gap-[clamp(12px,3vw,15px)] flex-wrap">
                         {/* DONAT (Major, matnli, doira) */}
                         <button
                             className="flex items-center justify-center rounded-full bg-white/5 border border-white/10
@@ -85,7 +91,7 @@ export default function TeamSection() {
                                 <div
                                     className="
         rounded-full overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.35)]
-        w-[clamp(120px,14vw,220px)] h-[clamp(120px,14vw,220px)]
+        w-[clamp(120px,14vw,150px)] h-[clamp(120px,14vw,150px)]
         filter grayscale group-hover:grayscale-0
         transition duration-500 ease-out cursor-pointer
       "
