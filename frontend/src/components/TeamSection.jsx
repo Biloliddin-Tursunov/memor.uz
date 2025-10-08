@@ -7,7 +7,7 @@ import Bunyod from "../assets/avatars/Bunyod.png";
 
 export default function TeamSection() {
     const team = [
-        { img: Otabek, name: "Otabek Isoev", role: "Designer" },
+        { img: Otabek, name: "Otabek Isoev", role: "CEO" },
         {
             img: Biloliddin,
             name: "Biloliddin Tursunov",
@@ -16,7 +16,7 @@ export default function TeamSection() {
         {
             img: Bunyod,
             name: "Bunyod Akbaraliyev",
-            role: "Creative Partner",
+            role: "Designer",
         },
         {
             img: Aminaxon,
