@@ -1,65 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Me'mor</title>
+        <!-- Primary -->
+        <title>
+            Me'mor — memorchilik, arxitektura va naqsh falsafasi platformasi
+        </title>
         <meta
             name="description"
-            content="Me'mor — madaniy arxitektura va naqsh falsafasi uchun platforma."
+            content="Me'mor — O‘zbek memorchiligi, arxitektura, naqsh (ornament) va san’atga oid maqolalar, vektor kutubxona va tadqiqotlar jamlanmasi. Memorchilik falsafasi, naqsh anatomiyasi va amaliy dizayn."
         />
+        <!-- 'keywords' SEO uchun shart emas, lekin zarari yo‘q -->
         <meta
             name="keywords"
-            content="Me'mor, architecture, naqsh, o'zbek arxitekturasi, design, pattern, ornament"
+            content="Me'mor, memorchilik, arxitektor, arxitektura, naqsh, ornament, san’at, o‘zbek arxitekturasi, pattern, design"
         />
-        <link rel="canonical" href="https://memor.uz" />
+        <link rel="canonical" href="https://memor.uz/" />
         <meta name="robots" content="index,follow" />
         <meta name="theme-color" content="#111111" />
 
-        <!-- Icons (fallback) -->
-        <link rel="icon" href="/favicons/main.svg" />
-        <link rel="apple-touch-icon" href="/favicons/apple-touch.png" />
+        <!-- Favicons / App icons (yangi fayl nomlari cachingni yangilaydi) -->
+        <link
+            rel="icon"
+            type="image/png"
+            href="/favicons/favicon-2025.png"
+            sizes="48x48"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            href="/favicons/favicon-32.png"
+            sizes="32x32"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            href="/favicons/favicon-16.png"
+            sizes="16x16"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="/favicons/apple-touch-2025.png"
+            sizes="180x180"
+        />
         <link rel="manifest" href="/site.webmanifest" />
 
-        <!-- Open Graph (fallback) -->
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Me'mor" />
-        <meta property="og:title" content="Me'mor — Assistant for Artists" />
-        <meta
-            property="og:description"
-            content="Me'mor — madaniy arxitektura va naqsh falsafasi uchun platforma."
-        />
-        <meta property="og:url" content="https://memor.uz" />
-        <meta
-            property="og:image"
-            content="https://memor.uz/og/cover-main.jpg"
-        />
-
-        <!-- Twitter -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Me'mor — Assistant for Artists" />
-        <meta
-            name="twitter:description"
-            content="Me'mor — madaniy arxitektura va naqsh falsafasi uchun platforma."
-        />
-        <meta
-            name="twitter:image"
-            content="https://memor.uz/og/cover-main.jpg"
-        />
-        <!-- Light mode favicon -->
+        <!-- (ixtiyoriy) rang rejimiga mos favikonlar -->
         <link
             rel="icon"
             href="/favicon-light.svg"
             media="(prefers-color-scheme: light)"
         />
-        <!-- Dark mode favicon -->
         <link
             rel="icon"
             href="/favicon-dark.svg"
             media="(prefers-color-scheme: dark)"
         />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Me'mor" />
+        <meta
+            property="og:title"
+            content="Me'mor — memorchilik, arxitektura va naqsh falsafasi platformasi"
+        />
+        <meta
+            property="og:description"
+            content="Me'mor — O‘zbek memorchiligi, arxitektura, naqsh (ornament) va san’atga oid maqolalar, vektor kutubxona va tadqiqotlar jamlanmasi."
+        />
+        <meta property="og:url" content="https://memor.uz/" />
+        <meta
+            property="og:image"
+            content="https://memor.uz/og/cover-main.jpg"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="uz_UZ" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:locale:alternate" content="ru_RU" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Me'mor — memorchilik, arxitektura va naqsh falsafasi platformasi"
+        />
+        <meta
+            name="twitter:description"
+            content="Me'mor — O‘zbek memorchiligi, arxitektura, naqsh (ornament) va san’atga oid maqolalar, vektor kutubxona va tadqiqotlar jamlanmasi."
+        />
+        <meta
+            name="twitter:image"
+            content="https://memor.uz/og/cover-main.jpg"
+        />
+
+        <!-- Hreflang (agar til versiyalari bo‘lsa, quyidagilarni oching va URL’larni moslang) -->
+        <!--
+    <link rel="alternate" hreflang="uz" href="https://memor.uz/" />
+    <link rel="alternate" hreflang="en" href="https://memor.uz/en/" />
+    <link rel="alternate" hreflang="ru" href="https://memor.uz/ru/" />
+    <link rel="alternate" hreflang="x-default" href="https://memor.uz/" />
+    -->
+
+        <!-- Structured Data: WebSite (site name + internal search) -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "url": "https://memor.uz/",
+                "name": "Me'mor",
+                "alternateName": ["memor", "memor.uz", "Me'mor platforma"],
+                "inLanguage": ["uz", "en", "ru"],
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Me'mor",
+                    "url": "https://memor.uz/"
+                },
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://memor.uz/search?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            }
+        </script>
+
+        <!-- Structured Data: Organization (logo & brand signallari) -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Me'mor",
+                "url": "https://memor.uz/",
+                "logo": "https://memor.uz/brand/logo-2025.svg",
+                "sameAs": [
+                    "https://www.instagram.com/your_memor",
+                    "https://t.me/your_memor",
+                    "https://www.youtube.com/@your_memor"
+                ],
+                "foundingDate": "2024",
+                "founder": "Biloliddin Tursunov",
+                "email": "info@memor.uz"
+            }
+        </script>
+
+        <!-- (ixtiyoriy) Google Search Console tasdiqlash -->
+        <!-- <meta name="google-site-verification" content="...verification-token..." /> -->
     </head>
+
     <body>
         <div id="root"></div>
         <script type="module" src="/src/main.jsx"></script>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <!-- HOME -->
+  <url>
+    <loc>https://memor.uz/</loc>
+    <lastmod>2025-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://memor.uz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://memor.uz/"/>
+  </url>
+
+  <!-- MEMORCHILIK -->
+  <url>
+    <loc>https://memor.uz/memorchilik/</loc>
+    <lastmod>2025-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://memor.uz/knowledge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://memor.uz/knowledge/"/>
+  </url>
+
+  <!-- ARXITEKTOR -->
+  <url>
+    <loc>https://memor.uz/arxitektor/</loc>
+    <lastmod>2025-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://memor.uz/action/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://memor.uz/action/"/>
+  </url>
+
+  <!-- NAQSH -->
+  <url>
+    <loc>https://memor.uz/naqsh/</loc>
+    <lastmod>2025-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://memor.uz/creation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://memor.uz/creation/"/>
+  </url>
+</urlset>
