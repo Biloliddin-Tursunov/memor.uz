@@ -1,0 +1,200 @@
+/* ===== KONTYENER ===== */
+.team {
+    position: relative;
+    min-height: 100svh; /* mobile dynamic viewport */
+    min-height: 100vh; /* fallback */
+    overflow: hidden;
+    font-family: "FuturaCyr", system-ui, sans-serif; /* chuqurroq qora */
+}
+
+/* ===== ORNAMENT LAYER (FULL-BLEED, RESPONSIVE) ===== */
+.team__ornament {
+    position: absolute;
+    inset: 0;
+    overflow: hidden; /* chetlarini kesish uchun */
+    display: block; /* layout ta'sir qilmasin */
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Rasm markazda, horizontal to'liq yoyiladi */
+.team__ornament img {
+    position: absolute;
+    top: var(--ornament-top, 0px); /* ixtiyoriy offset (CSS var) */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* FULL WIDTH, RESPONSIVE SHRINK */
+    width: 100vw; /* har doim ekran kengligi bilan bir xil */
+    height: auto; /* proporsiya saqlansin */
+    max-width: none; /* SVG cheklanmasin */
+    opacity: 0.7;
+}
+
+/* ===== CONTENT LAYER ===== */
+.team__content {
+    position: relative;
+    z-index: 10;
+    min-height: 100svh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Title */
+.team__title-wrap {
+    padding-top: clamp(24px, 6vh, 64px);
+    padding-inline: clamp(16px, 4vw, 40px);
+    text-align: center;
+    margin-top: 140px;
+}
+.team__title {
+    font-family: "Lucida", "Lucida Sans", "Lucida Grande", system-ui, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(22px, 4vw, 44px);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.25;
+    margin: 0;
+}
+
+/* “Jamoamiz:” */
+.team__subtitle-wrap {
+    text-align: center;
+    margin-top: clamp(8px, 2vh, 16px);
+    margin-bottom: clamp(8px, 2vh, 16px);
+}
+.team__subtitle {
+    font-family: "MajorMonoMemor", ui-monospace, monospace;
+    letter-spacing: 0.3em;
+    font-size: clamp(14px, 1.6vw, 30px);
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+/* Grid + buttons */
+.team__grid-wrap {
+    width: 100%;
+    padding-inline: clamp(16px, 4vw, 40px);
+    margin-block: clamp(20px, 5vh, 48px);
+}
+.team__grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(12px, 3vw, 15px);
+    flex-wrap: wrap;
+}
+
+/* Round buttons (Join/Support) */
+.team__round-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(68px, 8vw, 102px);
+    height: clamp(68px, 8vw, 102px);
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+.team__round-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+.team__round-label {
+    font-family: "MajorMonoMemor", ui-monospace, monospace;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: clamp(10px, 1.2vw, 12px);
+    line-height: 1;
+}
+
+/* ===== MEMBER CARD ===== */
+.member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+.member:hover {
+    transform: translateY(-2px);
+}
+
+.member__photo {
+    width: clamp(120px, 14vw, 150px);
+    height: clamp(120px, 14vw, 150px);
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    filter: grayscale(100%);
+    transition: filter 0.5s ease, transform 0.5s ease;
+    cursor: pointer;
+}
+.member__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.member:hover .member__photo {
+    filter: grayscale(0%);
+    transform: scale(1.03);
+}
+
+.member__meta {
+    margin-top: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.member:hover .member__meta {
+    transform: scale(1.05);
+}
+.member__name {
+    color: #fff;
+    font-weight: 600;
+    font-size: clamp(12px, 1.4vw, 16px);
+    margin: 0;
+}
+.member__role {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(10px, 1.2vw, 14px);
+    margin: 2px 0 0 0;
+}
+
+/* ===== Responsive micro-tweaks ===== */
+@media (max-width: 480px) {
+    .team__subtitle {
+        letter-spacing: 0.2em;
+    }
+    .team__round-btn {
+        width: 72px;
+        height: 72px;
+    }
+}
+@media (max-width: 768px) {
+    /* katta bo‘shliq bo‘lib ketmasin */
+    .team__content {
+        justify-content: flex-start; /* oldingi space-between ta’sirini neytrallaydi */
+        gap: clamp(16px, 4vh, 32px);
+        padding-top: clamp(16px, 6vh, 48px);
+    }
+
+    .team__grid-wrap {
+        margin-block: clamp(12px, 4vh, 24px);
+    }
+
+    /* kartalar oralig‘ini bir oz toraytiramiz */
+    .team__grid {
+        gap: clamp(10px, 3vw, 16px);
+    }
+
+    /* avatarlar juda katta bo‘lib ketmasin */
+    .member__photo {
+        width: clamp(100px, 34vw, 132px);
+        height: clamp(100px, 34vw, 132px);
+    }
+}

@@ -1,61 +1,88 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { FaLongArrowAltRight } from "react-icons/fa";
 import Down_arrow from "../assets/icons/down_arrow.svg";
 import Center_strip from "../assets/patterns/center_strip.svg";
+import "../styles/components/links.css";
 
 export default function Links() {
+    const navigate = useNavigate();
+
     const items = [
-        { href: "/knowledge", label: "Knowledge" },
-        { href: "/action", label: "Action" },
-        { href: "/creation", label: "Creation" },
+        {
+            href: "/knowledge",
+            title: "KNOWLEDGE",
+            text: (
+                <ul>
+                    <li>O‘zbek me’morchiligining ildizlarini tahlil qilish;</li>
+                    <li>
+                        Naqsh, bezak va suzani elementlarini raqamlashtirish;
+                    </li>
+                    <li>
+                        Tarixiy shakllar va zamonaviy dizayn o‘rtasida muloqot
+                        yaratish.
+                    </li>
+                </ul>
+            ),
+        },
+        {
+            href: "/action",
+            title: "ACTION",
+            text: (
+                <ul>
+                    <li>
+                        Arxitektura, landshaft va san’at loyihalarini amalda
+                        sinash;
+                    </li>
+                    <li>
+                        3D model, maket va interaktiv media yordamida ifoda
+                        qilish;
+                    </li>
+                    <li>
+                        Talabalar va mutaxassislar uchun amaliy tajriba maydoni
+                        yaratish.
+                    </li>
+                </ul>
+            ),
+        },
+        {
+            href: "/creation",
+            title: "CREATION",
+            text: (
+                <ul>
+                    <li>
+                        Ilm va amaliyotni birlashtirib yangi shakllar yaratish;
+                    </li>
+                    <li>Milliy uslubni global kontekstda talqin etish;</li>
+                    <li>
+                        Yosh dizayner va me’morlar uchun ijodiy hamkorlik
+                        muhitini kengaytirish.
+                    </li>
+                </ul>
+            ),
+        },
     ];
 
     return (
-        <section
-            id="links"
-            className="min-h-svh flex flex-col overflow-hidden font-futura"
-        >
-            {/* 1) markazdagi cardlar – alohida blok */}
-            <div className="flex-1 flex items-center justify-center">
-                <div className="flex flex-wrap justify-center gap-[clamp(16px,3vw,32px)] px-[clamp(16px,4vw,40px)] max-w-[110rem]">
-                    {items.map(({ href, label }) => (
-                        <Link
-                            key={href}
-                            to={href}
-                            className="
-                flex items-center justify-center
-                rounded-[58px] border border-white/10 bg-[#D9D9D9]/15 hover:border-white/20 transition
-                aspect-[347/236]
-                w-[clamp(220px,26vw,347px)]
-              "
-                        >
-                            <span className="font-[MajorMonoMemor] tracking-[0.2em] text-[clamp(16px,2vw,30px)] text-center">
-                                {label}
-                            </span>
-                        </Link>
-                    ))}
-                </div>
+        <section id="links" className="links">
+            <h2 className="links__heading">Biz nima qilamiz</h2>
+
+            <div className="links__cards">
+                {items.map(({ href, title, text }) => (
+                    <div key={href} className="links__card">
+                        <h3 className="links__card-title">{title}</h3>
+                        <div className="links__card-text">{text}</div>
+                        <button
+                            className="links__cta-btn"
+                            onClick={() => navigate(href)}>
+                            ko‘proq ko‘rish{" "}
+                            <FaLongArrowAltRight className="links__cta-icon" />
+                        </button>
+                    </div>
+                ))}
             </div>
 
-            {/* 2) naqsh – layout bilan o‘rtada */}
-            <div className="flex justify-center py-[clamp(24px,6vh,48px)]">
-                <img
-                    src={Center_strip}
-                    alt=""
-                    aria-hidden="true"
-                    className="block w-[clamp(900px,90vw,1200px)] h-auto pointer-events-none select-none opacity-70"
-                />
-            </div>
-
-            {/* 3) down button – bo'lim pastida, positionsiz */}
-            <div className="flex justify-center pb-[clamp(20px,6vh,64px)]">
-                <a href="#members" aria-label="Scroll down">
-                    <img
-                        src={Down_arrow}
-                        alt=""
-                        className="block w-[clamp(56px,8vw,100px)] h-auto"
-                        aria-hidden="true"
-                    />
-                </a>
+            <div className="links__strip">
+                <img src={Center_strip} alt="" aria-hidden="true" />
             </div>
         </section>
     );
