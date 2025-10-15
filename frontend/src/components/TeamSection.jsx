@@ -41,7 +41,7 @@ export default function TeamSection() {
 
                 {/* “JAMOAMIZ:” */}
                 <div className="team__subtitle-wrap">
-                    <p className="team__subtitle">Jamoamiz:</p>
+                    <p className="team__subtitle">Our Team:</p>
                 </div>
 
                 {/* team + side buttons */}
