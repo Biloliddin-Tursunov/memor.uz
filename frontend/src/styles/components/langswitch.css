@@ -1,0 +1,39 @@
+/* pill background */
+.lang-switch {
+    font-family: MajorMonoMemor, sans-serif;
+    font-size: 15px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: inline-flex;
+    background: rgba(217, 217, 217, 0.2); /* soft outer pill */
+    border-radius: 999px;
+    align-items: center;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    z-index: 100;
+}
+
+/* each button */
+.lang-switch__btn {
+    min-width: 60px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: background 1s ease, color 1s ease;
+    outline: none;
+}
+
+/* active half */
+.lang-switch__btn.is-active {
+    background: rgba(217, 217, 217, 0.2); /* inner active pill */
+    color: #fff;
+}
+
+/* focus-visible for accessibility */
+.lang-switch__btn:focus-visible {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
+}

@@ -1,5 +1,8 @@
-// src/pages/Creation.jsx
+// src/pages/Action.jsx
 import ComingSoon from "../components/ComingSoon";
+import { useTranslation } from "react-i18next";
+
 export default function Creation() {
-    return <ComingSoon title="We shall start, soon..." />;
+    const { t } = useTranslation();
+    return <ComingSoon title={t("ComingSoon")} />;
 }

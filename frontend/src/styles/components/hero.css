@@ -63,6 +63,7 @@
     color: #d7d7d7; /* avval text-memMuted edi – shu rang bilan moslashtirdim */
     margin: 0;
     opacity: 0.95;
+    white-space: pre-line;
 }
 
 /* PASTGA KO'RSATKICH */

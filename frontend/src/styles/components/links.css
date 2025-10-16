@@ -12,9 +12,11 @@
 }
 
 /* Futura font */
-.links__heading,
+.links__heading {
+    font-family: "Lucida", system-ui, sans-serif;
+}
 .links__card-title {
-    font-family: "FuturaCyr", system-ui, sans-serif;
+    font-family: "MajorMonoMemor", system-ui, sans-serif;
 }
 
 /* Sarlavha – Futura */
@@ -63,7 +65,7 @@
     width: 100%;
     height: 100%; /* teng balandlik uchun */
     padding: clamp(16px, 2vw, 22px);
-    border-radius: 16px;
+    border-radius: 40px;
     background: rgba(255, 255, 255, 0.06);
     border: 2px solid rgba(255, 255, 255, 0.15);
     display: flex;
@@ -90,6 +92,7 @@
 
 /* Matn (list uslubi uchun tayyor) */
 .links__card-text {
+    font-family: "MajorMonoMemor", system-ui, sans-serif;
     flex: 1; /* tugmaga qadar bo‘sh joyni oladi */
     margin: 0;
     font-size: clamp(14px, 1.6vw, 16px);

@@ -2,8 +2,11 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../assets/logos/logo_white.svg";
 import TopLeft from "../assets/patterns/top_left.svg";
 import BottomRight from "../assets/patterns/bottom_right.svg";
+import { useTranslation } from "react-i18next";
 
 export default function ComingSoon({ title = "COMING SOON" }) {
+    const { t } = useTranslation();
+
     const navigate = useNavigate();
 
     return (
@@ -37,9 +40,8 @@ export default function ComingSoon({ title = "COMING SOON" }) {
                     className="mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3
                      border border-white/15 bg-white/5 hover:bg-white/10
                      text-[#D7D7D7] font-[MajorMonoMemor] tracking-[0.2em]
-                     text-[clamp(12px,1.8vw,14px)] transition"
-                >
-                    ← Back
+                     text-[clamp(12px,1.8vw,14px)] transition">
+                    ← {t("Back")}
                 </button>
             </div>
         </section>

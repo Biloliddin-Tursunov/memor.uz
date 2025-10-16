@@ -4,22 +4,26 @@ import Biloliddin from "../assets/avatars/biloliddin.jpg";
 import Otabek from "../assets/avatars/otabek.jpg";
 import Aminaxon from "../assets/avatars/aminaxon.jpg";
 import Bunyod from "../assets/avatars/Bunyod.png";
-
+import { useTranslation } from "react-i18next";
+import { LuUserPlus } from "react-icons/lu";
+import { FaHandsHelping } from "react-icons/fa";
 import "../styles/components/team_section.css";
 
 export default function TeamSection() {
+    const { t } = useTranslation();
+
     const team = [
-        { img: Otabek, name: "Otabek Isoev", role: "CEO" },
+        { img: Otabek, name: "Otabek Isoev", role: t("Founder&CEO") },
         {
             img: Biloliddin,
             name: "Biloliddin Tursunov",
-            role: "Software Engineer",
+            role: t("CoFounder"),
         },
-        { img: Bunyod, name: "Bunyod Akbaraliyev", role: "Designer" },
+        { img: Bunyod, name: "Bunyod Akbaraliyev", role: t("Designer") },
         {
             img: Aminaxon,
             name: "Aminaxon Yahyoxonova",
-            role: "Creative Partner",
+            role: t("CreativePartner"),
         },
     ];
 
@@ -34,9 +38,7 @@ export default function TeamSection() {
             <div className="team__content">
                 {/* title */}
                 <div className="team__title-wrap">
-                    <h2 className="team__title">
-                        Dunyoni <br /> go‘zallashtirish uchun!
-                    </h2>
+                    <h2 className="team__title">{t("Slogan_")}</h2>
                 </div>
 
                 {/* “JAMOAMIZ:” */}
@@ -48,8 +50,10 @@ export default function TeamSection() {
                 <div className="team__grid-wrap">
                     <div className="team__grid">
                         {/* left round button */}
-                        <button className="team__round-btn" title="Donat">
-                            <span className="team__round-label">Join us!</span>
+                        <button className="team__round-btn">
+                            <span className="team__round-label">
+                                <LuUserPlus size="35" opacity="70%" />
+                            </span>
                         </button>
 
                         {/* members */}
@@ -67,7 +71,9 @@ export default function TeamSection() {
 
                         {/* right round button */}
                         <button className="team__round-btn" title="Qo‘shilish">
-                            <span className="team__round-label">Support?</span>
+                            <span className="team__round-label">
+                                <FaHandsHelping size="35" opacity="70%" />
+                            </span>
                         </button>
                     </div>
                 </div>
