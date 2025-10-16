@@ -1,4 +1,32 @@
 @import "tailwindcss";
-html {
+html,
+body {
     scroll-behavior: smooth;
+    height: 100%;
+}
+
+main {
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+/* Har bir bo‘lim (screen) */
+section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+}
+/* Chrome, Edge, Safari */
+main::-webkit-scrollbar {
+    width: 5px; /* default 12-16px bo‘ladi */
+}
+
+main::-webkit-scrollbar-thumb {
+    background-color: rgba(145, 145, 145, 0.5);
+    border-radius: 3px;
+}
+
+main::-webkit-scrollbar-track {
+    background-color: rgba(145, 145, 145, 0.5);
 }
