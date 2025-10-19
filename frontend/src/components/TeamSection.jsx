@@ -3,6 +3,7 @@ import Ornament from "../assets/patterns/members_section.svg";
 import Biloliddin from "../assets/avatars/biloliddin.jpg";
 import Otabek from "../assets/avatars/otabek.jpg";
 import Aminaxon from "../assets/avatars/aminaxon.jpg";
+import Zuhra from "../assets/avatars/Zuhra.png";
 import Bunyod from "../assets/avatars/Bunyod.png";
 import { useTranslation } from "react-i18next";
 import { LuUserPlus } from "react-icons/lu";
@@ -13,16 +14,21 @@ export default function TeamSection() {
     const { t } = useTranslation();
 
     const team = [
-        { img: Otabek, name: "Otabek Isoev", role: t("Founder&CEO") },
+        { img: Otabek, name: "Otabek", role: t("Founder&CEO") },
         {
             img: Biloliddin,
-            name: "Biloliddin Tursunov",
+            name: "Biloliddin",
             role: t("CoFounder"),
         },
-        { img: Bunyod, name: "Bunyod Akbaraliyev", role: t("Designer") },
+        { img: Bunyod, name: "Bunyod", role: t("Designer") },
         {
             img: Aminaxon,
-            name: "Aminaxon Yahyoxonova",
+            name: "Aminaxon",
+            role: t("CreativePartner"),
+        },
+        {
+            img: Zuhra,
+            name: "Zuhra",
             role: t("CreativePartner"),
         },
     ];
@@ -50,11 +56,14 @@ export default function TeamSection() {
                 <div className="team__grid-wrap">
                     <div className="team__grid">
                         {/* left round button */}
-                        <button className="team__round-btn">
+                        <a
+                            className="team__round-btn"
+                            href="https://t.me/memorga_bot"
+                            target="_blank">
                             <span className="team__round-label">
-                                <LuUserPlus size="35" opacity="70%" />
+                                <FaHandsHelping size="35" opacity="70%" />
                             </span>
-                        </button>
+                        </a>
 
                         {/* members */}
                         {team.map(({ img, name, role }) => (
@@ -70,11 +79,14 @@ export default function TeamSection() {
                         ))}
 
                         {/* right round button */}
-                        <button className="team__round-btn" title="Qo‘shilish">
+                        <a
+                            className="team__round-btn"
+                            href="https://t.me/memorga_bot"
+                            target="_blank">
                             <span className="team__round-label">
-                                <FaHandsHelping size="35" opacity="70%" />
+                                <LuUserPlus size="35" opacity="70%" />
                             </span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
