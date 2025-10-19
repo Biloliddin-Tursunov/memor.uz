@@ -1,0 +1,155 @@
+:root {
+    --mp-bg: transparent;
+    --mp-accent: #000000;
+    --mp-fore: #ffffff;
+    --mp-size: 56px;
+}
+
+/* Container (oldingi dizayn) */
+.music-container.minimal {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    height: var(--mp-size);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px;
+    background: var(--mp-bg);
+    border-radius: 999px;
+    cursor: default;
+    user-select: none;
+    z-index: 1000;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Equalizer (unchanged look but slightly larger) */
+.equalizer.minimal {
+    position: relative;
+    display: flex;
+    gap: 6px;
+    align-items: flex-end;
+    width: calc(var(--mp-size) * 0.65);
+    height: calc(var(--mp-size) * 0.55);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+}
+
+.equalizer.minimal .bar {
+    width: 10px;
+    height: 14px;
+    background: linear-gradient(180deg, var(--mp-accent), var(--mp-fore));
+    border-radius: 3px;
+    transform-origin: bottom center;
+    animation: eqPulse 900ms infinite ease-in-out;
+    animation-play-state: paused;
+    opacity: 0.98;
+}
+
+.equalizer.minimal.active .bar {
+    animation-play-state: running;
+}
+
+.equalizer.minimal .bar:nth-child(1) {
+    animation-delay: 0s;
+}
+.equalizer.minimal .bar:nth-child(2) {
+    animation-delay: 0.12s;
+}
+.equalizer.minimal .bar:nth-child(3) {
+    animation-delay: 0.24s;
+}
+.equalizer.minimal .bar:nth-child(4) {
+    animation-delay: 0.36s;
+}
+
+@keyframes eqPulse {
+    0%,
+    100% {
+        transform: scaleY(0.5);
+    }
+    50% {
+        transform: scaleY(1.8);
+    }
+}
+
+/* Controls wrapper (initially hidden) */
+.eq-controls {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease, transform 160ms ease;
+    transform: translateY(4px);
+}
+
+/* Visible when hovering equalizer or after click */
+.eq-controls.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Individual small buttons (minimal, no shadow) */
+.eq-btn {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 140ms ease, background-color 160ms ease;
+}
+
+/* Hover affordance for buttons */
+.eq-btn:hover {
+    transform: scale(1.06);
+    background: rgba(0, 0, 0, 0.09);
+}
+
+/* SVG icons use the foreground color variable */
+.eq-btn svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+}
+
+/* If site dark theme: flip colors */
+body.dark :root {
+    --mp-accent: #ffffff;
+    --mp-fore: #000000;
+}
+
+/* Accessibility focus */
+.eq-btn:focus {
+    outline: 2px solid rgba(0, 0, 0, 0.08);
+    outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    :root {
+        --mp-size: 48px;
+    }
+    .music-container.minimal {
+        left: 12px;
+        bottom: 12px;
+        padding: 6px;
+        gap: 8px;
+    }
+    .eq-btn {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        border-radius: 8px;
+    }
+}
