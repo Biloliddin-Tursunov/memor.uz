@@ -1,6 +1,5 @@
 import Hero from "../components/Hero";
 import Links from "../components/Links";
-import MusicPlayer from "../components/MusicPlayer";
 import TeamSection from "../components/TeamSection";
 
 export default function Home() {
