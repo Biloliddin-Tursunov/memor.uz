@@ -6,10 +6,6 @@ import TeamSection from "../components/TeamSection";
 export default function Home() {
     return (
         <div>
-            <div className="fixed left-6 bottom-6 z-50">
-                <MusicPlayer />
-            </div>
-
             <main className="main">
                 <Hero />
                 <Links />
