@@ -14,11 +14,11 @@ export default function TeamSection() {
     const { t } = useTranslation();
 
     const team = [
-        { img: Otabek, name: "Otabek", role: t("Founder&CEO") },
+        { img: Otabek, name: "Otabek", role: t("Founder") },
         {
             img: Biloliddin,
             name: "Biloliddin",
-            role: t("CoFounder"),
+            role: t("WebDeveloper"),
         },
         { img: Bunyod, name: "Bunyod", role: t("Designer") },
         {
