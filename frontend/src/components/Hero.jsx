@@ -4,6 +4,7 @@ import Bottom_right from "../assets/patterns/bottom_right.svg";
 import "../styles/components/hero.css";
 import ScrollIcon from "./ScrollIcon";
 import { useTranslation } from "react-i18next";
+import StarBackground from "./StarBackground";
 
 export default function Hero() {
     const { t } = useTranslation();
@@ -30,6 +31,7 @@ export default function Hero() {
             </div>
 
             <ScrollIcon target={"#links"} />
+            <StarBackground />
         </section>
     );
 }

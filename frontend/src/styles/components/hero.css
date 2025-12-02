@@ -19,6 +19,7 @@
     position: absolute;
     opacity: 0.7;
     width: clamp(200px, 22vw, 320px);
+    z-index: 5;
 }
 .hero__corner--tl {
     top: 0;

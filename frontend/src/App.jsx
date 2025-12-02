@@ -12,7 +12,7 @@ export default function App() {
             <main
                 style={{
                     background:
-                        "linear-gradient(164deg, rgba(107, 107, 107, 0.30) 0%, rgba(0, 0, 0, 0.00) 100%), #000",
+                        "radial-gradient(circle at center, #1b2735 0%, #090a0f 100%)",
                     minHeight: "100vh",
                     width: "100%",
                 }}
