@@ -1,24 +1,73 @@
-/* 1. Fontlarni import qilamiz (HTMLdagi link o'rniga) */
+/* 1. Fontlarni eng tepada import qilamiz */
 @import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 
-/* 2. Tailwind direktivalari */
+/* 2. Tailwind v4 ni chaqiramiz */
 @import "tailwindcss";
 
+/* 3. O'zgaruvchilarni (Variables) e'lon qilamiz */
+@theme {
+    /* Fontlar */
+    --font-sans: "Inter", system-ui, sans-serif;
+    --font-serif: "Libre Caslon Text", serif;
+
+    /* Ranglar (Configdagi ranglarni shu yerga ko'chirdik) */
+    --color-gray-50: #f9f9f9;
+    --color-gray-100: #f2f2f2;
+    --color-gray-200: #e5e5e5;
+    --color-gray-700: #404040;
+    --color-gray-900: #000000;
+
+    --color-bgMain: var(--bg-main);
+    --color-bgSidebar: var(--bg-sidebar);
+    --color-borderDark: var(--border-color);
+    --color-accent: var(--accent);
+    --color-accentHover: var(--accent-hover);
+    --color-textMain: var(--text-main);
+    --color-textMuted: var(--text-muted);
+    --color-cardBg: var(--card-bg);
+}
+
+/* 4. Asosiy stillar (Base Layers) */
 @layer base {
+    :root {
+        --bg-main: #ffffff;
+        --bg-sidebar: rgba(251, 251, 251, 0.75);
+        --border-color: rgba(0, 0, 0, 0.08);
+        --text-main: #000000;
+        --text-muted: #666666;
+        --accent: #000000;
+        --accent-hover: #333333;
+        --card-bg: rgba(255, 255, 255, 0.85);
+    }
+
+    :root[data-theme="dark"] {
+        --bg-main: #000000;
+        --bg-sidebar: rgba(15, 15, 15, 0.75);
+        --border-color: rgba(255, 255, 255, 0.08);
+        --text-main: #ffffff;
+        --text-muted: #a1a1a1;
+        --accent: #ffffff;
+        --accent-hover: #e1e1e1;
+        --card-bg: rgba(20, 20, 20, 0.85);
+    }
+
     h1,
     h2,
     h3,
     h4,
     h5,
     h6 {
-        font-family: "Libre Caslon Text", serif !important;
+        font-family: var(--font-serif) !important;
         color: var(--text-main);
         @apply font-semibold tracking-tight;
     }
+
     body {
-        font-family: "Inter", sans-serif !important;
+        font-family: var(--font-sans) !important;
         background-color: var(--bg-main);
-        /* Monochrome Apple Style: More visible dots in Light Mode */
+        color: var(--text-main);
+
+        /* Sizning Pattern Foningiz */
         background-image: radial-gradient(
                 circle,
                 rgba(0, 0, 0, 0.08) 1px,
@@ -37,74 +86,73 @@
             linear-gradient(180deg, #f9f9f9 0%, #ffffff 100%);
         background-size: 32px 32px, 100% 100%, 100% 100%, cover;
         background-attachment: fixed;
-        color: var(--text-main);
-        @apply antialiased;
+
+        @apply antialiased overflow-hidden h-screen w-screen;
+    }
+
+    /* Dark mode pattern */
+    :root[data-theme="dark"] body {
+        background-color: #000000;
+        background-image: radial-gradient(
+                circle,
+                rgba(255, 255, 255, 0.06) 0.5px,
+                transparent 0.5px
+            ),
+            radial-gradient(
+                circle at 20% 30%,
+                rgba(255, 255, 255, 0.02) 0%,
+                transparent 40%
+            ),
+            radial-gradient(
+                circle at 80% 70%,
+                rgba(255, 255, 255, 0.01) 0%,
+                transparent 40%
+            ),
+            linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.01) 1px,
+                transparent 1px
+            );
+        background-size: 32px 32px, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
     }
 }
 
-:root[data-theme="dark"] body {
-    background-color: #000000;
-    background-image: radial-gradient(
-            circle,
-            rgba(255, 255, 255, 0.06) 0.5px,
-            transparent 0.5px
-        ),
-        radial-gradient(
-            circle at 20% 30%,
-            rgba(255, 255, 255, 0.02) 0%,
-            transparent 40%
-        ),
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(255, 255, 255, 0.01) 0%,
-            transparent 40%
-        ),
-        linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-    background-size: 32px 32px, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-    background-attachment: fixed;
-}
-
+/* 5. Komponentlar */
 @layer components {
     .font-editorial {
-        font-family: "Libre Caslon Text", serif;
+        font-family: var(--font-serif);
         font-weight: 600;
         letter-spacing: -0.025em;
         color: var(--text-main);
     }
+
+    /* Scrollbar stillari */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+    :root[data-theme="dark"] .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }
 
-:root {
-    --bg-main: #ffffff;
-    --bg-sidebar: rgba(251, 251, 251, 0.75);
-    --border-color: rgba(0, 0, 0, 0.08);
-    --text-main: #000000;
-    --text-muted: #666666;
-    --accent: #000000;
-    --accent-hover: #333333;
-    --card-bg: rgba(255, 255, 255, 0.85);
-}
-
-:root[data-theme="dark"] {
-    --bg-main: #000000;
-    --bg-sidebar: rgba(15, 15, 15, 0.75);
-    --border-color: rgba(255, 255, 255, 0.08);
-    --text-main: #ffffff;
-    --text-muted: #a1a1a1;
-    --accent: #ffffff;
-    --accent-hover: #e1e1e1;
-    --card-bg: rgba(20, 20, 20, 0.85);
-}
-
-body {
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-}
-
-.animate-popIn {
-    animation: popIn 0.2s ease-out forwards;
-}
+/* 6. Animatsiyalar */
 @keyframes popIn {
     from {
         opacity: 0;
@@ -115,18 +163,8 @@ body {
         transform: scale(1);
     }
 }
-
-@keyframes bounce-slow {
-    0%,
-    100% {
-        transform: translateY(-5%);
-    }
-    50% {
-        transform: translateY(0);
-    }
-}
-.animate-bounce-slow {
-    animation: bounce-slow 3s infinite ease-in-out;
+.animate-popIn {
+    animation: popIn 0.2s ease-out forwards;
 }
 
 @keyframes slideDown {
@@ -141,34 +179,4 @@ body {
 }
 .animate-slideDown {
     animation: slideDown 0.4s ease-out forwards;
-}
-
-/* ELEGANT SCROLLBARS */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-:root[data-theme="dark"] .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-.no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-@media (max-width: 640px) {
-    h1 {
-        font-size: 1.875rem !important;
-    }
 }

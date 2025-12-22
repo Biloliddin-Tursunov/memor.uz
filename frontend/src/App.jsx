@@ -12,7 +12,7 @@ export default function App() {
 
     // Mantiq: "in." subdomain yoki "?app=admin" parametri
     const isAdmin =
-        hostname.startsWith("in.") || searchParams.get("app") === "admin";
+        hostname.startsWith("family.") || searchParams.get("app") === "admin";
 
     return (
         <Suspense fallback={<Loading />}>
