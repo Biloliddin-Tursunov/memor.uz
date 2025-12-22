@@ -1,29 +1,22 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Knowledge from "./pages/Knowledge";
-import Action from "./pages/Action";
-import Creation from "./pages/Creation";
-import LanguageSwitch from "./components/LanguageSwitch";
+// src/App.jsx
+import React, { Suspense, lazy } from "react";
+import Loading from "./site/shared/utils/Loading.jsx";
+
+// Lazy Imports
+const SiteApp = lazy(() => import("./site/App.jsx"));
+const AdminApp = lazy(() => import("./admin/App.jsx"));
 
 export default function App() {
+    const hostname = window.location.hostname;
+    const searchParams = new URLSearchParams(window.location.search);
+
+    // Mantiq: "in." subdomain yoki "?app=admin" parametri
+    const isAdmin =
+        hostname.startsWith("in.") || searchParams.get("app") === "admin";
+
     return (
-        <>
-            <LanguageSwitch />
-            <main
-                style={{
-                    background:
-                        "radial-gradient(circle at center, #1b2735 0%, #090a0f 100%)",
-                    minHeight: "100vh",
-                    width: "100%",
-                }}
-                className="bg-black  text-white scrroll-smooth">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/knowledge" element={<Knowledge />} />
-                    <Route path="/action" element={<Action />} />
-                    <Route path="/creation" element={<Creation />} />
-                </Routes>
-            </main>
-        </>
+        <Suspense fallback={<Loading />}>
+            {isAdmin ? <AdminApp /> : <SiteApp />}
+        </Suspense>
     );
 }
