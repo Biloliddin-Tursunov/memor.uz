@@ -1,85 +1,41 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { ADMIN_USER } from '../constants';
 
 interface AuthContextType {
   isAdmin: boolean;
-  loading: boolean;
-  login: (email: string, pass: string) => Promise<{ success: boolean; error?: string }>;
-  logout: () => Promise<void>;
+  login: (email: string, pass: string) => boolean;
+  logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(true);
 
+  // Check storage on mount
   useEffect(() => {
-    checkSession();
-
-    // Sessiya o'zgarishini kuzatish
-    const { data: authListener } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      if (session?.user) {
-        await checkAdminRole(session.user.id);
-      } else {
-        setIsAdmin(false);
-      }
-      setLoading(false);
-    });
-
-    return () => {
-      authListener.subscription.unsubscribe();
-    };
+    const storedAuth = localStorage.getItem('memor_admin_auth');
+    if (storedAuth === 'true') {
+      setIsAdmin(true);
+    }
   }, []);
 
-  const checkSession = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (session?.user) {
-      await checkAdminRole(session.user.id);
-    } else {
-      setLoading(false);
-    }
-  };
-
-  const checkAdminRole = async (userId: string) => {
-    const { data } = await supabase
-      .from('profiles')
-      .select('role')
-      .eq('id', userId)
-      .single();
-
-    if (data && (data.role === 'admin' || data.role === 'moderator')) {
+  const login = (email: string, pass: string): boolean => {
+    if (email === ADMIN_USER.email && pass === ADMIN_USER.password) {
       setIsAdmin(true);
-    } else {
-      setIsAdmin(false);
+      localStorage.setItem('memor_admin_auth', 'true');
+      return true;
     }
-    setLoading(false);
+    return false;
   };
 
-  const login = async (email: string, pass: string) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password: pass,
-    });
-
-    if (error) {
-      return { success: false, error: error.message };
-    }
-
-    if (data.user) {
-      await checkAdminRole(data.user.id);
-      return { success: true };
-    }
-    return { success: false, error: "Login failed" };
-  };
-
-  const logout = async () => {
-    await supabase.auth.signOut();
+  const logout = () => {
     setIsAdmin(false);
+    localStorage.removeItem('memor_admin_auth');
   };
 
   return (
-    <AuthContext.Provider value={{ isAdmin, loading, login, logout }}>
+    <AuthContext.Provider value={{ isAdmin, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

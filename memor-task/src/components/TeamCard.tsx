@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Team } from '../../types';
+import { Team } from '../types';
 import { motion } from 'framer-motion';
 
 interface TeamCardProps {
@@ -21,7 +21,7 @@ const TEAM_PIN_MAP: Record<string, string> = {
 const TeamCard: React.FC<TeamCardProps> = ({ team, index }) => {
   // Random slight rotation for organic feel
   const rotation = index % 2 === 0 ? '1deg' : '-1deg';
-
+  
   // Assign pin color based on ID, fallback to gold
   const pinClass = TEAM_PIN_MAP[team.id] || 'pin-gold';
 
@@ -52,20 +52,20 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, index }) => {
       <motion.div
         initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
         animate={{ opacity: 1, scale: 1, rotate: rotation }}
-        whileHover={{
-          scale: 1.05,
-          rotate: '0deg',
-          zIndex: 30,
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+        whileHover={{ 
+            scale: 1.05, 
+            rotate: '0deg',
+            zIndex: 30,
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
         }}
-        transition={{
-          type: "spring",
-          stiffness: 350,
+        transition={{ 
+          type: "spring", 
+          stiffness: 350, 
           damping: 25
         }}
         className="relative min-h-[260px] bg-kraft w-full p-6 shadow-floating cursor-pointer group flex flex-col z-10"
         style={{
-          borderRadius: '2px 2px 2px 25px', // Folded corner effect
+            borderRadius: '2px 2px 2px 25px', // Folded corner effect
         }}
       >
         {/* The 3D Pin with Unique Color */}
@@ -73,36 +73,36 @@ const TeamCard: React.FC<TeamCardProps> = ({ team, index }) => {
 
         {/* Paper Texture Overlay */}
         <div className="absolute inset-0 bg-paper-texture opacity-30 pointer-events-none mix-blend-multiply rounded-[inherit]" />
-
+        
         {/* Content */}
         <div className="relative z-10 h-full flex flex-col text-ink">
-          <div className="border-b-2 border-ink/10 pb-4 mb-4 text-center">
-            <span
-              className="font-typewriter text-[10px] text-ink/50 uppercase tracking-widest block mb-1"
-            >
-              Department 0{index + 1}
-            </span>
-            <motion.h3
-              layoutId={`card-title-${team.id}`}
-              className="font-serif text-3xl font-bold leading-none group-hover:text-ink-blue transition-colors"
-            >
-              {team.name}
-            </motion.h3>
-          </div>
+           <div className="border-b-2 border-ink/10 pb-4 mb-4 text-center">
+              <span 
+                className="font-typewriter text-[10px] text-ink/50 uppercase tracking-widest block mb-1"
+              >
+                 Department 0{index + 1}
+              </span>
+              <motion.h3 
+                layoutId={`card-title-${team.id}`}
+                className="font-serif text-3xl font-bold leading-none group-hover:text-ink-blue transition-colors"
+              >
+                {team.name}
+              </motion.h3>
+           </div>
 
-          <div className="flex-grow">
-            <motion.div
-              initial={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="font-typewriter text-xs text-ink/70 leading-relaxed"
-            >
-              {renderDescription(team.description)}
-            </motion.div>
-          </div>
-
-          <div className="mt-4 pt-4 border-t border-ink/5 text-center">
-            <span className="font-serif italic text-ink/40 text-xs">Access Archives &rarr;</span>
-          </div>
+           <div className="flex-grow">
+              <motion.div 
+                 initial={{ opacity: 1 }}
+                 exit={{ opacity: 0 }}
+                 className="font-typewriter text-xs text-ink/70 leading-relaxed"
+              >
+                {renderDescription(team.description)}
+              </motion.div>
+           </div>
+           
+           <div className="mt-4 pt-4 border-t border-ink/5 text-center">
+               <span className="font-serif italic text-ink/40 text-xs">Access Archives &rarr;</span>
+           </div>
         </div>
       </motion.div>
     </Link>

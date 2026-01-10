@@ -4,14 +4,13 @@ export interface Team {
     id: string;
     name: string;
     description: string;
-    // Pin color Frontendda hisoblanadi, bazadan shart emas, lekin
-    // agar bazadan kelsa, uni ham qo'shish mumkin.
+    pin_color?: string; // Bazadagi rang (agar bo'lsa)
 }
 
 // Frontend uchun Task (Eski kodingiz bilan bir xil qoladi)
 export interface Task {
     id: string;
-    teamId: string; // Frontendda teamId
+    teamId: string;
     title: string;
     description: string;
     type: string;
@@ -24,14 +23,14 @@ export interface Task {
 // Supabase DB dan keladigan Task formati
 export interface DBTask {
     id: string;
-    team_id: string; // Bazada team_id
+    team_id: string;
     title: string;
-    description: string;
+    description: string | null;
     type: string;
     status: string;
-    start_date: string;
-    deadline: string;
-    resource_link: string;
+    start_date: string | null;
+    deadline: string | null;
+    resource_link: string | null;
     created_by: string;
     deleted_at: string | null;
 }

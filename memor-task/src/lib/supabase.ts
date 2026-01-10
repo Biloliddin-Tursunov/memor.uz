@@ -4,7 +4,7 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-    throw new Error('Supabase URL yoki Key topilmadi. .env.local faylini tekshiring.');
+    throw new Error('Supabase URL yoki Key topilmadi. .env faylini tekshiring.');
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
