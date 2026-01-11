@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
@@ -6,6 +7,8 @@ import TeamDashboard from './pages/TeamDashboard';
 import Login from './pages/Login';
 import { AuthProvider } from './context/AuthContext';
 import { TaskProvider } from './context/TaskContext';
+import { LanguageProvider } from './context/LanguageContext';
+import { TeamProvider } from './context/TeamContext';
 import { AnimatePresence } from 'framer-motion';
 
 const AnimatedRoutes: React.FC = () => {
@@ -29,13 +32,17 @@ const AnimatedRoutes: React.FC = () => {
 const App: React.FC = () => {
   return (
     <HashRouter>
-      <AuthProvider>
-        <TaskProvider>
-          <Layout>
-            <AnimatedRoutes />
-          </Layout>
-        </TaskProvider>
-      </AuthProvider>
+      <TeamProvider>
+        <AuthProvider>
+          <LanguageProvider>
+              <TaskProvider>
+                <Layout>
+                  <AnimatedRoutes />
+                </Layout>
+              </TaskProvider>
+          </LanguageProvider>
+        </AuthProvider>
+      </TeamProvider>
     </HashRouter>
   );
 };
