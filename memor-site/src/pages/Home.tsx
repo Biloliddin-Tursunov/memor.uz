@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { MOCK_ARTICLES, MOCK_EVENTS, MOCK_CREATIONS, MOCK_PROJECTS, MOCK_VIDEOS } from '../constants';
 import { Ornament } from '../components/Ornament';
 import { PageRoute, DisplayItem } from '../types';
+import TeamSection from '../components/TeamSection';
 
 interface HomeProps {
    onNavigate: (route: PageRoute) => void;
@@ -239,7 +240,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onItemClick }) => {
          </section>
 
          {/* IJOD (Creation) Section */}
-         <section>
+         <section className="mb-20">
             <div className="flex flex-col md:flex-row items-center gap-4 mb-8 md:mb-10 text-center md:text-left">
                <button
                   onClick={() => onNavigate(PageRoute.CREATION)}
@@ -285,6 +286,16 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onItemClick }) => {
                   <span className="text-sepia text-2xl md:text-4xl">&rarr;</span>
                </div>
             </div>
+         </section>
+
+         {/* Team Section (New Addition) */}
+         <section>
+            <div className="flex items-center gap-4 mb-8 text-center justify-center">
+               <div className="hidden md:block h-px bg-graphite/20 w-16"></div>
+               <Ornament type="flourish" className="w-6 h-6 opacity-40" />
+               <div className="hidden md:block h-px bg-graphite/20 w-16"></div>
+            </div>
+            <TeamSection className="mb-0" />
          </section>
 
          <div className="mt-16 md:mt-20 text-center">

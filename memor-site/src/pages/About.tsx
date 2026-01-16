@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Ornament } from '../components/Ornament';
+import TeamSection from '../components/TeamSection';
 
 const About: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ const About: React.FC = () => {
         <Ornament type="divider" className="w-48 mx-auto" />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
         <div>
           <p className="font-serif text-lg leading-relaxed text-justify first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-sepia dark:text-gray-300">
             "Me'mor" loyihasi 2024-yilda Samarqand Davlat Arxitektura va Qurilish Universiteti devorlari orasida tug'ilgan.
@@ -32,6 +33,9 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Team Section Component */}
+      <TeamSection />
 
       <div className="bg-graphite/5 dark:bg-white/5 p-8 md:p-12 border-y border-double border-graphite/20 dark:border-white/20 text-center">
         <Ornament type="flourish" className="mb-4" />

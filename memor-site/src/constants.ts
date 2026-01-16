@@ -124,6 +124,35 @@ export const NAV_ITEMS: NavItem[] = [
   },
 ];
 
+// --- TEAM MEMBERS ---
+export const TEAM_MEMBERS = [
+  {
+    name: 'Otabek',
+    role: 'Loyiha Asoschisi',
+    image: 'https://memor.uz/people/otabek.jpg'
+  },
+  {
+    name: 'Bunyod',
+    role: 'Grafik Dizayner',
+    image: 'https://memor.uz/people/bunyod.png'
+  },
+  {
+    name: 'Biloliddin',
+    role: 'Dasturchi',
+    image: 'https://memor.uz/people/biloliddin.jpg'
+  },
+  {
+    name: 'Zuhra',
+    role: 'Dizayner',
+    image: 'https://memor.uz/people/zuhra.png'
+  },
+  {
+    name: 'Aminaxon',
+    role: 'Kontent Menejeri',
+    image: 'https://memor.uz/people/aminaxon.jpg'
+  }
+];
+
 // --- ILM DATA ---
 export const MOCK_ARTICLES: Article[] = [
   {

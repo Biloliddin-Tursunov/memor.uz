@@ -4,57 +4,95 @@ import { Ornament } from '../components/Ornament';
 
 const Support: React.FC = () => {
   return (
-    <div className="max-w-3xl mx-auto px-4 py-16 text-center">
+    <div className="max-w-4xl mx-auto px-4 py-16 text-center">
       <Ornament type="flourish" className="mb-6 opacity-60" />
-      <h2 className="font-display text-4xl mb-6 text-graphite">Loyihani Qo'llab-Quvvatlash</h2>
-      <p className="font-serif text-xl italic text-graphite/70 mb-12">
+      <h2 className="font-display text-4xl mb-6 text-graphite dark:text-white">Loyihani Qo'llab-Quvvatlash</h2>
+      <p className="font-serif text-xl italic text-graphite/70 dark:text-gray-300 mb-16 max-w-2xl mx-auto">
         "Me'mor" mustaqil platforma bo'lib, siz kabi san'at ixlosmandlari ko'magida yashaydi.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-         {/* Tier 1 */}
-         <div className="border border-graphite/20 p-6 hover:border-teal transition-colors group cursor-pointer bg-white">
-            <h3 className="font-display text-xl mb-2 text-sepia-dark">Shogird</h3>
-            <div className="text-3xl font-bold text-graphite mb-4">50,000 so'm</div>
-            <p className="text-sm font-serif text-graphite/60 mb-4">
-              Oylik obuna. Eksklyuziv maqolalar va yopiq darslarga kirish imkoniyati.
-            </p>
-            <button className="w-full py-2 bg-graphite/5 group-hover:bg-teal group-hover:text-white transition-colors text-xs uppercase tracking-widest">
-              Tanlash
-            </button>
-         </div>
+      {/* Donation Platforms */}
+      <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-12 max-w-3xl mx-auto mb-16">
 
-         {/* Tier 2 */}
-         <div className="border border-teal p-6 relative transform scale-105 shadow-xl bg-parchment">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-teal text-white text-[10px] uppercase px-3 py-1 tracking-widest">
-               Tavsiya etiladi
+        {/* Tirikchilik Card - Blue Brand Style */}
+        <a
+          href="https://tirikchilik.uz/memor"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 group relative overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl bg-white dark:bg-[#1e1e1e] flex flex-col"
+        >
+          {/* Brand Header */}
+          <div className="h-32 bg-[#3396FF] flex items-center justify-center relative overflow-hidden">
+            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/40 to-transparent scale-150"></div>
+
+            {/* Logo Container */}
+            <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg z-10 transform group-hover:scale-110 transition-transform duration-300 overflow-hidden p-2">
+              <img
+                src="https://memor.uz/tirikchilik.png"
+                alt="Tirikchilik Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
-            <h3 className="font-display text-2xl mb-2 text-teal">Usta</h3>
-            <div className="text-4xl font-bold text-graphite mb-4">150,000 so'm</div>
-            <p className="text-sm font-serif text-graphite/60 mb-4">
-              Portfolio yaratish, shaxsiy brending va ustozlar bilan to'g'ridan-to'g'ri aloqa.
-            </p>
-            <button className="w-full py-2 bg-teal text-white transition-colors text-xs uppercase tracking-widest">
-              Tanlash
-            </button>
-         </div>
+          </div>
 
-         {/* Tier 3 */}
-         <div className="border border-graphite/20 p-6 hover:border-sepia transition-colors group cursor-pointer bg-white">
-            <h3 className="font-display text-xl mb-2 text-sepia-dark">Homiylik</h3>
-            <div className="text-3xl font-bold text-graphite mb-4">Erkin</div>
-            <p className="text-sm font-serif text-graphite/60 mb-4">
-              Loyihani rivojlantirish uchun ixtiyoriy xayriya. Tarixga hissa qo'shing.
-            </p>
-            <button className="w-full py-2 bg-graphite/5 group-hover:bg-sepia group-hover:text-white transition-colors text-xs uppercase tracking-widest">
-              Yuborish
-            </button>
-         </div>
+          <div className="p-8 flex-grow flex flex-col justify-between">
+            <div>
+              <h3 className="font-bold text-2xl text-graphite dark:text-white mb-2 font-sans tracking-tight">Tirikchilik</h3>
+              <p className="text-graphite/60 dark:text-gray-400 text-sm mb-6 font-medium leading-relaxed">
+                Mahalliy kartalar (Uzcard, Humo) orqali tezkor va qulay yordam.
+              </p>
+            </div>
+
+            <div className="w-full py-4 rounded-xl bg-[#3396FF] text-white font-bold text-sm uppercase tracking-wider group-hover:bg-[#2879D0] transition-colors shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+              <span>Homiylik Qilish</span>
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </div>
+          </div>
+        </a>
+
+        {/* Buy Me a Coffee Card - Yellow Brand Style */}
+        <a
+          href="https://buymeacoffee.com/memor.uz"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 group relative overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl bg-white dark:bg-[#1e1e1e] flex flex-col"
+        >
+          {/* Brand Header */}
+          <div className="h-32 bg-[#FFDD00] flex items-center justify-center relative overflow-hidden">
+            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/50 to-transparent scale-150"></div>
+
+            {/* Logo Container */}
+            <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg z-10 transform group-hover:scale-110 transition-transform duration-300 overflow-hidden p-4">
+              <img
+                src="https://memor.uz/buy-coffe.png"
+                alt="Buy Me a Coffee Logo"
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+
+          <div className="p-8 flex-grow flex flex-col justify-between">
+            <div>
+              <h3 className="font-bold text-2xl text-graphite dark:text-white mb-2 font-sans tracking-tight">Buy Me a Coffee</h3>
+              <p className="text-graphite/60 dark:text-gray-400 text-sm mb-6 font-medium leading-relaxed">
+                Xalqaro kartalar (Visa, MasterCard) orqali yordam berish.
+              </p>
+            </div>
+
+            <div className="w-full py-4 rounded-xl bg-[#FFDD00] text-black font-bold text-sm uppercase tracking-wider group-hover:bg-[#FFEA55] transition-colors shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+              <span>Coffee Olib Berish</span>
+              <span className="text-xl">☕</span>
+            </div>
+          </div>
+        </a>
+
       </div>
 
-      <p className="text-xs font-mono text-graphite/40 max-w-lg mx-auto">
-        Barcha to'lovlar xavfsiz himoyalangan. Tushgan mablag'lar qadimiy obidalarni raqamlashtirish va yosh me'morlarni o'qitishga yo'naltiriladi.
-      </p>
+      <div className="border-t border-graphite/10 dark:border-white/10 pt-8">
+        <p className="text-xs font-mono text-graphite/40 dark:text-gray-500">
+          Sizning yordamingiz — tariximizni saqlab qolishga qo'shilgan hissa.
+        </p>
+      </div>
     </div>
   );
 };
