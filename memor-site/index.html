@@ -1,16 +1,69 @@
 <!DOCTYPE html>
 <html lang="uz">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <!-- Primary -->
-        <title>Me'mor</title>
-        <meta
-            name="description"
-            content="Me'mor — O‘zbek memorchiligi, arxitektura, naqsh (ornament) va san’atga oid maqolalar, vektor kutubxona va tadqiqotlar jamlanmasi. Memorchilik falsafasi, naqsh anatomiyasi va amaliy dizayn." />
-        <!-- 'keywords' SEO uchun shart emas, lekin zarari yo‘q -->
-        <meta
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Me'mor - Dunyoni go'zallashtirish uchun!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              parchment: '#F9F7F1',
+              graphite: '#333333',
+              teal: {
+                DEFAULT: '#007BA7',
+                dark: '#005f82'
+              },
+              sepia: {
+                DEFAULT: '#C5A059',
+                dark: '#8a6e3e'
+              }
+            },
+            fontFamily: {
+              serif: ['Lora', 'serif'],
+              display: ['Playfair Display', 'serif'],
+            },
+            backgroundImage: {
+              'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #F9F7F1;
+        color: #333333;
+        font-family: 'Lora', serif;
+      }
+      /* Custom scrollbar for that ancient feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #F9F7F1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #C5A059;
+        border-radius: 0px;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+<meta
             name="keywords"
             content="Me'mor, memorchilik, arxitektor, arxitektura, naqsh, ornament, san’at, o‘zbek arxitekturasi, pattern, design" />
         <link rel="canonical" href="https://memor.uz/" />
@@ -128,13 +181,9 @@
                 "email": "info@memor.uz"
             }
         </script>
-
-        <!-- (ixtiyoriy) Google Search Console tasdiqlash -->
-        <!-- <meta name="google-site-verification" content="...verification-token..." /> -->
-    </head>
-
-    <body>
-        <div id="root"></div>
-        <script type="module" src="/src/main.jsx"></script>
-    </body>
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="./src/main.tsx"></script>
+</body>
 </html>
