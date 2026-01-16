@@ -1,58 +1,98 @@
 <!DOCTYPE html>
 <html lang="uz">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Me'mor - Dunyoni go'zallashtirish uchun!</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              parchment: '#F9F7F1',
-              graphite: '#333333',
-              teal: {
-                DEFAULT: '#007BA7',
-                dark: '#005f82'
-              },
-              sepia: {
-                DEFAULT: '#C5A059',
-                dark: '#8a6e3e'
-              }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Me'mor - Dunyoni go'zallashtirish uchun!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            parchment: 'var(--color-parchment)',
+            graphite: 'var(--color-graphite)',
+            teal: {
+              DEFAULT: 'var(--color-teal)',
+              dark: 'var(--color-teal-dark)'
             },
-            fontFamily: {
-              serif: ['Lora', 'serif'],
-              display: ['Playfair Display', 'serif'],
-            },
-            backgroundImage: {
-              'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+            sepia: {
+              DEFAULT: 'var(--color-sepia)',
+              dark: 'var(--color-sepia-dark)'
             }
+          },
+          fontFamily: {
+            serif: ['Lora', 'serif'],
+            display: ['Playfair Display', 'serif'],
+          },
+          backgroundImage: {
+            'paper-texture': "none",
           }
         }
       }
-    </script>
-    <style>
-      body {
-        background-color: #F9F7F1;
-        color: #333333;
-        font-family: 'Lora', serif;
-      }
-      /* Custom scrollbar for that ancient feel */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #F9F7F1;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #C5A059;
-        border-radius: 0px;
-      }
-    </style>
+    }
+  </script>
+  <style>
+    :root {
+      /* Light Mode: Crisp White & Sharp Black with Accents */
+      --color-parchment: #FFFFFF;
+      --color-graphite: #121212;
+
+      /* Accents for Contrast (Light Mode) */
+      --color-teal: #1F4E5F;
+      /* Deep Muted Teal - Professional contrast */
+      --color-teal-dark: #163A47;
+      --color-sepia: #B08968;
+      /* Antique Bronze - Historical contrast */
+      --color-sepia-dark: #7F5539;
+    }
+
+    .dark {
+      /* Dark Mode: Lighter Dark Grey & Soft White for better readability */
+      --color-parchment: #1E1E1E;
+      /* Lighter charcoal, not pitch black */
+      --color-graphite: #F0F0F0;
+      /* Bright white text */
+
+      /* Accents for Contrast (Dark Mode) - brighter/gold */
+      --color-teal: #4FD1C5;
+      /* Bright Teal/Turquoise */
+      --color-teal-dark: #2DD4BF;
+      --color-sepia: #FCD34D;
+      /* Bright Gold/Amber */
+      --color-sepia-dark: #F59E0B;
+    }
+
+    body {
+      background-color: var(--color-parchment);
+      color: var(--color-graphite);
+      font-family: 'Lora', serif;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--color-parchment);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-graphite);
+      border: 2px solid var(--color-parchment);
+      border-radius: 4px;
+      opacity: 0.5;
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -62,87 +102,55 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
-<meta
-            name="keywords"
-            content="Me'mor, memorchilik, arxitektor, arxitektura, naqsh, ornament, san’at, o‘zbek arxitekturasi, pattern, design" />
-        <link rel="canonical" href="https://memor.uz/" />
-        <meta name="robots" content="index,follow" />
-        <meta name="theme-color" content="#111111" />
+  <link rel="stylesheet" href="/index.css">
+  <meta name="keywords"
+    content="Me'mor, memorchilik, arxitektor, arxitektura, naqsh, ornament, san’at, o‘zbek arxitekturasi, pattern, design" />
+  <link rel="canonical" href="https://memor.uz/" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#111111" />
 
-        <!-- Favicons / App icons (yangi fayl nomlari cachingni yangilaydi) -->
-        <link
-            rel="icon"
-            type="image/png"
-            href="/favicons/favicon-2025.png"
-            sizes="48x48" />
-        <link
-            rel="icon"
-            type="image/png"
-            href="/favicons/favicon-32.png"
-            sizes="32x32" />
-        <link
-            rel="icon"
-            type="image/png"
-            href="/favicons/favicon-16.png"
-            sizes="16x16" />
-        <link
-            rel="apple-touch-icon"
-            href="/favicons/apple-touch-2025.png"
-            sizes="180x180" />
-        <link rel="manifest" href="/site.webmanifest" />
+  <!-- Favicons / App icons (yangi fayl nomlari cachingni yangilaydi) -->
+  <link rel="icon" type="image/png" href="/favicons/favicon-2025.png" sizes="48x48" />
+  <link rel="icon" type="image/png" href="/favicons/favicon-32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/favicons/favicon-16.png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="/favicons/apple-touch-2025.png" sizes="180x180" />
+  <link rel="manifest" href="/site.webmanifest" />
 
-        <!-- (ixtiyoriy) rang rejimiga mos favikonlar -->
-        <link
-            rel="icon"
-            href="/favicon-light.svg"
-            media="(prefers-color-scheme: light)" />
-        <link
-            rel="icon"
-            href="/favicon-dark.svg"
-            media="(prefers-color-scheme: dark)" />
+  <!-- (ixtiyoriy) rang rejimiga mos favikonlar -->
+  <link rel="icon" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
+  <link rel="icon" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
 
-        <!-- Open Graph -->
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Me'mor" />
-        <meta
-            property="og:title"
-            content="Me'mor — memorchilik, arxitektura va naqsh falsafasi platformasi" />
-        <meta
-            property="og:description"
-            content="Me'mor — O‘zbek memorchiligi, arxitektura, naqsh (ornament) va san’atga oid maqolalar, vektor kutubxona va tadqiqotlar jamlanmasi." />
-        <meta property="og:url" content="https://memor.uz/" />
-        <meta
-            property="og:image"
-            content="https://memor.uz/og/cover-main.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:locale" content="uz_UZ" />
-        <meta property="og:locale:alternate" content="en_US" />
-        <meta property="og:locale:alternate" content="ru_RU" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Me'mor" />
+  <meta property="og:title" content="Me'mor — memorchilik, arxitektura va naqsh falsafasi platformasi" />
+  <meta property="og:description"
+    content="Me'mor — O‘zbek memorchiligi, arxitektura, naqsh (ornament) va san’atga oid maqolalar, vektor kutubxona va tadqiqotlar jamlanmasi." />
+  <meta property="og:url" content="https://memor.uz/" />
+  <meta property="og:image" content="https://memor.uz/og/cover-main.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="uz_UZ" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="ru_RU" />
 
-        <!-- Twitter -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-            name="twitter:title"
-            content="Me'mor — memorchilik, arxitektura va naqsh falsafasi platformasi" />
-        <meta
-            name="twitter:description"
-            content="Me'mor — O‘zbek memorchiligi, arxitektura, naqsh (ornament) va san’atga oid maqolalar, vektor kutubxona va tadqiqotlar jamlanmasi." />
-        <meta
-            name="twitter:image"
-            content="https://memor.uz/og/cover-main.jpg" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Me'mor — memorchilik, arxitektura va naqsh falsafasi platformasi" />
+  <meta name="twitter:description"
+    content="Me'mor — O‘zbek memorchiligi, arxitektura, naqsh (ornament) va san’atga oid maqolalar, vektor kutubxona va tadqiqotlar jamlanmasi." />
+  <meta name="twitter:image" content="https://memor.uz/og/cover-main.jpg" />
 
-        <!-- Hreflang (agar til versiyalari bo‘lsa, quyidagilarni oching va URL’larni moslang) -->
-        <!--
+  <!-- Hreflang (agar til versiyalari bo‘lsa, quyidagilarni oching va URL’larni moslang) -->
+  <!--
     <link rel="alternate" hreflang="uz" href="https://memor.uz/" />
     <link rel="alternate" hreflang="en" href="https://memor.uz/en/" />
     <link rel="alternate" hreflang="ru" href="https://memor.uz/ru/" />
     <link rel="alternate" hreflang="x-default" href="https://memor.uz/" />
     -->
 
-        <!-- Structured Data: WebSite (site name + internal search) -->
-        <script type="application/ld+json">
+  <!-- Structured Data: WebSite (site name + internal search) -->
+  <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
                 "@type": "WebSite",
@@ -163,8 +171,8 @@
             }
         </script>
 
-        <!-- Structured Data: Organization (logo & brand signallari) -->
-        <script type="application/ld+json">
+  <!-- Structured Data: Organization (logo & brand signallari) -->
+  <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
                 "@type": "Organization",
@@ -182,8 +190,10 @@
             }
         </script>
 </head>
-  <body>
-    <div id="root"></div>
+
+<body>
+  <div id="root"></div>
   <script type="module" src="./src/main.tsx"></script>
 </body>
+
 </html>

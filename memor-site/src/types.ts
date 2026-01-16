@@ -1,4 +1,5 @@
 
+export type Language = 'uz' | 'en' | 'ru' | 'tr';
 
 export enum PageRoute {
   HOME = 'HOME',
@@ -9,15 +10,29 @@ export enum PageRoute {
   ABOUT = 'ABOUT',
   SUPPORT = 'SUPPORT',
   CONTACT = 'CONTACT',
-  NEWS = 'NEWS'
+  NEWS = 'NEWS',
+  DETAIL = 'DETAIL' // New route for reading content
 }
 
 export interface NavItem {
   id: string;
   roman: string;
   label: string;
-  subLabel: string; 
+  subLabel: string;
   route: PageRoute;
+}
+
+// Generic Interface for clicking and displaying details
+export interface DisplayItem {
+  id: string;
+  title: string;
+  subtitle?: string; // For author, date, location etc.
+  description?: string; // Short description
+  content?: string; // Full content
+  imageUrl?: string;
+  date?: string;
+  tags?: string[];
+  type?: string;
 }
 
 // --- KNOWLEDGE (ILM) ---
