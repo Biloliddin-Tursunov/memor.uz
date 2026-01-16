@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Task } from '../types';
 import TaskCard from '../components/TaskCard';
@@ -12,7 +13,6 @@ interface BoardViewProps {
 const BoardView: React.FC<BoardViewProps> = ({ tasks, onEditTask }) => {
   const { t } = useLanguage();
 
-  // Sort: Done items last, High Priority first within status (simplified)
   const sortedTasks = [...tasks].sort((a, b) => {
       if (a.status === 'Done' && b.status !== 'Done') return 1;
       if (a.status !== 'Done' && b.status === 'Done') return -1;
@@ -30,7 +30,7 @@ const BoardView: React.FC<BoardViewProps> = ({ tasks, onEditTask }) => {
         ) : (
             <motion.div 
                 layout 
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-start"
+                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 items-start"
             >
                 {sortedTasks.map((task) => (
                     <TaskCard key={task.id} task={task} onEdit={onEditTask} />

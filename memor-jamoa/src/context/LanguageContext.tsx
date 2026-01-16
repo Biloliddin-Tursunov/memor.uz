@@ -18,7 +18,7 @@ const DICTIONARY: Dictionary = {
   "Dunyoni go'zallashtirish uchun": { UZ: "Dunyoni go'zallashtirish uchun!", TR: "Dünyayı güzelleştirmek için!", ENG: "To beautify the world!", RUS: "Чтобы украсить мир!" },
   "Missiyalar": { UZ: "Missiyalar", TR: "Görevler", ENG: "Missions", RUS: "Миссии" },
   "Team": { UZ: "Bo'lim", TR: "Bölüm", ENG: "Department", RUS: "Отдел" },
-  "Team Members": { UZ: "Jamoa A'zolari", TR: "Takım Üyeleri", ENG: "Team Members", RUS: "Члены Команды" },
+  "Team Members": { UZ: "Jamoa A'zolari", TR: "Takım Üyeleri", ENG: "Team Members", RUS: "Члены Козда" },
   "Creators": { UZ: "Ijodkorlar", TR: "Yaratıcılar", ENG: "Creators", RUS: "Творцы" },
   "Sponsor": { UZ: "Bosh homiy", TR: "Ana Sponsor", ENG: "General Sponsor", RUS: "Генеральный спонсор" },
   "Redirect Creators": { UZ: "Ijodkorlarni yo'naltirish", TR: "Yaratıcıları Yönlendir", ENG: "Redirect Creators", RUS: "Перенаправить творцов" },
@@ -35,11 +35,15 @@ const DICTIONARY: Dictionary = {
   "Access Code": { UZ: "Kirish kodi", TR: "Erişim Kodu", ENG: "Access Code", RUS: "Код доступа" },
   "Login": { UZ: "Kirish", TR: "Giriş", ENG: "Login", RUS: "Войти" },
 
+  // Roles
+  "Supervisor": { UZ: "Ustoz", TR: "Hoca", ENG: "Supervisor", RUS: "Наставник" },
+  "Investor": { UZ: "Investor", TR: "Yatırımcı", ENG: "Investor", RUS: "Инвестор" },
+
   // Team Names
   "Artwork": { UZ: "Artwork", TR: "Sanat", ENG: "Artwork", RUS: "Арт" },
   "Loyiha": { UZ: "Loyiha", TR: "Proje", ENG: "Architects", RUS: "Проект" },
   "Club": { UZ: "Club", TR: "Kulüp", ENG: "Club", RUS: "Клуб" },
-  "Tarjimonlar": { UZ: "Tarjimonlar", TR: "Tercümanlar", ENG: "Translators", RUS: "Переводчики" },
+  "Tarjima": { UZ: "Tarjima", TR: "Tercüme", ENG: "Translation", RUS: "Перевод" },
   "Media": { UZ: "Media", TR: "Medya", ENG: "Media", RUS: "Медиа" },
   "Software": { UZ: "Software", TR: "Yazılım", ENG: "Software", RUS: "Программное обеспечение" },
 
@@ -235,7 +239,7 @@ Who works here:
 ➥ Iqtidorli kadrlarni shakllantirish/kashf etish;
 
 Kimlar ishlaydi:
-- Rejalashtiruvchi;
+- Koordinator;
 - Olib boruvchi;
 - Mutaxassislar va barcha talabalar.`,
     TR: `Görev:
@@ -244,7 +248,7 @@ Kimlar ishlaydi:
 ➥ Fikir alışverişi;
 
 Kimler çalışıyor:
-- Planlamacı;
+- Koordinatör;
 - Sunucu;
 - Uzmanlar ve tüm öğrenciler.`,
     ENG: `Duties:
@@ -253,7 +257,7 @@ Kimler çalışıyor:
 ➥ Sharing ideas;
 
 Who works here:
-- Planners;
+- Coordinator;
 - Hosts;
 - Experts and all students.`,
     RUS: `Обязанности:
@@ -262,7 +266,7 @@ Who works here:
 ➥ Обмен мнениями;
 
 Кто работает:
-- Планировщики;
+- Координатор;
 - Ведущие;
 - Эксперты и все студенты.`
   },
@@ -274,7 +278,7 @@ Who works here:
    ➥ Admin panel;
    ➥ Back-end | Database;
 
-Kimlar bo'ladi:
+Kimlar ishlaydi:
 - Front-end developer;
 - Back-end developer;
 - UI/UX Dizayner;`,
@@ -284,7 +288,7 @@ Kimlar bo'ladi:
    ➥ Görev yöneticisi;
    ➥ Yönetici paneli;
 
-Kimler olacak:
+Kimler çalışıyor:
 - Front-end geliştirici;
 - Back-end geliştirici;
 - UI/UX Tasarımcı;`,
@@ -317,7 +321,7 @@ Who works here:
   "Akademik majburiyatlar.": { UZ: "Akademik majburiyatlar.", TR: "Akademik yükümlülükler.", ENG: "Academic obligations.", RUS: "Академические обязательства." },
   "Imtihon davri.": { UZ: "Imtihon davri.", TR: "Sınav dönemi.", ENG: "Exam period.", RUS: "Период экзаменов." },
   "O'qish va imtihonlar.": { UZ: "O'qish va imtihonlar.", TR: "Okuma ve sınavlar.", ENG: "Study and exams.", RUS: "Учеба и экзамены." },
-  "Exams & Academic debts.": { UZ: "Imtihonlar va akademik qarzlar.", TR: "Sınavlar ve akademik borçlar.", ENG: "Exams & Academic debts.", RUS: "Экзамены и академические долги." },
+  "Exams & Academic debts.": { UZ: "Imtihonlar va akademik qarzlar.", TR: "Sınavlar va akademik borçlar.", ENG: "Exams & Academic debts.", RUS: "Экзамены и академические долги." },
   "SESSIYA": { UZ: "SESSIYA", TR: "SINAV DÖNEMİ", ENG: "EXAMS", RUS: "СЕССИЯ" },
 
   "Kerakli anjomlar sotib olish": { UZ: "Kerakli anjomlar sotib olish", TR: "Gerekli malzemeleri satın almak", ENG: "Buying necessary supplies", RUS: "Покупка необходимых принадлежностей" },
@@ -353,7 +357,7 @@ Who works here:
   "Xalqaro tanlov uchun konsept tayyorlash.": { UZ: "Xalqaro tanlov uchun konsept tayyorlash.", TR: "Uluslararası yarışma için konsept hazırlamak.", ENG: "Preparing a concept for the international competition.", RUS: "Подготовка концепции для международного конкурса." },
 
   "Shirin massivi uchun masjid loyihasi": { UZ: "Shirin massivi uchun masjid loyihasi", TR: "Shirin masifi için cami projesi", ENG: "Mosque project for Shirin massif", RUS: "Проект мечети для массива Ширин" },
-  "Masjid loyihasining chizmalari va 3D ko'rinishi.": { UZ: "Masjid loyihasining chizmalari va 3D ko'rinishi.", TR: "Cami projesinin çizimleri ve 3D görünümü.", ENG: "Drawings and 3D view of the mosque project.", RUS: "Чертежи и 3D вид проекта мечети." },
+  "Masjid loyihasining chizmalari va 3D ko'rinishi.": { UZ: "Masjid loyihasining chizmalari va 3D ko'rinishi.", TR: "Cami projesinin çizimleri ve 3D görünümü.", ENG: "Drawings and 3D view of the mosque project.", RUS: "Чертежи и 3D вид проекта мечеti." },
 
   "An'anaviy me'morchilik bilan tanishuv": { UZ: "An'anaviy me'morchilik bilan tanishuv", TR: "Geleneksel mimariyle tanışma", ENG: "Introduction to traditional architecture", RUS: "Знакомство с традиционной архитектурой" },
   "Tarixiy obidalar va uslublarni o'rganish.": { UZ: "Tarixiy obidalar va uslublarni o'rganish.", TR: "Tarihi anıtları ve stilleri incelemek.", ENG: "Studying historical monuments and styles.", RUS: "Изучение исторических памятников и стилей." },
@@ -382,8 +386,8 @@ Who works here:
   "Site redesign": { UZ: "Sayt qayta dizayni", TR: "Site yeniden tasarımı", ENG: "Site redesign", RUS: "Ребилд сайта" },
   "Muslimbek or Biloliddin himself. New UI/UX implementation.": { UZ: "Muslimbek yoki Biloliddinning o'zi. Yangi UI/UX joriy etish.", TR: "Muslimbek veya Biloliddin'in kendisi. Yeni UI/UX uygulaması.", ENG: "Muslimbek or Biloliddin himself. New UI/UX implementation.", RUS: "Муслимбек или сам Билолиддин. Внедрение нового UI/UX." },
 
-  "Connect to our Server 🪄": { UZ: "Serverimizga ulanish 🪄", TR: "Sunucumuza bağlan 🪄", ENG: "Connect to our Server 🪄", RUS: "Подключение к серверу 🪄" },
-  "Deploy backend and database connection.": { UZ: "Backend va ma'lumotlar bazasini ulash.", TR: "Backend ve veritabanı bağlantısını kurmak.", ENG: "Deploy backend and database connection.", RUS: "Развертывание бэкенда и базы данных." },
+  "Connect to our Server 🪄": { UZ: "Serverimizga ulanish 🪄", TR: "Sunucumuza bağlan 🪄", ENG: "Connect to our Server 🪄", RUS: "Подключение к serveru 🪄" },
+  "Deploy backend and database connection.": { UZ: "Backend va ma'lumotlar bazasini ulash.", TR: "Backend va veritabanı bağlantısını kurmak.", ENG: "Deploy backend and database connection.", RUS: "Развертывание бэкенда и базы данных." },
 
   "Admin panel": { UZ: "Admin paneli", TR: "Yönetici paneli", ENG: "Admin panel", RUS: "Админ панель" },
   "Complete the admin dashboard functionality.": { UZ: "Admin boshqaruv panelini yakunlash.", TR: "Yönetici paneli işlevselliğini tamamlamak.", ENG: "Complete the admin dashboard functionality.", RUS: "Завершить функциональность админ-панели." },

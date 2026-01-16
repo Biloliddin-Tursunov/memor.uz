@@ -147,7 +147,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSubmit, teamId
                                     placeholder="..."
                                 />
                             ) : (
-                                <h2 className="font-serif text-4xl text-ink leading-none">{formData.title}</h2>
+                                <h2 className="font-serif text-4xl text-ink leading-none">{t(formData.title || '')}</h2>
                             )}
                         </div>
 
@@ -203,7 +203,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSubmit, teamId
                                 />
                             ) : (
                                 <div className="w-full font-hand text-2xl text-ink/80 leading-relaxed pl-2 border-l-2 border-ink/10">
-                                    {formData.description}
+                                    {t(formData.description || '')}
                                 </div>
                             )}
                         </div>

@@ -13,7 +13,8 @@ export interface Team {
 
 export interface Member {
   id: string;
-  name: string; // Acts as Username
+  name: string; // Acts as Display Name
+  username?: string; // Acts as login username if provided
   role?: string; // Optional position
   isVolunteer?: boolean;
   // Profile

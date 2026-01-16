@@ -36,14 +36,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const login = (username: string, pass: string): boolean => {
     const allMembers = getAllMembers();
     
-    // Case insensitive username check
+    // Check against username field first, then name field
     const memberUser = allMembers.find(m => 
+        (m.username && m.username.toLowerCase() === username.toLowerCase()) ||
         m.name.toLowerCase() === username.toLowerCase()
     );
     
     if (memberUser) {
-        // If user has a custom password, check it.
-        // If NOT, check if the input password matches their name (Default behavior).
+        // Validation check
         const validPassword = memberUser.password 
             ? memberUser.password === pass 
             : memberUser.name === pass;
@@ -55,9 +55,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }
     }
 
-    // Fallback for hardcoded initial access (Backup)
+    // Fallback
     if (username.toLowerCase() === 'biloliddin' && pass === '12345') {
-         // Create temp user context
          const tempUser: Member = { id: 'superuser', name: 'Biloliddin', isVolunteer: false };
          setCurrentUser(tempUser);
          return true;

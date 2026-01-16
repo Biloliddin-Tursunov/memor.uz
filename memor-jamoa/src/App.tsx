@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'; // 1. BrowserRouter chaqirildi
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import TeamDashboard from './pages/TeamDashboard';
@@ -16,22 +15,28 @@ const AnimatedRoutes: React.FC = () => {
 
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        
-        {/* Dashboard Routes */}
-        <Route path="/team/:teamId" element={<TeamDashboard />} />
-        {/* Task Detail Route (Nested logic handled in TeamDashboard) */}
-        <Route path="/team/:teamId/task/:taskId" element={<TeamDashboard />} />
-      </Routes>
+      {/* 2. TUZATISH: TypeScript xatosini yo'qotish uchun Routes ni div ga o'rab, 
+         kalitni (key) divga beramiz. Bu sahifa almashganda animatsiyani ishlatadi.
+      */}
+      <div key={location.pathname} style={{ width: '100%' }}>
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          
+          {/* Dashboard Routes */}
+          <Route path="/team/:teamId" element={<TeamDashboard />} />
+          {/* Task Detail Route (Nested logic handled in TeamDashboard) */}
+          <Route path="/team/:teamId/task/:taskId" element={<TeamDashboard />} />
+        </Routes>
+      </div>
     </AnimatePresence>
   );
 };
 
 const App: React.FC = () => {
   return (
-    <HashRouter>
+    // 3. HashRouter -> BrowserRouter ga o'zgartirildi
+    <BrowserRouter>
       <TeamProvider>
         <AuthProvider>
           <LanguageProvider>
@@ -43,7 +48,7 @@ const App: React.FC = () => {
           </LanguageProvider>
         </AuthProvider>
       </TeamProvider>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
