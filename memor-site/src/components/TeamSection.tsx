@@ -8,34 +8,43 @@ interface TeamSectionProps {
 }
 
 const TeamSection: React.FC<TeamSectionProps> = ({ className = '' }) => {
-    return (
-        <div className={`mb-20 ${className}`}>
-            <div className="text-center mb-12">
-                <Ornament type="flourish" className="mb-4 opacity-40 w-8 h-8" />
-                <h3 className="font-display text-3xl text-graphite dark:text-white">Jamoa A'zolari</h3>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-center">
-                {TEAM_MEMBERS.map((member) => (
-                    <div key={member.name} className="flex flex-col items-center group">
-                        <div className="relative w-28 h-28 md:w-32 md:h-32 mb-4 rounded-full overflow-hidden border-2 border-graphite/10 dark:border-white/10 p-1 transition-colors group-hover:border-teal">
-                            <img
-                                src={member.image}
-                                alt={member.name}
-                                className="w-full h-full object-cover rounded-full filter grayscale group-hover:grayscale-0 transition-all duration-500"
-                            />
-                        </div>
-                        <h4 className="font-display text-lg text-graphite dark:text-white mb-1 group-hover:text-teal transition-colors">
-                            {member.name}
-                        </h4>
-                        <p className="font-mono text-[10px] uppercase tracking-widest text-graphite/50 dark:text-gray-400">
-                            {member.role}
-                        </p>
-                    </div>
-                ))}
-            </div>
+  return (
+    <div className={`py-16 md:py-24 ${className}`}>
+        <div className="text-center mb-20 relative">
+           <div className="inline-block bg-transparent px-8">
+              <Ornament type="flourish" className="mb-4 opacity-30 w-10 h-10" />
+              <h3 className="font-display text-4xl text-graphite dark:text-white tracking-tight">Bizning Jamoa</h3>
+              <p className="font-serif italic text-sepia mt-2 text-sm">G'oyadan ijrogacha bo'lgan yo'l</p>
+           </div>
         </div>
-    );
+        
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 md:gap-14 max-w-6xl mx-auto px-6">
+           {TEAM_MEMBERS.map((member) => (
+             <div key={member.name} className="flex flex-col items-center group">
+                <div className="relative mb-8">
+                    <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-[4px] border-white shadow-xl transition-all duration-500 group-hover:scale-105">
+                       <img 
+                         src={member.image} 
+                         alt={member.name} 
+                         className="w-full h-full object-cover transition-all duration-700"
+                       />
+                       <div className="absolute inset-0 bg-graphite/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                </div>
+
+                <div className="text-center">
+                    <h4 className="font-display text-xl text-graphite dark:text-white mb-2 font-medium">
+                      {member.name}
+                    </h4>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-graphite/50 dark:text-gray-400 font-bold">
+                      {member.role}
+                    </p>
+                </div>
+             </div>
+           ))}
+        </div>
+    </div>
+  );
 };
 
 export default TeamSection;

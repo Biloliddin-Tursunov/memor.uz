@@ -1,7 +1,8 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavItem, PageRoute, Language } from '../types';
 import { NAV_ITEMS, TRANSLATIONS } from '../constants';
+import { Ornament } from './Ornament';
 
 interface HeaderProps {
   activeRoute: PageRoute;
@@ -14,242 +15,201 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ activeRoute, onNavigate, language, setLanguage, theme, setTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const t = TRANSLATIONS[language];
 
-  const subNavItems = [
-    { label: t.about, route: PageRoute.ABOUT },
-    { label: t.news, route: PageRoute.NEWS },
-    { label: t.support, route: PageRoute.SUPPORT },
-    { label: t.contact, route: PageRoute.CONTACT },
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const isAtTop = scrollY < 50;
+
+  const headerClass = `bg-parchment dark:bg-slate-900 border-b border-graphite/10 dark:border-white/5 transition-all duration-500 ease-in-out ${
+    isAtTop ? 'py-5 md:py-6' : 'py-3 md:py-4 shadow-md'
+  }`; 
+  
+  const textColor = "text-graphite dark:text-slate-200";
+  const logoFilter = "brightness-0 dark:invert";
+  const dividerColor = "border-graphite/5 dark:border-white/5";
 
   const handleNavigate = (route: PageRoute) => {
     onNavigate(route);
     setIsMenuOpen(false);
   };
 
-  const renderNavLinks = (isMobile: boolean) => (
-    <ul className={`flex items-center ${isMobile ? 'gap-8 md:gap-16' : 'gap-16'}`}>
+  const navLinks = (className: string) => (
+    <nav className={className}>
       {NAV_ITEMS.map((item) => {
         const isActive = activeRoute === item.route;
         const label = t[item.id as keyof typeof t] || item.label;
         return (
-          <li key={item.id} className="relative">
-            <button
-              onClick={() => handleNavigate(item.route)}
-              className={`group/btn relative py-1 lg:py-2 px-1 lg:px-3 transition-all duration-300 flex flex-col items-center`}
-            >
-              {/* Top Ornament */}
-              <span className={`text-sepia text-[8px] lg:text-xs mb-1 transition-all duration-300 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 group-hover/btn:opacity-100 group-hover/btn:translate-y-0'}`}>
-                ✦
-              </span>
-
-              <span className={`font-display text-sm md:text-lg lg:text-xl tracking-widest font-bold uppercase transition-colors duration-300 ${isActive ? 'text-teal' : 'text-graphite group-hover/btn:text-sepia-dark'
-                }`}>
-                {label}
-              </span>
-
-              {/* Bottom Line */}
-              <span className={`h-[1px] md:h-[2px] bg-teal mt-1 transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover/btn:w-full opacity-50'
-                }`}></span>
-            </button>
-          </li>
+          <button
+            key={item.id}
+            onClick={() => handleNavigate(item.route)}
+            className="group/btn relative flex flex-col items-center"
+          >
+            <span className={`font-display text-[10px] sm:text-xs lg:text-lg tracking-[0.2em] md:tracking-[0.25em] font-bold uppercase transition-all duration-500 ${
+              isActive ? 'text-teal' : `${textColor} group-hover/btn:text-sepia`
+            }`}>
+              {label}
+            </span>
+            <span className={`h-[1.5px] bg-sepia mt-1 transition-all duration-500 ${
+              isActive ? 'w-full' : 'w-0 group-hover/btn:w-full opacity-60'
+            }`}></span>
+          </button>
         );
       })}
-    </ul>
+    </nav>
   );
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-parchment/95 backdrop-blur-sm shadow-sm transition-all duration-300 flex flex-col border-b border-graphite/10">
+      <header className={`fixed top-0 left-0 w-full z-40 ${headerClass}`}>
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12">
+            <div className="hidden md:grid grid-cols-3 items-center w-full">
+              <div 
+                className="justify-self-start flex items-center gap-4 cursor-pointer group"
+                onClick={() => handleNavigate(PageRoute.HOME)}
+              >
+                <img 
+                  src="https://memor.uz/favicon-light.svg" 
+                  alt="Logo" 
+                  className={`h-9 w-9 lg:h-11 lg:w-11 transition-all duration-500 ${logoFilter}`}
+                />
+                <h1 className={`font-display text-lg lg:text-2xl font-bold tracking-[0.15em] transition-colors duration-500 ${textColor}`}>
+                  ME'MOR
+                </h1>
+              </div>
 
-        {/* TOP ROW: Logo and Burger (Mobile/Tablet) | All (Desktop) */}
-        {/* On Mobile/Tablet: This row has a bottom border acting as Divider 1 */}
-        {/* On Desktop: No bottom border for this inner div, the Header's bottom border is the main one */}
-        <div className="w-full flex justify-between items-center px-4 md:px-8 lg:px-12 h-16 md:h-20 lg:h-28 relative lg:border-none border-b border-graphite/10">
+              <div className="justify-self-center">
+                 {navLinks("flex items-center gap-8 lg:gap-16")}
+              </div>
 
-          {/* LEFT: Logo & Brand */}
-          <div
-            className="flex items-center gap-3 md:gap-4 cursor-pointer group z-50 shrink-0"
-            onClick={() => handleNavigate(PageRoute.HOME)}
-          >
-            <img
-              src="https://memor.uz/favicon-light.svg"
-              alt="Logo"
-              className="h-10 w-10 md:h-12 md:w-12 lg:h-16 lg:w-16 filter brightness-0 opacity-90 group-hover:opacity-100 transition-all dark:invert dark:brightness-0"
-            />
-            <div className="flex flex-col justify-center hidden sm:flex">
-              <h1 className="font-display text-xl md:text-2xl lg:text-5xl tracking-tighter text-graphite leading-none group-hover:text-teal transition-colors">
-                ME'MOR
-              </h1>
+              <div className="justify-self-end">
+                <button 
+                  onClick={() => setIsMenuOpen(true)}
+                  className="group flex items-center gap-4 px-2 py-2 transition-all duration-500"
+                >
+                  <span className={`text-[10px] lg:text-xs font-bold uppercase tracking-[0.3em] transition-colors duration-500 ${textColor}`}>
+                    {t.menu}
+                  </span>
+                  <div className="flex flex-col items-end gap-[5px] lg:gap-[6px]">
+                    <span className={`h-[1.5px] lg:h-[2px] w-7 lg:w-9 bg-graphite dark:bg-white group-hover:bg-sepia transition-all duration-500`}></span>
+                    <span className={`h-[1.5px] lg:h-[2px] w-5 lg:w-6 group-hover:w-7 lg:group-hover:w-9 bg-graphite dark:bg-white group-hover:bg-sepia transition-all duration-500`}></span>
+                  </div>
+                </button>
+              </div>
             </div>
-          </div>
 
-          {/* CENTER: Desktop Nav (Hidden on Mobile/Tablet) */}
-          <nav className="hidden lg:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            {renderNavLinks(false)}
-          </nav>
+            <div className="flex md:hidden flex-col">
+              <div className="flex items-center justify-between w-full">
+                <div 
+                  className="flex items-center gap-2 cursor-pointer"
+                  onClick={() => handleNavigate(PageRoute.HOME)}
+                >
+                  <img src="https://memor.uz/favicon-light.svg" alt="Logo" className={`h-8 w-8 ${logoFilter}`} />
+                  <span className={`font-display text-lg font-bold tracking-[0.1em] ${textColor}`}>ME'MOR</span>
+                </div>
+                
+                <button onClick={() => setIsMenuOpen(true)} className="p-2 group">
+                   <div className="flex flex-col items-end gap-[4px]">
+                      <span className="h-[1.5px] w-6 bg-graphite dark:bg-white"></span>
+                      <span className="h-[1.5px] w-4 bg-graphite dark:bg-white group-hover:w-6 transition-all"></span>
+                   </div>
+                </button>
+              </div>
 
-          {/* RIGHT: Burger Menu Trigger */}
-          <div>
-            <button
-              onClick={() => setIsMenuOpen(true)}
-              className="group flex flex-col items-end gap-[5px] md:gap-[6px] p-2 md:p-3 cursor-pointer hover:bg-graphite/5 rounded-full transition-colors"
-              aria-label="Menu"
-            >
-              <span className="w-6 md:w-8 h-[2px] bg-graphite group-hover:bg-teal transition-colors"></span>
-              <span className="w-4 md:w-6 h-[2px] bg-graphite group-hover:bg-teal transition-colors group-hover:w-6 md:group-hover:w-8 duration-300"></span>
-              <span className="w-6 md:w-8 h-[2px] bg-graphite group-hover:bg-teal transition-colors"></span>
-            </button>
-          </div>
+              <div className={`mt-3 pt-3 border-t ${dividerColor} flex justify-center`}>
+                {navLinks("flex items-center gap-8")}
+              </div>
+            </div>
         </div>
-
-        {/* BOTTOM ROW: Navigation Links (Mobile/Tablet Only) */}
-        {/* Sits between Top Row border (Divider 1) and Header border (Divider 2) */}
-        <div className="lg:hidden w-full flex justify-center py-3 bg-parchment/50">
-          <nav>
-            {renderNavLinks(true)}
-          </nav>
-        </div>
-
       </header>
 
-      {/* OVERLAY BACKDROP */}
-      <div
-        className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px] transition-opacity duration-300 ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-          }`}
-        onClick={() => setIsMenuOpen(false)}
-      />
-
-      {/* SIDEBAR DRAWER (Right Side) */}
-      <div
-        className={`fixed top-0 right-0 h-full w-[85vw] md:w-[400px] bg-parchment z-50 shadow-2xl transform transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] border-l border-graphite/10 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+      <div 
+        className={`fixed top-0 right-0 h-full w-full sm:w-[450px] bg-parchment dark:bg-slate-900 z-50 shadow-2xl transform transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] border-l border-graphite/10 dark:border-white/5 ${
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
       >
-        {/* Background Texture inside Sidebar */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.05] bg-paper-texture mix-blend-multiply dark:mix-blend-overlay"></div>
-
-        <div className="relative z-50 h-full flex flex-col p-6 md:p-10 overflow-y-auto">
-
-          {/* Sidebar Header */}
-          <div className="flex justify-between items-center mb-10 shrink-0">
-            <div className="flex items-center gap-2 opacity-50">
-              <span className="text-xs font-mono uppercase tracking-widest">{t.menu}</span>
-            </div>
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="group p-2 hover:bg-graphite/5 rounded-full transition-colors"
-            >
-              <div className="relative w-8 h-8 flex items-center justify-center">
-                <span className="absolute w-6 h-[2px] bg-graphite rotate-45 group-hover:bg-teal transition-colors"></span>
-                <span className="absolute w-6 h-[2px] bg-graphite -rotate-45 group-hover:bg-teal transition-colors"></span>
-              </div>
-            </button>
-          </div>
-
-          {/* Navigation Links */}
-          <div className="flex-grow space-y-8">
-            {/* Secondary Links */}
-            <div className="space-y-4">
-              {subNavItems.map((item) => (
-                <button
-                  key={item.route}
-                  onClick={() => handleNavigate(item.route)}
-                  className="block text-xl md:text-2xl font-display text-graphite/80 hover:text-teal hover:pl-4 transition-all duration-300 text-left w-full"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="w-full h-px bg-graphite/10 my-6"></div>
-
-            {/* SETTINGS AREA */}
-            <div className="space-y-6">
-
-              {/* Language Switcher */}
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-widest text-graphite/50 mb-3">{t.language}</label>
-                <div className="flex gap-2">
-                  {(['uz', 'en', 'ru', 'tr'] as Language[]).map((lang) => (
-                    <button
-                      key={lang}
-                      onClick={() => setLanguage(lang)}
-                      className={`px-3 py-1 text-xs uppercase border transition-colors ${language === lang
-                          ? 'border-teal bg-teal text-parchment font-bold'
-                          : 'border-graphite/20 text-graphite hover:border-graphite'
-                        }`}
-                    >
-                      {lang}
-                    </button>
-                  ))}
+        <div className="h-full flex flex-col p-8 md:p-12 overflow-y-auto no-scrollbar">
+          <div className="flex justify-between items-center mb-10">
+             <div className="flex items-center gap-3">
+                <Ornament type="corner" className="w-5 h-5 text-sepia" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-sepia">{t.settings}</span>
+             </div>
+             <button onClick={() => setIsMenuOpen(false)} className="group p-2 transition-transform duration-500 hover:rotate-90">
+                <div className="relative w-8 h-8 flex items-center justify-center">
+                  <span className="absolute w-7 h-[1.5px] bg-graphite dark:bg-white rotate-45"></span>
+                  <span className="absolute w-7 h-[1.5px] bg-graphite dark:bg-white -rotate-45"></span>
                 </div>
-              </div>
+             </button>
+          </div>
 
-              {/* Dark Mode Toggle */}
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-widest text-graphite/50 mb-3">{t.theme}</label>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setTheme('light')}
-                    className={`flex items-center gap-2 px-3 py-1 text-xs uppercase border transition-colors ${theme === 'light'
-                        ? 'border-teal bg-teal text-parchment font-bold'
-                        : 'border-graphite/20 text-graphite hover:border-graphite'
-                      }`}
-                  >
-                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                    {t.themeLight}
-                  </button>
-                  <button
-                    onClick={() => setTheme('dark')}
-                    className={`flex items-center gap-2 px-3 py-1 text-xs uppercase border transition-colors ${theme === 'dark'
-                        ? 'border-teal bg-teal text-parchment font-bold'
-                        : 'border-graphite/20 text-graphite hover:border-graphite'
-                      }`}
-                  >
-                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
-                    {t.themeDark}
-                  </button>
+          {/* Settings moved higher as requested */}
+          <div className="space-y-8 mb-12">
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                   <label className="block text-[10px] font-bold uppercase tracking-[0.3em] text-graphite/30 dark:text-white/20 mb-3">{t.language}</label>
+                   <div className="grid grid-cols-2 gap-2">
+                      {(['uz', 'en', 'ru', 'tr'] as Language[]).map((lang) => (
+                         <button
+                           key={lang}
+                           onClick={() => setLanguage(lang)}
+                           className={`h-9 text-[10px] tracking-widest uppercase border transition-all ${
+                              language === lang ? 'border-sepia bg-sepia text-white font-bold' : 'border-graphite/10 dark:border-white/10 text-graphite/40'
+                           }`}
+                         >
+                            {lang}
+                         </button>
+                      ))}
+                   </div>
                 </div>
-              </div>
-            </div>
+                <div>
+                   <label className="block text-[10px] font-bold uppercase tracking-[0.3em] text-graphite/30 dark:text-white/20 mb-3">{t.theme}</label>
+                   <div className="flex gap-2">
+                       <button 
+                          onClick={() => setTheme('light')} 
+                          className={`flex-1 h-9 text-[10px] flex items-center justify-center gap-2 tracking-widest uppercase border transition-all ${theme === 'light' ? 'border-teal bg-teal text-white font-bold' : 'border-graphite/10 dark:border-white/10 text-graphite/40'}`}
+                       >
+                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" /></svg>
+                           <span className="hidden sm:inline">{t.themeLight}</span>
+                       </button>
+                       <button 
+                          onClick={() => setTheme('dark')} 
+                          className={`flex-1 h-9 text-[10px] flex items-center justify-center gap-2 tracking-widest uppercase border transition-all ${theme === 'dark' ? 'border-teal bg-teal text-white font-bold' : 'border-graphite/10 dark:border-white/10 text-graphite/40'}`}
+                       >
+                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                           <span className="hidden sm:inline">{t.themeDark}</span>
+                       </button>
+                   </div>
+                </div>
+             </div>
           </div>
 
-          {/* Sidebar Footer */}
-          <div className="mt-10 pt-10 border-t border-graphite/10">
-            {/* Search */}
-            <div className="mb-8">
-              <label className="block text-[10px] font-bold uppercase tracking-widest text-graphite/50 mb-2">{t.search}</label>
-              <div className="relative group">
-                <input
-                  type="text"
-                  placeholder="..."
-                  className="w-full bg-transparent border-b border-graphite/20 py-2 text-base font-serif placeholder:text-graphite/30 focus:outline-none focus:border-teal transition-colors text-graphite"
-                />
-                <button className="absolute right-0 top-1/2 -translate-y-1/2 text-graphite/50 hover:text-teal transition-colors">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            {/* Social Media */}
-            <div>
-              <div className="flex flex-wrap gap-x-6 gap-y-3">
-                {['Instagram', 'Telegram', 'Facebook', 'YouTube'].map((social) => (
-                  <a key={social} href="#" className="text-graphite hover:text-teal transition-colors group relative">
-                    <span className="text-xs font-bold uppercase tracking-widest border-b border-transparent group-hover:border-teal pb-0.5">{social}</span>
-                  </a>
-                ))}
-              </div>
-              <div className="mt-6 text-[10px] text-graphite/40 font-mono">
-                {t.copyright}
-              </div>
-            </div>
+          <div className="flex-grow space-y-4">
+               {[
+                 { label: t.about, route: PageRoute.ABOUT },
+                 { label: t.news, route: PageRoute.NEWS },
+                 { label: t.support, route: PageRoute.SUPPORT },
+                 { label: t.contact, route: PageRoute.CONTACT },
+               ].map((item) => (
+                 <button
+                   key={item.route}
+                   onClick={() => handleNavigate(item.route)}
+                   className="block text-2xl md:text-3xl font-display text-graphite/50 dark:text-white/30 hover:text-sepia dark:hover:text-sepia hover:translate-x-4 transition-all duration-500 text-left w-full border-b border-graphite/5 dark:border-white/5 pb-4"
+                 >
+                   {item.label}
+                 </button>
+               ))}
           </div>
 
+          <div className="mt-auto pt-8 border-t border-graphite/10 dark:border-white/10 text-center">
+             <p className="text-[10px] text-graphite/30 dark:text-white/20 font-mono tracking-[0.4em] uppercase">{t.copyright}</p>
+          </div>
         </div>
       </div>
     </>

@@ -123,7 +123,7 @@ const AppContent: React.FC = () => {
         setTheme={setTheme}
       />
 
-      <main className="flex-grow w-full">
+      <main className={`flex-grow w-full ${currentRoute === PageRoute.HOME ? '' : 'pt-[140px] md:pt-[100px]'}`}>
         <Routes>
           <Route path="/" element={<Home onNavigate={handleNavigate} onItemClick={handleItemClick} />} />
 
