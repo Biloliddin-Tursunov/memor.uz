@@ -330,7 +330,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onItemClick }) => {
         <div className="absolute inset-0 stars-overlay opacity-20 pointer-events-none"></div>
         <div className="relative p-8 md:p-24 border-[1px] border-white/5 max-w-5xl mx-auto backdrop-blur-sm z-10 rounded-2xl">
             <blockquote className="font-display text-2xl md:text-5xl italic leading-[1.2] mb-8 md:mb-12 animate-in fade-in duration-1000">
-                Dunyoni go'zallashtirish uchun
+                "Dunyoni go'zallashtirish uchun"
             </blockquote>
             <p className="font-mono text-[9px] md:text-xs uppercase tracking-[0.4em] md:tracking-[0.5em] text-white/40">
               Me'mor Loyihasi • 2025
