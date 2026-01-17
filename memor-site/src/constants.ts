@@ -129,27 +129,27 @@ export const TEAM_MEMBERS = [
   {
     name: 'Otabek',
     role: 'Loyiha Asoschisi',
-    image: 'https://memor.uz/people/otabek.jpg'
+    image: '/people/otabek.jpg'
   },
   {
     name: 'Bunyod',
     role: 'Grafik Dizayner',
-    image: 'https://memor.uz/people/bunyod.png'
+    image: '/people/bunyod.png'
   },
   {
     name: 'Biloliddin',
     role: 'Dasturchi',
-    image: 'https://memor.uz/people/biloliddin.jpg'
+    image: '/people/biloliddin.jpg'
   },
   {
     name: 'Zuhra',
     role: 'Dizayner',
-    image: 'https://memor.uz/people/zuhra.png'
+    image: '/people/zuhra.png'
   },
   {
     name: 'Aminaxon',
     role: 'Kontent Menejeri',
-    image: 'https://memor.uz/people/aminaxon.jpg'
+    image: '/people/aminaxon.jpg'
   }
 ];
 
