@@ -154,7 +154,7 @@ export const TEAM_MEMBERS = [
   {
     name: 'Aminaxon',
     role: 'Kontent Menejeri',
-    image: '/people/aminaxon.jpg'
+    image: '/people/aminaxon.png'
   },
 
 
