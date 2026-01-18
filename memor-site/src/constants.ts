@@ -147,10 +147,17 @@ export const TEAM_MEMBERS = [
     image: '/people/zuhra.png'
   },
   {
+    name: 'Jasmina',
+    role: 'Creativ Partner',
+    image: '/people/jasmina.png'
+  },
+  {
     name: 'Aminaxon',
     role: 'Kontent Menejeri',
     image: '/people/aminaxon.jpg'
-  }
+  },
+
+
 ];
 
 // --- ILM DATA ---
