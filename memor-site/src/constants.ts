@@ -1,6 +1,19 @@
 
 import { NavItem, PageRoute, Article, VideoResource, Book, Creator, EventItem, Project, CreationItem, PortfolioItem } from './types';
 
+export const HADITH_DATA = {
+  arabic: "وَعَنْ أَبِي الدَّرْدَاءِ رضي اللَّه عنهُ قَالَ سَمِعْتُ رَسُولَ اللَّهِ ﷺ يَقُولُ: «مَنْ سَلَكَ طَرِيقًا يَبْتَغِي فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ طَرِيقًا إِلَى الْجَنَّةِ وَإِنَّ الْمَلَائِكَةَ لَتَضَعُ أَجْنِحَتَهَا لِطَالِبِ الْعِلْمِ رِضًى بِمَا يَصْنَعُ ، وَإِنَّ الْعَالِمَ لَيَسْتَغْفِرُ لَهُ مَنْ فِي السَّمَاوَاتِ وَمَنْ فِي الْأَرْضِ حَتَّى الْحِيتَانُ فِي الْمَاءِ وَفَضْلُ الْعَالِمِ عَلَى الْعَابِدِ كَفَضْلِ الْقَمَرِ عَلَى سَائِرِ الْكَوَاكِبِ وَإِنَّ الْعُلَمَاءَ وَرَثَةُ الْأَنْبِيَاءِ وَإِنَّ الْأَنْبِيَاءَ لَمْ يُوَرِّثُوا دِينَارًا وَلَا دِرْهَمًا وَإِنَّمَا وَرَّثُوا الْعِلْمَ فَمَنْ أَخَذَهُ أَخَذَ بِحَظٍّ وَافِرٍ»",
+  uzbekShort: "“Kim ilm izlab yo‘lga tushsa, Alloh Taolo unga Jannat yo‘lini oson qiladi;”",
+  uzbekFull: "“Kim ilm izlab yo‘lga tushsa, Alloh Taolo unga Jannat yo‘lini oson qiladi; farishtalar ilm izlovchining ustiga – uning qilayotgan ishidan rozi bo‘lib – qanotlarini qo‘yadi. Osmonda hamda yerda, hatto suvdagi baliqlar ilm egasi uchun mag‘firat so‘raydi. Olimning fazilati ibodatkorga nisbatan, Oy to‘la bo‘lgan kechadagi yulduzlarga nisbatan ustun bo‘lgani kabi. Olimlar payg‘ambarlardarvorislari bo‘lib, payg‘ambarlar dinor yoki dirham qoldirmaganlar, faqat ilm meros qilib qoldirganlar. Kim ilmdan tutsa, u katta bahoga ega bo‘ladi.”",
+  info: "Ushbu kengaytirilgan hadis bitta alohida hadis emas. U ilmning fazilati haqida kelgan bir necha sahih va hasan hadislar mazmunidan jamlangan.",
+  sources: [
+    { name: "Sahih Muslim (2699)", detail: "“Kim ilm izlab yo‘lga chiqsa, Alloh unga jannat yo‘lini oson qiladi.”" },
+    { name: "Sunan Abu Dovud (3641)", detail: "Ilm talabaga farishtalarning qanot yoyishi, olimlarning payg‘ambarlar vorisi ekani" },
+    { name: "Sunan at-Tirmiziy (2646, 2682)", detail: "Ilmning fazilati, mavjudotlarning istig‘fori" },
+    { name: "Ibn Moja (223)", detail: "Olim va obid fazilati" }
+  ]
+};
+
 export const TRANSLATIONS = {
   uz: {
     ilm: 'ILM',
@@ -124,7 +137,7 @@ export const MOCK_ARTICLES: Article[] = [
     author: 'Usta Ganjiy',
     date: '05 Mart, 2025',
     category: 'San\'at',
-    imageUrl: 'https://picsum.photos/seed/a2/800/600'
+    imageUrl: 'https://picsum.photos/seed/c2/800/600'
   }
 ];
 

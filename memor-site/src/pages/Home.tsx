@@ -7,6 +7,7 @@ import { PageRoute, DisplayItem, Language } from '../types';
 import TeamSection from '../components/TeamSection';
 import { Skeleton } from '../components/Skeleton';
 import Hero from '../components/Hero';
+import HadithBlock from '../components/HadithBlock';
 
 interface HomeProps {
   onNavigate: (route: PageRoute) => void;
@@ -33,40 +34,44 @@ const Home: React.FC<HomeProps> = ({ onNavigate, language }) => {
       {/* --- SECTION 1: PHILOSOPHY --- */}
       <section className="py-24 bg-white dark:bg-[#01030a] border-b border-graphite/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center relative z-10">
-          <Ornament type="flourish" className="mb-8 opacity-40" />
-          <h2 className="font-display text-3xl md:text-5xl mb-16 tracking-tight dark:text-white uppercase">Uch Ustun: Ilm, Harakat, Ijod</h2>
+          <Ornament type="flourish" className="mb-12 opacity-60" />
+          <h2 className="font-display text-4xl md:text-5xl mb-20 tracking-tight dark:text-white uppercase">Uch Ustun: Ilm, Harakat, Ijod</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-24">
             <div className="group cursor-pointer" onClick={() => onNavigate(PageRoute.KNOWLEDGE)}>
-              <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center rounded-full border border-teal/20 text-teal group-hover:bg-teal group-hover:text-white transition-all duration-500">
-                <Ornament type="dome" className="w-10 h-10" />
+              <div className="w-24 h-24 mx-auto mb-8 flex items-center justify-center rounded-sm border border-teal/10 text-teal group-hover:bg-teal group-hover:text-white transition-all duration-700 relative overflow-hidden">
+                <Ornament type="dome" className="w-16 h-16 relative z-10" />
+                <div className="absolute inset-0 bg-teal/5 group-hover:bg-transparent transition-colors"></div>
               </div>
-              <h3 className="font-display text-2xl mb-4 dark:text-white">{t.ilm}</h3>
-              <p className="font-serif text-sm text-graphite/60 dark:text-slate-400 leading-relaxed italic">"O'tmish me'morlarining donoligi va qadimiy bitiklarni o'rganish — bizning poydevorimizdir."</p>
+              <h3 className="font-display text-2xl mb-4 dark:text-white tracking-widest">{t.ilm}</h3>
+              <p className="font-serif text-sm text-graphite/60 dark:text-slate-400 leading-relaxed italic max-w-xs mx-auto">"O'tmish me'morlarining donoligi va qadimiy bitiklarni o'rganish — bizning poydevorimizdir."</p>
             </div>
 
             <div className="group cursor-pointer" onClick={() => onNavigate(PageRoute.ACTION)}>
-              <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center rounded-full border border-sepia/20 text-sepia group-hover:bg-sepia group-hover:text-white transition-all duration-500">
-                <Ornament type="arch" className="w-10 h-10" />
+              <div className="w-24 h-24 mx-auto mb-8 flex items-center justify-center rounded-sm border border-sepia/10 text-sepia group-hover:bg-sepia group-hover:text-white transition-all duration-700 relative overflow-hidden">
+                <Ornament type="arch" className="w-16 h-16 relative z-10" />
+                <div className="absolute inset-0 bg-sepia/5 group-hover:bg-transparent transition-colors"></div>
               </div>
-              <h3 className="font-display text-2xl mb-4 dark:text-white">{t.harakat}</h3>
-              <p className="font-serif text-sm text-graphite/60 dark:text-slate-400 leading-relaxed italic">"Nazariya amaliyot bilan birlashganda, har bir g'isht o'z ma'nosini topadi va tarix tiriladi."</p>
+              <h3 className="font-display text-2xl mb-4 dark:text-white tracking-widest">{t.harakat}</h3>
+              <p className="font-serif text-sm text-graphite/60 dark:text-slate-400 leading-relaxed italic max-w-xs mx-auto">"Nazariya amaliyot bilan birlashganda, har bir g'isht o'z ma'nosini topadi va tarix tiriladi."</p>
             </div>
 
             <div className="group cursor-pointer" onClick={() => onNavigate(PageRoute.CREATION)}>
-              <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center rounded-full border border-teal/20 text-teal group-hover:bg-teal group-hover:text-white transition-all duration-500">
-                <Ornament type="tile-header" className="w-12 h-6" />
+              <div className="w-24 h-24 mx-auto mb-8 flex items-center justify-center rounded-sm border border-teal/10 text-teal group-hover:bg-teal group-hover:text-white transition-all duration-700 relative overflow-hidden">
+                <Ornament type="tile-header" className="w-14 h-14 relative z-10" />
+                <div className="absolute inset-0 bg-teal/5 group-hover:bg-transparent transition-colors"></div>
               </div>
-              <h3 className="font-display text-2xl mb-4 dark:text-white">{t.ijod}</h3>
-              <p className="font-serif text-sm text-graphite/60 dark:text-slate-400 leading-relaxed italic">"Raqamli san'at va an'anaviy naqshlar uyg'unligi — yangi davr me'morchilik tilini yaratadi."</p>
+              <h3 className="font-display text-2xl mb-4 dark:text-white tracking-widest">{t.ijod}</h3>
+              <p className="font-serif text-sm text-graphite/60 dark:text-slate-400 leading-relaxed italic max-w-xs mx-auto">"Raqamli san'at va an'anaviy naqshlar uyg'unligi — yangi davr me'morchilik tilini yaratadi."</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- SECTION 2: KNOWLEDGE (ILM) --- */}
+      {/* --- SECTION 2: KNOWLEDGE (ILM) INTEGRATED --- */}
       <section className="py-24 md:py-32 bg-parchment dark:bg-[#020617] relative transition-colors overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            
             <div className="flex justify-between items-end mb-16">
               <div>
                 <span className="text-teal text-[10px] font-bold tracking-[0.4em] uppercase mb-2 block">{t.ilm} Maskani</span>
@@ -113,12 +118,9 @@ const Home: React.FC<HomeProps> = ({ onNavigate, language }) => {
                             </div>
                         ))}
                     </div>
-                    <div className="p-8 border border-dashed border-sepia/20 bg-sepia/5 relative">
-                      <Ornament type="corner" className="absolute top-2 right-2 w-4 h-4 opacity-20 rotate-90" />
-                      <p className="font-serif italic text-lg text-graphite/60 dark:text-slate-300 leading-relaxed">
-                          "Ilm — qorong'u zulmatda chiroq, yo'lda esa rahbaridir. O'tmish me'morlarining donoligi bugun bizning qo'limizda."
-                      </p>
-                    </div>
+                    
+                    {/* Compact Hadith replaces static quote in sidebar */}
+                    <HadithBlock isSidebar className="animate-in fade-in slide-in-from-bottom-4 duration-1000" />
                 </div>
             </div>
         </div>

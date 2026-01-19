@@ -4,6 +4,7 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 import { MOCK_ARTICLES, MOCK_VIDEOS, MOCK_BOOKS, MOCK_CREATORS } from '../constants';
 import { Ornament } from '../components/Ornament';
 import { Skeleton } from '../components/Skeleton';
+import HadithBlock from '../components/HadithBlock';
 
 type Tab = 'articles' | 'videos' | 'books' | 'creators';
 
@@ -91,9 +92,11 @@ const Knowledge: React.FC = () => {
 
    return (
       <div className="max-w-6xl mx-auto px-4 py-12">
-         <div className="text-center mb-20">
-            <h2 className="font-display text-5xl md:text-7xl mb-6 dark:text-white">Ilm Maskani</h2>
-            <p className="font-serif italic text-lg text-graphite/50 dark:text-gray-400">"O'tmishni o'rganib, kelajakni quramiz"</p>
+         <div className="text-center mb-16">
+            <h2 className="font-display text-5xl md:text-7xl mb-12 dark:text-white">Ilm Maskani</h2>
+            
+            {/* Hadith as the spiritual subtitle/foundation */}
+            <HadithBlock className="max-w-4xl mx-auto" />
          </div>
 
          <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-20 border-b border-graphite/5 pb-4">
