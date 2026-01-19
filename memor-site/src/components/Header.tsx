@@ -7,13 +7,15 @@ import { Ornament } from './Ornament';
 interface HeaderProps {
   activeRoute: PageRoute;
   onNavigate: (route: PageRoute) => void;
+  // Added onSearchOpen property to satisfy HeaderProps interface
+  onSearchOpen: () => void;
   language: Language;
   setLanguage: (lang: Language) => void;
   theme: 'light' | 'dark';
   setTheme: (theme: 'light' | 'dark') => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ activeRoute, onNavigate, language, setLanguage, theme, setTheme }) => {
+const Header: React.FC<HeaderProps> = ({ activeRoute, onNavigate, onSearchOpen, language, setLanguage, theme, setTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const t = TRANSLATIONS[language];
@@ -89,7 +91,18 @@ const Header: React.FC<HeaderProps> = ({ activeRoute, onNavigate, language, setL
                  {navLinks("flex items-center gap-8 lg:gap-16")}
               </div>
 
-              <div className="justify-self-end">
+              <div className="justify-self-end flex items-center gap-4 lg:gap-8">
+                {/* Desktop Search Button */}
+                <button 
+                  onClick={onSearchOpen}
+                  className={`group p-2 transition-colors ${textColor} hover:text-teal`}
+                  aria-label={t.search}
+                >
+                  <svg className="w-5 h-5 lg:w-6 lg:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
+
                 <button 
                   onClick={() => setIsMenuOpen(true)}
                   className="group flex items-center gap-4 px-2 py-2 transition-all duration-500"
@@ -115,12 +128,25 @@ const Header: React.FC<HeaderProps> = ({ activeRoute, onNavigate, language, setL
                   <span className={`font-display text-lg font-bold tracking-[0.1em] ${textColor}`}>ME'MOR</span>
                 </div>
                 
-                <button onClick={() => setIsMenuOpen(true)} className="p-2 group">
-                   <div className="flex flex-col items-end gap-[4px]">
-                      <span className="h-[1.5px] w-6 bg-graphite dark:bg-white"></span>
-                      <span className="h-[1.5px] w-4 bg-graphite dark:bg-white group-hover:w-6 transition-all"></span>
-                   </div>
-                </button>
+                <div className="flex items-center gap-2">
+                  {/* Mobile Search Button */}
+                  <button 
+                    onClick={onSearchOpen}
+                    className={`p-2 ${textColor}`}
+                    aria-label={t.search}
+                  >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </button>
+
+                  <button onClick={() => setIsMenuOpen(true)} className="p-2 group">
+                     <div className="flex flex-col items-end gap-[4px]">
+                        <span className="h-[1.5px] w-6 bg-graphite dark:bg-white"></span>
+                        <span className="h-[1.5px] w-4 bg-graphite dark:bg-white group-hover:w-6 transition-all"></span>
+                     </div>
+                  </button>
+                </div>
               </div>
 
               <div className={`mt-3 pt-3 border-t ${dividerColor} flex justify-center`}>
