@@ -13,7 +13,6 @@ const Knowledge: React.FC = () => {
    const navigate = useNavigate();
    const activeTab = (tab || 'articles') as Tab;
 
-   // Agar noto'g'ri tab kelsa, defaultga qaytarish
    useEffect(() => {
       const validTabs = ['articles', 'videos', 'books', 'creators'];
       if (tab && !validTabs.includes(tab)) {
@@ -26,20 +25,20 @@ const Knowledge: React.FC = () => {
          case 'articles':
             return (
                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 animate-in fade-in duration-500">
-                  {MOCK_ARTICLES.map(article => (
+                  {MOCK_ARTICLES.length > 0 ? MOCK_ARTICLES.map(article => (
                      <div key={article.id} className="bg-white dark:bg-white/5 p-8 border border-graphite/10 shadow-sm hover:shadow-md transition-all cursor-pointer group" onClick={() => navigate(`/article/${article.id}`)}>
                         <span className="text-teal text-[10px] font-bold uppercase tracking-[0.3em] mb-4 block">{article.category}</span>
                         <h3 className="font-display text-3xl mb-4 dark:text-white group-hover:text-teal transition-colors">{article.title}</h3>
                         <p className="font-serif text-graphite/70 dark:text-gray-300 mb-6 italic">{article.excerpt}</p>
                         <span className="text-[10px] font-bold uppercase tracking-widest text-sepia">Batafsil &rarr;</span>
                      </div>
-                  ))}
+                  )) : [1, 2, 3, 4].map(i => <Skeleton key={i} className="h-64" />)}
                </div>
             );
          case 'videos':
             return (
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 animate-in fade-in duration-500">
-                  {MOCK_VIDEOS.map(video => (
+                  {MOCK_VIDEOS.length > 0 ? MOCK_VIDEOS.map(video => (
                      <div key={video.id} className="group cursor-pointer" onClick={() => navigate(`/video/${video.id}`)}>
                         <div className="relative aspect-video mb-4 overflow-hidden rounded-sm bg-graphite/5">
                             <img src={video.thumbnailUrl} className="w-full h-full object-cover group-hover:scale-105 transition-transform" alt={video.title} />
@@ -48,13 +47,13 @@ const Knowledge: React.FC = () => {
                         <h3 className="font-display text-xl dark:text-white group-hover:text-teal transition-colors">{video.title}</h3>
                         <p className="text-[10px] font-mono uppercase tracking-widest text-graphite/40 mt-1">{video.author}</p>
                      </div>
-                  ))}
+                  )) : [1, 2, 3, 4, 5, 6].map(i => <Skeleton key={i} className="aspect-video" />)}
                </div>
             );
          case 'books':
             return (
                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 animate-in fade-in duration-500">
-                  {MOCK_BOOKS.map(book => (
+                  {MOCK_BOOKS.length > 0 ? MOCK_BOOKS.map(book => (
                      <div key={book.id} className="group cursor-pointer" onClick={() => navigate(`/book/${book.id}`)}>
                         <div className="aspect-[2/3] mb-4 bg-white dark:bg-white/5 border border-graphite/10 shadow-sm overflow-hidden p-1 group-hover:-translate-y-2 transition-transform duration-500">
                            <img src={book.coverUrl} className="w-full h-full object-cover" alt={book.title} />
@@ -62,13 +61,13 @@ const Knowledge: React.FC = () => {
                         <h4 className="font-display text-lg dark:text-white mb-1 group-hover:text-teal">{book.title}</h4>
                         <p className="text-[10px] font-mono text-graphite/40 uppercase">{book.author}</p>
                      </div>
-                  ))}
+                  )) : [1, 2, 3, 4, 5, 6, 7, 8].map(i => <Skeleton key={i} className="aspect-[2/3]" />)}
                </div>
             );
          case 'creators':
             return (
                <div className="grid grid-cols-2 md:grid-cols-4 gap-12 animate-in fade-in duration-500">
-                  {MOCK_CREATORS.map(u => (
+                  {MOCK_CREATORS.length > 0 ? MOCK_CREATORS.map(u => (
                      <div key={u.id} className="text-center group cursor-pointer" onClick={() => navigate(`/creator/${u.id}`)}>
                         <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border border-graphite/10 mb-4 group-hover:border-teal transition-all p-1">
                            <img src={u.avatarUrl} className="w-full h-full object-cover rounded-full" alt={u.name} />
@@ -76,6 +75,11 @@ const Knowledge: React.FC = () => {
                         <h4 className="font-display text-xl dark:text-white mb-1">{u.name}</h4>
                         <p className="text-[10px] font-bold uppercase tracking-widest text-sepia">{u.role}</p>
                      </div>
+                  )) : [1, 2, 3, 4].map(i => (
+                    <div key={i} className="flex flex-col items-center">
+                      <Skeleton className="w-32 h-32 mb-4" type="circle" />
+                      <Skeleton className="h-6 w-3/4 mb-2" type="text" />
+                    </div>
                   ))}
                </div>
             );
@@ -94,8 +98,6 @@ const Knowledge: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 py-12">
          <div className="text-center mb-16">
             <h2 className="font-display text-5xl md:text-7xl mb-12 dark:text-white">Ilm Maskani</h2>
-            
-            {/* Hadith as the spiritual subtitle/foundation */}
             <HadithBlock className="max-w-4xl mx-auto" />
          </div>
 

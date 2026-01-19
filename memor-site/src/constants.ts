@@ -4,7 +4,7 @@ import { NavItem, PageRoute, Article, VideoResource, Book, Creator, EventItem, P
 export const HADITH_DATA = {
   arabic: "وَعَنْ أَبِي الدَّرْدَاءِ رضي اللَّه عنهُ قَالَ سَمِعْتُ رَسُولَ اللَّهِ ﷺ يَقُولُ: «مَنْ سَلَكَ طَرِيقًا يَبْتَغِي فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ طَرِيقًا إِلَى الْجَنَّةِ وَإِنَّ الْمَلَائِكَةَ لَتَضَعُ أَجْنِحَتَهَا لِطَالِبِ الْعِلْمِ رِضًى بِمَا يَصْنَعُ ، وَإِنَّ الْعَالِمَ لَيَسْتَغْفِرُ لَهُ مَنْ فِي السَّمَاوَاتِ وَمَنْ فِي الْأَرْضِ حَتَّى الْحِيتَانُ فِي الْمَاءِ وَفَضْلُ الْعَالِمِ عَلَى الْعَابِدِ كَفَضْلِ الْقَمَرِ عَلَى سَائِرِ الْكَوَاكِبِ وَإِنَّ الْعُلَمَاءَ وَرَثَةُ الْأَنْبِيَاءِ وَإِنَّ الْأَنْبِيَاءَ لَمْ يُوَرِّثُوا دِينَارًا وَلَا دِرْهَمًا وَإِنَّمَا وَرَّثُوا الْعِلْمَ فَمَنْ أَخَذَهُ أَخَذَ بِحَظٍّ وَافِرٍ»",
   uzbekShort: "“Kim ilm izlab yo‘lga tushsa, Alloh Taolo unga Jannat yo‘lini oson qiladi;”",
-  uzbekFull: "“Kim ilm izlab yo‘lga tushsa, Alloh Taolo unga Jannat yo‘lini oson qiladi; farishtalar ilm izlovchining ustiga – uning qilayotgan ishidan rozi bo‘lib – qanotlarini qo‘yadi. Osmonda hamda yerda, hatto suvdagi baliqlar ilm egasi uchun mag‘firat so‘raydi. Olimning fazilati ibodatkorga nisbatan, Oy to‘la bo‘lgan kechadagi yulduzlarga nisbatan ustun bo‘lgani kabi. Olimlar payg‘ambarlardarvorislari bo‘lib, payg‘ambarlar dinor yoki dirham qoldirmaganlar, faqat ilm meros qilib qoldirganlar. Kim ilmdan tutsa, u katta bahoga ega bo‘ladi.”",
+  uzbekFull: "“Agar kimdir ilm olish istagi bilan yo'lga chiqsa, Alloh unga jannat yo'lini osonlashtiradi. Darhaqiqat, farishtalar ilm izlovchining qilyotgan ishidan mamnun bo'lib, qanotlarini yoyadilar. Osmon va yerdagilar, hatto suvdagi baliqlar ham Allohdan olim uchun mag'firat so'rashadi. Olimning ibodat qiluvchidan ustunligi oyning boshqa yulduzlardan ustunligiga o'xshaydi. Albatta, olimlar payg'ambarlarning merosxo'rlaridir. Payg'ambarlar oltin va kumushni meros qilib qoldirmaydilar; ular faqat ilmni qoldiradilar. Kimki bu merosni olsa, mo'l-ko'l baraka va omadga ega bo'ladi.”",
   info: "Ushbu kengaytirilgan hadis bitta alohida hadis emas. U ilmning fazilati haqida kelgan bir necha sahih va hasan hadislar mazmunidan jamlangan.",
   sources: [
     { name: "Sahih Muslim (2699)", detail: "“Kim ilm izlab yo‘lga chiqsa, Alloh unga jannat yo‘lini oson qiladi.”" },
@@ -120,111 +120,37 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export const MOCK_ARTICLES: Article[] = [
-  {
-    id: 'a1',
-    title: 'Samarqandning Unutilgan Minorasi',
-    excerpt: 'XIV asrga oid ushbu inshoot o\'zida noyob astronomik sirlarni saqlaydi.',
-    author: 'Mirzo Ulug\'bek Vorislari',
-    date: '12 Mart, 2025',
-    category: 'Tarix',
-    imageUrl: 'https://picsum.photos/seed/a1/800/600',
-    content: 'Bu minora o\'z davrida nafaqat diniy, balki ilmiy maqsadlarda ham foydalanilgan...'
-  },
-  {
-    id: 'a2',
-    title: 'Ganj Naqshlarining Geometriyasi',
-    excerpt: 'Islom san\'atidagi matematik qonuniyatlar va ularning me\'morchilikdagi o\'rni.',
-    author: 'Usta Ganjiy',
-    date: '05 Mart, 2025',
-    category: 'San\'at',
-    imageUrl: 'https://picsum.photos/seed/c2/800/600'
-  }
+  
+ 
 ];
 
 export const MOCK_NEWS_DATA: Article[] = [
-  {
-    id: 'n1',
-    title: "Yangi Me'morchilik Markazi Ochildi",
-    excerpt: "Buxoro shahrida an'anaviy hunarmandchilikni o'rgatuvchi yangi markaz o'z faoliyatini boshladi.",
-    author: "Me'mor Tahririyati",
-    date: "14 Mart, 2025",
-    category: "Yangiliklar",
-    imageUrl: "https://picsum.photos/seed/n1/800/400"
-  },
-  {
-    id: 'n2',
-    title: "Xalqaro Konferensiya Yakunlari",
-    excerpt: "Toshkentda o'tkazilgan 'Islom me'morchiligi' konferensiyasida 20 ta davlat vakillari ishtirok etdi.",
-    author: "Me'mor Tahririyati",
-    date: "10 Mart, 2025",
-    category: "Konferensiya",
-    imageUrl: "https://picsum.photos/seed/n2/800/400"
-  }
+
+ 
 ];
 
 export const MOCK_VIDEOS: VideoResource[] = [
-  {
-    id: 'v1',
-    title: 'G\'isht Quyish San\'ati',
-    duration: '15:40',
-    thumbnailUrl: 'https://picsum.photos/seed/v1/400/225',
-    author: 'Usta Bahodir',
-    type: 'Darslik'
-  }
+  
 ];
 
 export const MOCK_PROJECTS: Project[] = [
-  {
-    id: 'p1',
-    title: 'Bibi-Xonim Restavratsiyasi',
-    status: 'Jarayonda',
-    description: 'Qadimiy devorlarni asl holiga keltirish va mustahkamlash loyihasi.',
-    imageUrl: 'https://picsum.photos/seed/p1/800/600',
-    location: 'Samarqand'
-  }
+  
 ];
 
 export const MOCK_CREATIONS: CreationItem[] = [
-  {
-    id: 'c1',
-    title: 'Islomiy Arabesk Vektor',
-    author: 'Dizayner Aziz',
-    type: 'Vector',
-    imageUrl: 'https://picsum.photos/seed/c1/600/800',
-    description: 'Buxoro masjidlari naqshlari asosida chizilgan zamonaviy vektor.'
-  }
+ 
 ];
 
 export const MOCK_BOOKS: Book[] = [
-  {
-    id: 'b1',
-    title: 'O\'rta Osiyo Me\'morchiligi',
-    author: 'G.A. Pugachenkova',
-    year: '1983',
-    coverUrl: 'https://picsum.photos/seed/b1/600/900',
-    description: 'Movarounnahr me\'morchilik maktabining shakllanishi va rivojlanishi haqidagi fundamental asar.'
-  }
+ 
 ];
 
 export const MOCK_CREATORS: Creator[] = [
-  {
-    id: 'u1',
-    name: 'Usta Abdulla',
-    role: 'Naqshband',
-    avatarUrl: 'https://picsum.photos/seed/u1/400/400',
-    bio: '40 yillik tajribaga ega naqqosh. Buxoro va Xiva masjidlarini bezashda ishtirok etgan.'
-  }
+  
 ];
 
 export const MOCK_EVENTS: EventItem[] = [
-  {
-    id: 'e1',
-    title: 'An\'anaviy Ganj Seminari',
-    date: '25 Aprel, 2025',
-    location: 'Samarqand, Lolazor 70',
-    description: 'Ganj o\'ymakorligi sirlari va amaliy mashg\'ulotlar.',
-    isUpcoming: true
-  }
+ 
 ];
 
 export const TEAM_MEMBERS: any[] = [

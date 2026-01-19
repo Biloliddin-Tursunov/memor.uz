@@ -105,7 +105,8 @@ const Home: React.FC<HomeProps> = ({ onNavigate, language }) => {
 
                 <div className="lg:col-span-5 space-y-12 lg:pt-10">
                     <div className="space-y-10">
-                        {MOCK_ARTICLES.slice(1, 4).map((art, idx) => (
+                      <HadithBlock isSidebar className="animate-in fade-in slide-in-from-bottom-4 duration-1000" />
+                        {MOCK_ARTICLES.length > 1 ? MOCK_ARTICLES.slice(1, 4).map((art, idx) => (
                             <div key={art.id} className="flex gap-6 group cursor-pointer transition-all hover:pl-4 border-l border-transparent hover:border-teal" onClick={() => handleItemClick({ ...art, type: 'article' })}>
                                 <div className="w-24 h-24 flex-shrink-0 bg-graphite/5 overflow-hidden shadow-sm">
                                     <img src={art.imageUrl} className="w-full h-full object-cover filter sepia-[0.2] group-hover:sepia-0 transition-all" />
@@ -116,28 +117,26 @@ const Home: React.FC<HomeProps> = ({ onNavigate, language }) => {
                                     <p className="text-[10px] font-serif text-graphite/40 italic dark:text-slate-400">{art.date}</p>
                                 </div>
                             </div>
-                        ))}
+                        )) : [1, 2, 3].map(i => <Skeleton key={i} className="h-24 w-full" type="news-item" />)}
                     </div>
                     
-                    {/* Compact Hadith replaces static quote in sidebar */}
-                    <HadithBlock isSidebar className="animate-in fade-in slide-in-from-bottom-4 duration-1000" />
+          
                 </div>
             </div>
         </div>
       </section>
 
-      {/* --- SECTION 3: ACTION (HARAKAT) & EVENTS --- */}
+      {/* --- SECTION 3: ACTION (HARAKAT) --- */}
       <section className="py-24 bg-graphite/[0.02] dark:bg-[#01030a] border-y border-graphite/5 relative">
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-            {/* Latest Projects */}
             <div>
               <div className="flex items-center gap-4 mb-12">
                 <h2 className="font-display text-3xl dark:text-white uppercase tracking-tight">{t.project}lar</h2>
                 <div className="h-px flex-grow bg-graphite/10 dark:bg-white/10"></div>
               </div>
               <div className="space-y-12">
-                {MOCK_PROJECTS.slice(0, 2).map((proj) => (
+                {MOCK_PROJECTS.length > 0 ? MOCK_PROJECTS.slice(0, 2).map((proj) => (
                   <div key={proj.id} className="group cursor-pointer" onClick={() => handleItemClick({ ...proj, type: 'project' })}>
                     <div className="relative aspect-video overflow-hidden mb-6 rounded-sm">
                       <img src={proj.imageUrl} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt={proj.title} />
@@ -146,11 +145,10 @@ const Home: React.FC<HomeProps> = ({ onNavigate, language }) => {
                     <h3 className="font-display text-2xl dark:text-white mb-2 group-hover:text-sepia transition-colors">{proj.title}</h3>
                     <p className="font-serif text-graphite/60 dark:text-slate-400 italic text-sm line-clamp-2">{proj.description}</p>
                   </div>
-                ))}
+                )) : [1, 2].map(i => <Skeleton key={i} className="h-64 w-full" />)}
               </div>
             </div>
 
-            {/* Upcoming Events */}
             <div>
               <div className="flex items-center gap-4 mb-12">
                 <h2 className="font-display text-3xl dark:text-white uppercase tracking-tight">Tadbirlar</h2>
@@ -169,26 +167,15 @@ const Home: React.FC<HomeProps> = ({ onNavigate, language }) => {
                           {event.location}
                        </div>
                     </div>
-                    <div className="hidden sm:block">
-                      <button className="text-[10px] font-bold uppercase tracking-widest text-teal border-b border-teal/20 pb-1">Ishtirok</button>
-                    </div>
                   </div>
-                )) : <div className="py-12 text-center text-graphite/30 italic font-serif">Yaqin orada tadbirlar yo'q.</div>}
-              </div>
-              <div className="mt-12 bg-[#01030a] p-8 text-white relative overflow-hidden group cursor-pointer" onClick={() => onNavigate(PageRoute.ABOUT)}>
-                <div className="nebula opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <h4 className="font-display text-xl mb-2 relative z-10">Hamkorlik Qiling</h4>
-                <p className="font-serif text-sm text-white/50 relative z-10">Biz yangi g'oyalar va usta me'morlar uchun hamisha ochiqmiz.</p>
-                <div className="mt-4 relative z-10 flex justify-end">
-                   <span className="text-[10px] font-bold uppercase tracking-[0.3em]">&rarr;</span>
-                </div>
+                )) : [1, 2, 3].map(i => <Skeleton key={i} type="event-item" />)}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- SECTION 4: CREATION (IJOD) GALLERY --- */}
+      {/* --- SECTION 4: CREATION (IJOD) --- */}
       <section className="py-24 bg-white dark:bg-[#020617] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16 flex justify-between items-end">
           <div>
@@ -199,7 +186,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, language }) => {
         </div>
         
         <div className="flex gap-8 overflow-x-auto no-scrollbar px-6 md:px-12 pb-12">
-          {MOCK_CREATIONS.map((item) => (
+          {MOCK_CREATIONS.length > 0 ? MOCK_CREATIONS.map((item) => (
             <div 
               key={item.id} 
               className="flex-shrink-0 w-72 md:w-96 bg-parchment dark:bg-white/5 p-4 shadow-sm hover:shadow-xl transition-all duration-500 group border border-graphite/5 cursor-pointer"
@@ -207,28 +194,10 @@ const Home: React.FC<HomeProps> = ({ onNavigate, language }) => {
             >
               <div className="relative aspect-[3/4] overflow-hidden mb-6 rounded-sm">
                 <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000" />
-                <div className="absolute inset-0 bg-graphite/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
-                   <span className="text-white font-display uppercase tracking-[0.4em] text-[9px] border border-white/40 px-6 py-3">Batafsil</span>
-                </div>
               </div>
-              <span className="text-teal text-[9px] font-bold uppercase tracking-[0.3em] mb-1 block">{item.type}</span>
               <h3 className="font-display text-xl dark:text-white group-hover:text-teal transition-colors">{item.title}</h3>
-              <p className="text-[10px] font-mono text-graphite/30 uppercase tracking-widest mt-2">{item.author}</p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* --- SECTION 5: NEWS TICKER --- */}
-      <section className="py-12 bg-graphite dark:bg-slate-900 text-white overflow-hidden border-t border-white/5">
-        <div className="flex whitespace-nowrap animate-float-x space-x-24 items-center">
-          {MOCK_NEWS_DATA.concat(MOCK_NEWS_DATA).map((news, i) => (
-            <div key={i} className="flex items-center gap-4 cursor-pointer" onClick={() => navigate(`/news-detail/${news.id}`)}>
-              <span className="text-[10px] font-bold text-sepia uppercase tracking-widest">YANGILIK:</span>
-              <span className="font-display text-lg tracking-tight hover:text-sepia transition-colors">{news.title}</span>
-              <span className="w-2 h-2 bg-white/20 rounded-full"></span>
-            </div>
-          ))}
+          )) : [1, 2, 3, 4].map(i => <Skeleton key={i} type="creation" className="w-72 md:w-96 flex-shrink-0" />)}
         </div>
       </section>
 
@@ -243,9 +212,6 @@ const Home: React.FC<HomeProps> = ({ onNavigate, language }) => {
                 Dunyoni go'zallashtirish uchun
             </blockquote>
             <p className="font-mono text-[10px] uppercase tracking-[0.8em] text-white/40 animate-pulse">Me'mor Loyihasi • 2025</p>
-            <div className="absolute -bottom-10 -right-10 opacity-5">
-              <Ornament type="dome" className="w-64 h-64" />
-            </div>
         </div>
       </div>
     </div>

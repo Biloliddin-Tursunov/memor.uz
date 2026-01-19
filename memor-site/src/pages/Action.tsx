@@ -43,11 +43,7 @@ const Action: React.FC = () => {
                   </button>
                </div>
               ))
-            ) : (
-              <div className="text-center py-20 border border-dashed border-graphite/10">
-                 <p className="font-serif italic text-graphite/40">Yaqin orada tadbirlar rejalashtirilmagan.</p>
-              </div>
-            )}
+            ) : [1, 2, 3].map(i => <Skeleton key={i} type="event-item" className="p-8" />)}
          </div>
       </section>
 
@@ -79,9 +75,7 @@ const Action: React.FC = () => {
                   </div>
                </div>
               ))
-            ) : (
-              <Skeleton className="h-96" />
-            )}
+            ) : [1, 2, 3, 4].map(i => <Skeleton key={i} className="h-96" />)}
          </div>
       </section>
     </div>
