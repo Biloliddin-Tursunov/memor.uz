@@ -11,7 +11,7 @@ const About: React.FC = () => {
         <Ornament type="divider" className="w-48 mx-auto" />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-2">
         <div>
           <p className="font-serif text-lg leading-relaxed text-justify first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-sepia dark:text-gray-300">
             "Me'mor" loyihasi 2024-yilda Samarqand Davlat Arxitektura va Qurilish Universiteti talabalari orasida tug'ilgan. Bizning maqsadimiz — shunchaki bino qurish emas, balki me'morchiligimizni "registondan ozod qilish" — ya'ni tarix bilan kelajak o'rtasida ko'prik bunyod etishdir.
@@ -22,7 +22,7 @@ const About: React.FC = () => {
         </div>
         <div className="relative p-4 border border-graphite/20 dark:border-white/20 rotate-1 bg-white dark:bg-white/5 shadow-lg">
           <img
-            src="https://picsum.photos/600/800"
+            src="/family.jpg"
             alt="Team working"
             className="w-full h-80 object-cover"
           />
