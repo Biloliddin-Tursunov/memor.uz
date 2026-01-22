@@ -1,48 +1,59 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { ChatMessage } from "../types"; // <-- types.ts dan import qiling
 
-// Safe access to process.env.API_KEY.
-// In a browser environment without a bundler polyfill, 'process' might be undefined.
-// We default to an empty string to allow the app to load (API calls will fail gracefully later if key is missing).
-let apiKey = '';
-try {
-  if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
-    apiKey = process.env.API_KEY;
-  }
-} catch (e) {
-  // Ignore reference errors if process is not defined
-  console.warn("Environment variable access failed", e);
+// 1. API Kalitni olish (Vite usulida)
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+
+if (!apiKey) {
+    console.error("DIQQAT: API kalit topilmadi. .env faylni tekshiring.");
 }
 
-const ai = new GoogleGenAI({ apiKey });
+const genAI = new GoogleGenerativeAI(apiKey || "dummy_key");
 
-export const generateChatResponse = async (history: { role: string; text: string }[], message: string): Promise<string> => {
-  try {
-    const model = 'gemini-3-flash-preview';
-    
-    const chat = ai.chats.create({
-      model: model,
-      config: {
-        systemInstruction: "You are an expert architect assistant named 'al-Me'mor'. You help users design their homes. Speak in Uzbek. Be professional but friendly.",
-      },
-    });
+export const generateChatResponse = async (
+    history: ChatMessage[], // <-- Sizning interfeysingiz
+    message: string,
+): Promise<string> => {
+    if (!apiKey) return "API Kalit kiritilmagan (Demo rejim).";
 
-    const result = await chat.sendMessage({ message });
-    return result.text || "Uzr, hozir javob bera olmayman.";
-  } catch (error) {
-    console.error("Gemini API Error:", error);
-    return "Tizimda xatolik yuz berdi. Iltimos qayta urinib ko'ring.";
-  }
+    try {
+        const model = genAI.getGenerativeModel({
+            model: "gemini-1.5-flash",
+            systemInstruction:
+                "Siz 'al-Me\'mor' nomli professional arxitektor yordamchisiz. Foydalanuvchilarga uy loyihalashda yordam berasiz. O'zbek tilida gapiring. Javoblaringiz qisqa, aniq va do'stona bo'lsin.",
+        });
+
+        // 2. ChatMessage[] ni Gemini formatiga o'tkazish
+        // Gemini 'id' ni bilmaydi, faqat 'role' va 'parts' kerak.
+        const apiHistory = history.map((msg) => ({
+            role: msg.role === "user" ? "user" : "model", // Ehtiyot shart tekshiruv
+            parts: [{ text: msg.text }],
+        }));
+
+        const chat = model.startChat({
+            history: apiHistory,
+        });
+
+        const result = await chat.sendMessage(message);
+        const response = await result.response;
+        return response.text();
+    } catch (error) {
+        console.error("Gemini API Xatolik:", error);
+        return "Uzr, tizimda xatolik yuz berdi. Birozdan keyin urinib ko'ring.";
+    }
 };
 
 export const analyzeArea = async (location: string): Promise<string> => {
-   try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: `Analyze the architectural potential for a home in this location: ${location}. Keep it short (1 sentence) in Uzbek.`,
-    });
-    return response.text || "Hudud analiz qilindi.";
-  } catch (e) {
-    console.error("Analysis Error:", e);
-    return "Hudud muvaffaqiyatli o'rganildi (Demo).";
-  }
-}
+    if (!apiKey) return "API Kalit yo'q. (Demo tahlil)";
+
+    try {
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const prompt = `Ushbu hududda uy qurish uchun qisqa va foydali arxitektura tahlilini yozing (o'zbek tilida, 2 gap): ${location}`;
+
+        const result = await model.generateContent(prompt);
+        return result.response.text();
+    } catch (e) {
+        console.error("Analysis Error:", e);
+        return "Hudud muvaffaqiyatli o'rganildi (Server javob bermadi).";
+    }
+};
