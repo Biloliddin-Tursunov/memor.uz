@@ -1,73 +1,61 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MOCK_CREATIONS } from '../constants';
 import { Ornament } from '../components/Ornament';
-import { DisplayItem } from '../types';
+import { Skeleton } from '../components/Skeleton';
 
-interface CreationProps {
-   onItemClick: (item: DisplayItem) => void;
-}
+const Creation: React.FC = () => {
+  const navigate = useNavigate();
 
-const Creation: React.FC<CreationProps> = ({ onItemClick }) => {
-   return (
-      <div className="max-w-7xl mx-auto px-4 py-12">
-
-         <div className="text-center mb-16">
-            <h2 className="font-display text-5xl mb-4 text-graphite">Ijod Namunalari</h2>
-            <p className="font-serif italic text-graphite/60 dark:text-gray-400 max-w-2xl mx-auto">
-               Vektor naqshlar, konseptual dizaynlar va raqamli san'at.
-            </p>
-         </div>
-
-         <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-            {MOCK_CREATIONS.map((item) => (
-               <div
-                  key={item.id}
-                  className="break-inside-avoid bg-white dark:bg-white/5 p-4 shadow-sm hover:shadow-xl transition-all duration-500 group border border-graphite/5 dark:border-white/10 cursor-pointer"
-                  onClick={() => onItemClick({
-                     id: item.id,
-                     title: item.title,
-                     subtitle: item.author,
-                     description: item.description,
-                     imageUrl: item.imageUrl,
-                     type: item.type
-                  })}
-               >
-                  <div className="relative overflow-hidden mb-4 rounded-sm">
-                     <img src={item.imageUrl} alt={item.title} className="w-full object-cover hover:scale-105 transition-all duration-500" />
-
-                     {/* Overlay for download/view */}
-                     <div className="absolute inset-0 bg-graphite/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <button className="border border-white text-white px-6 py-2 font-display uppercase tracking-widest text-sm hover:bg-white hover:text-graphite transition-colors">
-                           {item.type === 'Vector' ? 'Yuklab Olish' : 'Ko\'rish'}
-                        </button>
-                     </div>
-                  </div>
-
-                  <div className="flex justify-between items-start">
-                     <div>
-                        <span className="text-[10px] uppercase tracking-[0.2em] text-teal block mb-1">{item.type}</span>
-                        <h3 className="font-display text-xl mb-2 group-hover:text-teal transition-colors">{item.title}</h3>
-                     </div>
-                     <Ornament type="corner" className="w-4 h-4 opacity-30" />
-                  </div>
-                  <p className="font-serif text-sm text-graphite/60 dark:text-gray-400 leading-relaxed">
-                     {item.description}
-                  </p>
-                  <div className="mt-4 pt-4 border-t border-dashed border-graphite/20 dark:border-white/20 text-right text-xs font-mono text-graphite/40 dark:text-gray-500">
-                     Muallif: {item.author}
-                  </div>
-               </div>
-            ))}
-         </div>
-
-         <div className="mt-20 text-center">
-            <p className="font-serif italic text-lg text-graphite/60 dark:text-gray-400 mb-6">"Go'zallik tafsilotlarda yashirin"</p>
-            <Ornament type="flourish" />
-         </div>
-
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="text-center mb-20">
+         <h2 className="font-display text-5xl md:text-7xl mb-6 text-graphite dark:text-white">Ijod Namunalari</h2>
+         <p className="font-serif italic text-lg text-graphite/50 dark:text-gray-400 max-w-2xl mx-auto">
+           Vektor naqshlar, konseptual dizaynlar va raqamli san'at.
+         </p>
       </div>
-   );
+
+      <div className="columns-1 md:columns-2 lg:columns-3 gap-10 space-y-10">
+         {MOCK_CREATIONS.length > 0 ? (
+           MOCK_CREATIONS.map((item) => (
+              <div 
+                  key={item.id} 
+                  className="break-inside-avoid bg-white dark:bg-white/5 p-5 shadow-sm hover:shadow-2xl transition-all duration-700 group border border-graphite/5 cursor-pointer"
+                  onClick={() => navigate(`/creation/${item.id}`)}
+              >
+                 <div className="relative overflow-hidden mb-6 rounded-sm">
+                    <img src={item.imageUrl} alt={item.title} className="w-full object-cover group-hover:scale-110 transition-all duration-1000" />
+                    <div className="absolute inset-0 bg-graphite/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                       <span className="text-white font-display uppercase tracking-[0.4em] text-[10px] border border-white/40 px-6 py-3">Ko'rish</span>
+                    </div>
+                 </div>
+                 
+                 <span className="text-teal text-[9px] font-bold uppercase tracking-[0.3em] mb-2 block">{item.type}</span>
+                 <h3 className="font-display text-2xl mb-3 dark:text-white group-hover:text-teal transition-colors">{item.title}</h3>
+                 <p className="font-serif text-sm text-graphite/60 dark:text-gray-400 leading-relaxed mb-6">
+                    {item.description}
+                 </p>
+                 <div className="flex justify-between items-center text-[10px] font-mono text-graphite/30 uppercase tracking-widest pt-4 border-t border-dashed border-graphite/10">
+                    <span>{item.author}</span>
+                    <Ornament type="corner" className="w-3 h-3 opacity-20" />
+                 </div>
+              </div>
+           ))
+         ) : (
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full">
+              {[1, 2, 3].map(i => <Skeleton key={i} type="creation" />)}
+           </div>
+         )}
+      </div>
+
+      <div className="mt-32 text-center">
+         <p className="font-serif italic text-xl text-graphite/40 mb-8">"Go'zallik tafsilotlarda yashirin"</p>
+         <Ornament type="flourish" className="opacity-10" />
+      </div>
+    </div>
+  );
 };
 
 export default Creation;
