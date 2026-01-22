@@ -1,72 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uz">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Me'mor Bo'ling</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              serif: ['Merriweather', 'serif'],
-              sans: ['Inter', 'sans-serif'],
-            },
-            colors: {
-              'mem-dark': '#0f172a', // Slate 900
-              'mem-gray': '#64748b', // Slate 500
-              'mem-light': '#f8fafc', // Slate 50
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>Me'mor Bo'ling</title>
+        <!-- (ixtiyoriy) rang rejimiga mos favikonlar -->
+        <link
+            rel="icon"
+            href="/favicon-light.svg"
+            media="(prefers-color-scheme: light)" />
+        <link
+            rel="icon"
+            href="/favicon-dark.svg"
+            media="(prefers-color-scheme: dark)" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap"
+            rel="stylesheet" />
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            serif: ["Merriweather", "serif"],
+                            sans: ["Inter", "sans-serif"],
+                        },
+                        colors: {
+                            "mem-dark": "#0f172a", // Slate 900
+                            "mem-gray": "#64748b", // Slate 500
+                            "mem-light": "#f8fafc", // Slate 50
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body,
+            html {
+                height: 100%;
+                overflow: hidden; /* Prevent body scroll */
+                background-color: #f8fafc;
+                color: #0f172a;
             }
-          }
-        }
-      }
-    </script>
-    <style>
-      body, html {
-        height: 100%;
-        overflow: hidden; /* Prevent body scroll */
-        background-color: #F8FAFC;
-        color: #0f172a;
-      }
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 4px;
-      }
-      ::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 2px;
-      }
-      .fade-in {
-        animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.2.0",
-    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?deps=react@18.2.0,react-dom@18.2.0",
-    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.2.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
-    "react-dom/": "https://esm.sh/react-dom@18.2.0/",
-    "react/": "https://esm.sh/react@18.2.0/"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
-  <body>
-    <div id="root" class="h-full"></div>
-    <script type="module" src="./index.tsx"></script>
-  <script type="module" src="/index.tsx"></script>
-</body>
+            /* Custom scrollbar */
+            ::-webkit-scrollbar {
+                width: 4px;
+            }
+            ::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #cbd5e1;
+                border-radius: 2px;
+            }
+            .fade-in {
+                animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
+        <script type="importmap">
+            {
+                "imports": {
+                    "react": "https://esm.sh/react@18.2.0",
+                    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+                    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?deps=react@18.2.0,react-dom@18.2.0",
+                    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.2.0",
+                    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+                    "react-dom/": "https://esm.sh/react-dom@18.2.0/",
+                    "react/": "https://esm.sh/react@18.2.0/"
+                }
+            }
+        </script>
+        <link rel="stylesheet" href="/index.css" />
+    </head>
+    <body>
+        <div id="root" class="h-full"></div>
+        <script type="module" src="./index.tsx"></script>
+        <script type="module" src="/index.tsx"></script>
+    </body>
 </html>

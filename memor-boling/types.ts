@@ -3,12 +3,15 @@ export enum AppStep {
     INTRO = "INTRO",
     CHAT = "CHAT",
     STAGE_SELECT = "STAGE_SELECT",
-    LOCATION_SELECT = "LOCATION_SELECT",
+    LOCATION_SELECT = "LOCATION_SELECT", // Only for 'land'
+    DETAILS_INPUT = "DETAILS_INPUT", // For 'house' (renovation) and 'interior'
     STYLE_SELECT = "STYLE_SELECT",
     REQUIREMENTS = "REQUIREMENTS",
-    DESIGN_PROPOSALS = "DESIGN_PROPOSALS", // This will now serve as the final dashboard
-    PLAN_PROPOSALS = "PLAN_PROPOSALS", // Deprecated in favor of consolidated dashboard but kept for type safety
+    DESIGN_PROPOSALS = "DESIGN_PROPOSALS",
+    PLAN_PROPOSALS = "PLAN_PROPOSALS",
 }
+
+export type ProjectType = "land" | "house" | "interior" | "idea" | null;
 
 export interface ChatMessage {
     id: string;
@@ -21,4 +24,5 @@ export interface HouseSpecs {
     floors: string;
     price: string;
     extra: string;
+    area?: string; // Square meters
 }
