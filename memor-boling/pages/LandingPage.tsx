@@ -9,7 +9,7 @@ const LandingPage: React.FC = () => {
         <div className="h-full flex flex-col justify-center items-center overflow-y-auto">
             <div className="text-center mb-8 md:mb-12 fade-in px-4">
                 <h2 className="text-3xl md:text-5xl font-serif font-bold text-slate-900 mb-3">
-                    Biz bilan birga quring
+                    Orzuyingizni loyihalashtiring
                 </h2>
                 <p className="text-base md:text-lg text-slate-500 max-w-xl mx-auto font-light">
                     Sun'iy intellekt va professional vositalar yordamida
