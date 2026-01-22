@@ -1,10 +1,18 @@
-import React from 'react';
-import ChatInterface from '../ChatInterface';
+import React from "react";
+import ChatInterface from "../ChatInterface";
 
-const ChatStep: React.FC<{ onNext: () => void }> = ({ onNext }) => (
-  <div className="h-[600px]">
-    <ChatInterface onComplete={onNext} />
-  </div>
+interface Props {
+    onNext: () => void;
+    initialMessage: string;
+}
+
+const ChatStep: React.FC<Props> = ({ onNext, initialMessage }) => (
+    <div className="h-full min-h-[500px]">
+        <ChatInterface
+            onComplete={onNext}
+            initialUserMessage={initialMessage}
+        />
+    </div>
 );
 
 export default ChatStep;
