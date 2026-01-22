@@ -1,7 +1,0 @@
-{
-  "name": "Me'mor Bo'ling - Build My Home",
-  "description": "An AI-powered architectural wizard that guides users through designing their dream home, from land selection to floor plans.",
-  "requestFramePermissions": [
-    "microphone"
-  ]
-}
