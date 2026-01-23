@@ -11,13 +11,14 @@ import StarBackground from './StarBackground';
 import GlobalMemberManager from './GlobalMemberManager';
 import UserProfileModal from './UserProfileModal';
 import PublicProfileModal from './PublicProfileModal';
+import SponsorModal from './SponsorModal';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const ListMember: React.FC<{ member: Member; onClick: () => void }> = ({ member, onClick }) => {
-  const isCigdem = member.id === 'u_cigdem' || member.name.includes('Çiğdem');
+  const isDoctor = member.name.includes('Dr.') || member.id === 'u_cigdem' || member.id === 'u_dilnoza';
   const isSupervisor = member.role === 'Supervisor';
 
   return (
@@ -28,7 +29,7 @@ const ListMember: React.FC<{ member: Member; onClick: () => void }> = ({ member,
       <span className={`
            font-serif italic text-lg md:text-2xl tracking-wide transition-all duration-300 text-center leading-tight
            ${(member.isVolunteer && !isSupervisor) ? 'text-white/40' : 'text-white/60 group-hover:text-amber-200'}
-           ${isCigdem ? 'border-b border-white/20 pb-0.5 whitespace-nowrap' : 'max-w-[140px] md:max-w-[240px]'}
+           ${isDoctor ? 'border-b border-white/20 pb-0.5 whitespace-nowrap' : 'max-w-[140px] md:max-w-[240px]'}
         `}>
         {member.name}
       </span>
@@ -50,6 +51,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [managerTargetId, setManagerTargetId] = useState<string | null>(null);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [selectedPublicMember, setSelectedPublicMember] = useState<Member | null>(null);
+  const [isSponsorOpen, setIsSponsorOpen] = useState(false);
 
   const allMembers = React.useMemo(() => {
     const members = getAllMembers();
@@ -85,8 +87,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }, [allMembers]);
 
   const handleSponsorClick = () => {
-    const drCigdem = allMembers.find(m => m.id === 'u_cigdem' || m.name.includes('Çiğdem'));
-    if (drCigdem) setSelectedPublicMember(drCigdem);
+    setIsSponsorOpen(true);
   };
 
   const handleEditFromProfile = (member: Member) => {
@@ -185,11 +186,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </div>
 
                   <div className="flex flex-col items-center col-span-2 md:col-span-1 order-3">
-                    {col3.supervisor && (
-                      <div className="mb-4 w-full flex justify-center">
-                        <ListMember member={col3.supervisor} onClick={() => setSelectedPublicMember(col3.supervisor!)} />
+                    {col3.supervisors.length > 0 && col3.supervisors.map(m => (
+                      <div key={m.id} className="mb-4 w-full flex justify-center">
+                        <ListMember member={m} onClick={() => setSelectedPublicMember(m)} />
                       </div>
-                    )}
+                    ))}
 
                     <span className="font-typewriter text-[9px] uppercase tracking-[0.2em] text-white/10 mb-4 block">
                       {t("Volunteer").toUpperCase()}LAR:
@@ -216,6 +217,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <GlobalMemberManager isOpen={isGlobalManagerOpen} onClose={() => setIsGlobalManagerOpen(false)} initialMemberId={managerTargetId} />
       <UserProfileModal isOpen={isProfileOpen} onClose={() => setIsProfileOpen(false)} />
       <PublicProfileModal isOpen={!!selectedPublicMember} onClose={() => setSelectedPublicMember(null)} member={selectedPublicMember} onManage={isSuperAdmin ? () => handleEditFromProfile(selectedPublicMember!) : undefined} />
+      <SponsorModal isOpen={isSponsorOpen} onClose={() => setIsSponsorOpen(false)} />
     </div>
   );
 };
