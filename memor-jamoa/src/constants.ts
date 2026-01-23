@@ -1,7 +1,7 @@
 
 import { Team, Task, Member } from './types';
 
-export const ADMIN_USERS = []; 
+export const ADMIN_USERS = [];
 
 export const TEAMS: Team[] = [
   { id: "artwork", name: "Artwork", description: "desc_artwork" },
@@ -23,9 +23,8 @@ const U_MUSLIM = 'u_muslim';
 const U_ZUHRA = 'u_zuhra';
 const U_FOTIMA = 'u_fotima';
 const U_ALISHER = 'u_alisher';
-const U_BUSRA = 'u_busra';
 const U_CIGDEM = 'u_cigdem';
-const U_RAHMATULLOH = 'u_rahmatulloh';
+const U_DILNOZA = 'u_dilnoza';
 
 export const TEAM_MEMBERS: Record<string, Member[]> = {
   artwork: [
@@ -34,14 +33,14 @@ export const TEAM_MEMBERS: Record<string, Member[]> = {
     { id: U_FOTIMA, name: 'Fotima', bio: DEFAULT_BIO },
     { id: 'a4', name: 'Jasmina', bio: DEFAULT_BIO },
     { id: U_CIGDEM, name: 'Dr. Çiğdem Canbay Türkyılmaz', username: 'Türkyılmaz', password: 'Türkyılmaz', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
-    { id: U_BUSRA, name: 'Büşra Nur Bardakçı', isVolunteer: true, bio: DEFAULT_BIO },
+    { id: U_DILNOZA, name: 'Dr. Dilnoza Kamalova', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
   ],
   architects: [
     { id: U_OTABEK, name: 'Otabek', bio: DEFAULT_BIO },
     { id: U_BILOLIDDIN, name: 'Biloliddin', bio: DEFAULT_BIO },
     { id: U_BUNYOD, name: 'Bunyod', bio: DEFAULT_BIO },
     { id: U_JASUR, name: 'Jasur', isVolunteer: true, bio: DEFAULT_BIO },
-    { id: U_MUSLIM, name: 'Muslimbek', bio: DEFAULT_BIO }, 
+    { id: U_MUSLIM, name: 'Muslimbek', bio: DEFAULT_BIO },
   ],
   students: [
     { id: 's1', name: 'Jaloliddin', bio: DEFAULT_BIO },
@@ -50,6 +49,7 @@ export const TEAM_MEMBERS: Record<string, Member[]> = {
     { id: U_BUNYOD, name: 'Bunyod', bio: DEFAULT_BIO },
     { id: U_OTABEK, name: 'Otabek', bio: DEFAULT_BIO },
     { id: U_CIGDEM, name: 'Dr. Çiğdem Canbay Türkyılmaz', username: 'Türkyılmaz', password: 'Türkyılmaz', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
+    { id: U_DILNOZA, name: 'Dr. Dilnoza Kamalova', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
   ],
   translators: [
     { id: U_OTABEK, name: "Otabek", bio: DEFAULT_BIO },
@@ -60,7 +60,7 @@ export const TEAM_MEMBERS: Record<string, Member[]> = {
     { id: 't5', name: "Zilola", bio: DEFAULT_BIO },
     { id: U_MUSLIM, name: "Muslimbek", bio: DEFAULT_BIO },
     { id: U_CIGDEM, name: 'Dr. Çiğdem Canbay Türkyılmaz', username: 'Türkyılmaz', password: 'Türkyılmaz', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
-    { id: U_BUSRA, name: 'Büşra Nur Bardakçı', isVolunteer: true, bio: DEFAULT_BIO },
+    { id: U_DILNOZA, name: 'Dr. Dilnoza Kamalova', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
   ],
   media: [
     { id: U_BUNYOD, name: 'Bunyod', bio: DEFAULT_BIO },
@@ -72,7 +72,6 @@ export const TEAM_MEMBERS: Record<string, Member[]> = {
   software: [
     { id: U_BILOLIDDIN, name: 'Biloliddin', bio: DEFAULT_BIO },
     { id: U_MUSLIM, name: 'Muslimbek', bio: DEFAULT_BIO },
-    { id: U_RAHMATULLOH, name: 'Rahmatulloh', isVolunteer: true, bio: DEFAULT_BIO },
   ]
 };
 
@@ -85,7 +84,7 @@ export const INITIAL_TASKS: Task[] = [
   // Team #2 Media
   { id: 'med1', teamId: 'media', title: 'SESSIYA', description: 'O\'quv imtihonlari.', type: 'Muhim', priority: "O'ta muhim", status: 'Doing', startDate: '', deadline: '', resourceLink: '' },
   { id: 'med2', teamId: 'media', title: 'Kontent reja muhokamasi', description: 'Yangi media strategiyasi.', type: 'Muhokama', status: 'To Do', startDate: '', deadline: '', resourceLink: '' },
-  { id: 'med3', teamId: 'media', title: 'Tavsiya', description: '➥ Arxitektura universitetlari haqida;\n➥ Me\'morlar haqida;\n➥ "Nega?"\n➥ Kontrast: Zamonaviy hamda an\'anaviy me\'morchilik.', type: 'Tavsiyaviy', status: 'To Do', startDate: '', deadline: '', resourceLink: '' },
+  { id: 'med3', teamId: 'media', title: 'Tavsiya', description: 'desc_media_tavsiya', type: 'Tavsiyaviy', status: 'To Do', startDate: '', deadline: '', resourceLink: '' },
 
   // Team #3 Loyiha
   { id: 'arch1', teamId: 'architects', title: 'SESSIYA', description: 'Akademik majburiyatlar.', type: 'Muhim', priority: "O'ta muhim", status: 'Doing', startDate: '', deadline: '', resourceLink: '' },
