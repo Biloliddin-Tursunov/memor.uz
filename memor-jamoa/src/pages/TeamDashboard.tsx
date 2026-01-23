@@ -40,27 +40,46 @@ const TeamDashboard: React.FC = () => {
 
     const teamMembers = useMemo(() => {
         return [...teamMembersRaw].sort((a, b) => {
-            const getRank = (m: Member) => {
-                if (m.id === 'u_cigdem') return -2; // Always First
-                if (m.id === 'u_dilnoza') return -1; // Always Second
+            const getGroup = (m: Member) => {
+                // Group 1: Creators (Not Volunteer AND Not Supervisor)
+                // Group 2: Supervisors (Sponsors/Mentors)
+                // Group 3: Volunteers (Volunteer AND Not Supervisor)
 
-                if (m.id === 'u_otabek') return 0;
-                if (m.id === 'u_biloliddin') return 1;
+                const isSupervisor = m.role === 'Supervisor';
+                const isVolunteer = m.isVolunteer;
 
-                // Core Creators (not volunteer, not supervisor)
-                if (!m.isVolunteer && m.role !== 'Supervisor') return 2;
-
-                // Supervisors (Ustozlar)
-                if (m.role === 'Supervisor') return 3;
-
-                // Volunteers
-                return 4;
+                if (isSupervisor) return 2;
+                if (isVolunteer) return 3;
+                return 1;
             };
-            const rankA = getRank(a);
-            const rankB = getRank(b);
 
-            if (rankA !== rankB) return rankA - rankB;
-            // Alphabetical within same rank
+            const groupA = getGroup(a);
+            const groupB = getGroup(b);
+
+            if (groupA !== groupB) return groupA - groupB;
+
+            // Inside Group 1 (Creators): Priority for Otabek/Biloliddin if needed
+            if (groupA === 1) {
+                if (a.id === 'u_otabek') return -1;
+                if (b.id === 'u_otabek') return 1;
+                if (a.id === 'u_biloliddin') return -1;
+                if (b.id === 'u_biloliddin') return 1;
+            }
+
+            // Inside Group 2 (Supervisors): Cigdem > Dilnoza
+            if (groupA === 2) {
+                const isCigdemA = a.id === 'u_cigdem' || a.name.includes('Çiğdem');
+                const isCigdemB = b.id === 'u_cigdem' || b.name.includes('Çiğdem');
+                if (isCigdemA) return -1;
+                if (isCigdemB) return 1;
+
+                const isDilnozaA = a.id === 'u_dilnoza' || a.name.includes('Dilnoza');
+                const isDilnozaB = b.id === 'u_dilnoza' || b.name.includes('Dilnoza');
+                if (isDilnozaA) return -1;
+                if (isDilnozaB) return 1;
+            }
+
+            // Default: Alphabetical
             return a.name.localeCompare(b.name);
         });
     }, [teamMembersRaw]);

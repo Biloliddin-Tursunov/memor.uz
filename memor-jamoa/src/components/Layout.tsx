@@ -74,14 +74,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     const col1Names = ['Otabek', 'Biloliddin', 'Bunyod', 'Muslimbek', 'Jaloliddin', 'Alisher'];
     const col2Names = ['Aminaxon', 'Zuhra', 'Fotima', 'Jasmina', 'Xushnudaxon', 'Zilola'];
     const supervisorNames = ['Dr. Çiğdem Canbay Türkyılmaz', 'Dr. Dilnoza Kamalova'];
-    const volunteerNames = ['Jasur', 'Asilbek'];
 
     return {
       col1: col1Names.map(find).filter((m): m is Member => !!m),
       col2: col2Names.map(find).filter((m): m is Member => !!m),
       col3: {
-        supervisors: supervisorNames.map(find).filter((m): m is Member => !!m),
-        volunteers: volunteerNames.map(find).filter((m): m is Member => !!m)
+        supervisors: supervisorNames.map(find).filter((m): m is Member => !!m)
       }
     };
   }, [allMembers]);
@@ -191,14 +189,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         <ListMember member={m} onClick={() => setSelectedPublicMember(m)} />
                       </div>
                     ))}
-
-                    <span className="font-typewriter text-[9px] uppercase tracking-[0.2em] text-white/10 mb-4 block">
-                      {t("Volunteer").toUpperCase()}LAR:
-                    </span>
-
-                    <div className="grid grid-cols-2 md:flex md:flex-col md:items-center w-full">
-                      {col3.volunteers.map(m => <ListMember key={m.id} member={m} onClick={() => setSelectedPublicMember(m)} />)}
-                    </div>
                   </div>
                 </div>
               </div>
