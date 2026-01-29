@@ -31,6 +31,7 @@ import { NewsDetail } from './components/details/NewsDetail';
 // Tiplar va Konstantalar
 import { PageRoute, Language } from './types';
 import { TRANSLATIONS } from './constants';
+import Paper from './components/paper/Paper';
 
 // Sahifa almashganda yuqoriga qaytarish
 const ScrollToTop = () => {
@@ -69,15 +70,15 @@ const AppContent: React.FC = () => {
   // Aktiv sahifani aniqlash (Header menyusi uchun)
   const getActiveRoute = (path: string): PageRoute => {
     // Batafsil sahifalar uchun tekshiruv
-    if (path.startsWith('/article') || path.startsWith('/project') || path.startsWith('/video') || 
-        path.startsWith('/creation') || path.startsWith('/book') || path.startsWith('/creator') || 
-        path.startsWith('/event') || path.startsWith('/news-detail')) {
+    if (path.startsWith('/article') || path.startsWith('/project') || path.startsWith('/video') ||
+      path.startsWith('/creation') || path.startsWith('/book') || path.startsWith('/creator') ||
+      path.startsWith('/event') || path.startsWith('/news-detail')) {
       return PageRoute.DETAIL;
     }
-    
+
     switch (path) {
       case '/': return PageRoute.HOME;
-      case '/knowledge': 
+      case '/knowledge':
       case (path.startsWith('/knowledge') ? path : ''): return PageRoute.KNOWLEDGE;
       case '/action': return PageRoute.ACTION;
       case '/creation': return PageRoute.CREATION;
@@ -111,7 +112,7 @@ const AppContent: React.FC = () => {
   // Har qanday element bosilganda to'g'ri URL ga yo'naltirish
   const handleItemClick = (item: any) => {
     const type = item.type?.toLowerCase();
-    
+
     const routeMap: Record<string, string> = {
       'maqola': 'article', 'article': 'article',
       'loyiha': 'project', 'project': 'project',
@@ -121,7 +122,7 @@ const AppContent: React.FC = () => {
       'tadbir': 'event', 'event': 'event',
       'yangilik': 'news-detail'
     };
-    
+
     // Agar tipi aniqlanmasa, default 'creation' ga o'tadi
     const routePrefix = routeMap[type] || 'creation';
     navigate(`/${routePrefix}/${item.id}`);
@@ -131,30 +132,33 @@ const AppContent: React.FC = () => {
   return (
     <div className="min-h-screen bg-parchment text-graphite dark:bg-[#020617] flex flex-col font-serif selection:bg-sepia selection:text-white relative transition-colors duration-500">
       <ScrollToTop />
-      
+
       {showIntro && <IntroScreen onFinish={handleIntroFinish} />}
-      
+
       {/* Background Texture */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-paper-texture z-10 mix-blend-multiply dark:mix-blend-overlay dark:opacity-[0.05]"></div>
 
-      <Header
-        activeRoute={currentRoute}
-        onNavigate={handleNavigate}
-        onSearchOpen={() => setIsSearchOpen(true)}
-        language={language}
-        setLanguage={setLanguage}
-        theme={theme}
-        setTheme={setTheme}
-      />
+      {/* Header: /paper sahifasida ko'rinmaydi */}
+      {!location.pathname.startsWith('/paper') && (
+        <Header
+          activeRoute={currentRoute}
+          onNavigate={handleNavigate}
+          onSearchOpen={() => setIsSearchOpen(true)}
+          language={language}
+          setLanguage={setLanguage}
+          theme={theme}
+          setTheme={setTheme}
+        />
+      )}
 
-      <SearchModal 
-        isOpen={isSearchOpen} 
-        onClose={() => setIsSearchOpen(false)} 
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
         onItemClick={handleItemClick}
         language={language}
       />
 
-      <main className={`flex-grow w-full relative z-20 ${currentRoute === PageRoute.HOME ? '' : 'pt-[100px] md:pt-[120px]'}`}>
+      <main className={`flex-grow w-full relative z-20 ${currentRoute === PageRoute.HOME || location.pathname.startsWith('/paper') ? '' : 'pt-[100px] md:pt-[120px]'}`}>
         <Routes>
           {/* Asosiy Sahifalar */}
           <Route path="/" element={<Home onNavigate={handleNavigate} onItemClick={handleItemClick} language={language} />} />
@@ -163,7 +167,7 @@ const AppContent: React.FC = () => {
           <Route path="/action" element={<Action onItemClick={handleItemClick} />} />
           <Route path="/creation" element={<Creation onItemClick={handleItemClick} />} />
           <Route path="/news" element={<News onItemClick={handleItemClick} />} />
-          
+
           {/* Batafsil (Detail) Sahifalar - Dynamic URLs */}
           <Route path="/article/:id" element={<ArticleDetail language={language} />} />
           <Route path="/project/:id" element={<ProjectDetail language={language} />} />
@@ -179,29 +183,32 @@ const AppContent: React.FC = () => {
           <Route path="/about" element={<About />} />
           <Route path="/support" element={<Support />} />
           <Route path="/contact" element={<Contact />} />
-          
+          <Route path="/paper" element={<Paper />} />
+
           {/* 404 - Sahifa topilmasa Home ga qaytadi */}
           <Route path="*" element={<Home onNavigate={handleNavigate} onItemClick={handleItemClick} language={language} />} />
         </Routes>
       </main>
 
-      <footer className="w-full py-12 border-t border-graphite/10 mt-12 bg-graphite/5 dark:bg-white/5 relative z-20">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
-          <Ornament type="divider" className="w-64 mb-6" />
-          <h2 className="font-display text-4xl mb-4 dark:text-white uppercase tracking-tighter">ME'MOR</h2>
-          <div className="flex flex-wrap justify-center gap-6 text-[10px] uppercase tracking-[0.3em] text-graphite/60 dark:text-white/40 mb-8 font-bold">
-            <Link to="/knowledge/articles" className="hover:text-teal transition-colors">{t.ilm}</Link>
-            <Link to="/action" className="hover:text-teal transition-colors">{t.harakat}</Link>
-            <Link to="/creation" className="hover:text-teal transition-colors">{t.ijod}</Link>
-            <span className="text-graphite/20 dark:text-white/10">|</span>
-            <Link to="/about" className="hover:text-teal transition-colors">{t.about}</Link>
-            <Link to="/contact" className="hover:text-teal transition-colors">{t.contact}</Link>
+      {!location.pathname.startsWith('/paper') && (
+        <footer className="w-full py-12 border-t border-graphite/10 mt-12 bg-graphite/5 dark:bg-white/5 relative z-20">
+          <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
+            <Ornament type="divider" className="w-64 mb-6" />
+            <h2 className="font-display text-4xl mb-4 dark:text-white uppercase tracking-tighter">ME'MOR</h2>
+            <div className="flex flex-wrap justify-center gap-6 text-[10px] uppercase tracking-[0.3em] text-graphite/60 dark:text-white/40 mb-8 font-bold">
+              <Link to="/knowledge/articles" className="hover:text-teal transition-colors">{t.ilm}</Link>
+              <Link to="/action" className="hover:text-teal transition-colors">{t.harakat}</Link>
+              <Link to="/creation" className="hover:text-teal transition-colors">{t.ijod}</Link>
+              <span className="text-graphite/20 dark:text-white/10">|</span>
+              <Link to="/about" className="hover:text-teal transition-colors">{t.about}</Link>
+              <Link to="/contact" className="hover:text-teal transition-colors">{t.contact}</Link>
+            </div>
+            <p className="text-[10px] font-mono text-graphite/40 dark:text-white/20 text-center max-w-md uppercase tracking-widest">
+              {t.copyright}
+            </p>
           </div>
-          <p className="text-[10px] font-mono text-graphite/40 dark:text-white/20 text-center max-w-md uppercase tracking-widest">
-            {t.copyright}
-          </p>
-        </div>
-      </footer>
+        </footer>
+      )}
     </div>
   );
 };
