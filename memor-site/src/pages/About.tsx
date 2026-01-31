@@ -35,15 +35,7 @@ const About: React.FC = () => {
       {/* Team Section Component */}
       <TeamSection />
 
-      <div className="bg-graphite/5 dark:bg-white/5 p-8 md:p-12 border-y border-double border-graphite/20 dark:border-white/20 text-center">
-        <Ornament type="flourish" className="mb-4" />
-        <h3 className="font-display text-2xl mb-4">Bizning Qadriyatlarimiz</h3>
-        <ul className="space-y-4 font-serif italic text-lg text-graphite/80 dark:text-gray-300">
-          <li>"Toshlar so'zlaganda, tarix uyg'onadi."</li>
-          <li>"Har bir chiziqda ma'no, har bir g'ishtda hikmat."</li>
-          <li>"Ilm — harakat — ijod."</li>
-        </ul>
-      </div>
+
     </div>
   );
 };
