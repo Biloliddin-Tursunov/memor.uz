@@ -1,0 +1,63 @@
+{
+    "name": "Me'mor — Arxitektura va Naqsh",
+    "short_name": "Me'mor",
+    "description": "O‘zbek memorchiligi, arxitektura va naqsh san’ati platformasi.",
+    "start_url": "/",
+    "id": "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#FBF9F4",
+    "theme_color": "#111111",
+    "icons": [
+        {
+            "src": "/favicon-light.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        },
+        {
+            "src": "/favicon-dark.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "ILM",
+            "short_name": "Ilm",
+            "description": "Arxitektura bilimlari",
+            "url": "/uz/knowledge",
+            "icons": [
+                {
+                    "src": "/favicon-light.svg",
+                    "sizes": "any"
+                }
+            ]
+        },
+        {
+            "name": "Harakat",
+            "short_name": "Harakat",
+            "description": "Loyihalar va harakat",
+            "url": "/uz/action",
+            "icons": [
+                {
+                    "src": "/favicon-light.svg",
+                    "sizes": "any"
+                }
+            ]
+        },
+        {
+            "name": "Ijod",
+            "short_name": "Ijod",
+            "description": "Naqsh va san'at",
+            "url": "/uz/creation",
+            "icons": [
+                {
+                    "src": "/favicon-light.svg",
+                    "sizes": "any"
+                }
+            ]
+        }
+    ]
+}

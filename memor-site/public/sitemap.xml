@@ -1,45 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
->
-  <!-- HOME -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://memor.uz/</loc>
     <lastmod>2025-10-09</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="uz" href="https://memor.uz/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://memor.uz/"/>
   </url>
 
-  <!-- MEMORCHILIK -->
   <url>
-    <loc>https://memor.uz/memorchilik/</loc>
+    <loc>https://memor.uz/uz/knowledge</loc>
     <lastmod>2025-10-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-    <xhtml:link rel="alternate" hreflang="uz" href="https://memor.uz/knowledge/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://memor.uz/knowledge/"/>
+    <priority>0.8</priority>
   </url>
 
-  <!-- ARXITEKTOR -->
   <url>
-    <loc>https://memor.uz/arxitektor/</loc>
+    <loc>https://memor.uz/uz/action</loc>
     <lastmod>2025-10-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-    <xhtml:link rel="alternate" hreflang="uz" href="https://memor.uz/action/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://memor.uz/action/"/>
+    <priority>0.8</priority>
   </url>
 
-  <!-- NAQSH -->
   <url>
-    <loc>https://memor.uz/naqsh/</loc>
+    <loc>https://memor.uz/uz/creation</loc>
     <lastmod>2025-10-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-    <xhtml:link rel="alternate" hreflang="uz" href="https://memor.uz/creation/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://memor.uz/creation/"/>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://memor.uz/uz/about</loc>
+    <lastmod>2025-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://memor.uz/uz/contact</loc>
+    <lastmod>2025-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://memor.uz/uz/news</loc>
+    <lastmod>2025-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

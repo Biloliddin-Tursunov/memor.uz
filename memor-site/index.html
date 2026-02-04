@@ -4,218 +4,128 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Me'mor - Dunyoni go'zallashtirish uchun!</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Me'mor — Arxitektura va Naqsh</title>
+  <meta name="description" content="Me'mor — O‘zbek memorchiligi, arxitektura va naqsh san’ati platformasi." />
+  <meta name="keywords" content="Me'mor, memorchilik, arxitektura, naqsh, ornament, san’at, design" />
+  <link rel="canonical" href="https://memor.uz/" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#111111" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap"
     rel="stylesheet">
-  <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              parchment: 'var(--color-parchment)',
-              graphite: 'var(--color-graphite)',
-              teal: {
-                DEFAULT: 'var(--color-teal)',
-                dark: 'var(--color-teal-dark)',
-                light: 'var(--color-teal-light)'
-              },
-              sepia: {
-                DEFAULT: 'var(--color-sepia)',
-                dark: 'var(--color-sepia-dark)',
-                light: 'var(--color-sepia-light)'
-              }
-            },
-            fontFamily: {
-              serif: ['Lora', 'serif'],
-              display: ['Playfair Display', 'serif'],
-            },
-            animation: {
-              'twinkle': 'twinkle 5s ease-in-out infinite',
-              'float': 'float 20s linear infinite',
-              'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            },
-            keyframes: {
-              twinkle: {
-                '0%, 100%': { opacity: 0.3, transform: 'scale(1)' },
-                '50%': { opacity: 1, transform: 'scale(1.2)' },
-              },
-              float: {
-                '0%': { transform: 'translateY(0) rotate(0deg)' },
-                '100%': { transform: 'translateY(-100px) rotate(360deg)' },
-              }
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      :root {
-        --color-parchment: #FBF9F4;
-        --color-graphite: #151515;
-        --color-teal: #1F4E5F;
-        --color-teal-dark: #163A47;
-        --color-teal-light: #4A7C8F;
-        --color-sepia: #B08968;
-        --color-sepia-dark: #7F5539;
-        --color-sepia-light: #D4B499;
-      }
-      
-      .dark {
-        /* Night style: deep charcoal/navy instead of pure black */
-        --color-parchment: #0F172A; 
-        --color-graphite: #F1F5F9;
-        --color-teal: #38BDF8;
-        --color-sepia: #FCD34D;
-      }
 
-      body {
-        background-color: var(--color-parchment);
-        color: var(--color-graphite);
-        font-family: 'Lora', serif;
-        transition: background-color 0.5s ease, color 0.5s ease;
-        overflow-x: hidden;
-      }
-
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-
-      /* Enhanced Cosmic Background - STATIC as requested */
-      .cosmic-bg {
-        background: linear-gradient(to bottom, #020617, #0f172a);
-        position: relative;
-      }
-      
-      .nebula {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: 
-          radial-gradient(circle at 20% 30%, rgba(31, 78, 95, 0.15) 0%, transparent 50%),
-          radial-gradient(circle at 80% 70%, rgba(127, 85, 57, 0.1) 0%, transparent 50%),
-          radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 1) 0%, transparent 100%);
-        pointer-events: none;
-      }
-
-      .stars-overlay {
-        background-image: 
-          radial-gradient(1px 1px at 25% 10%, #fff, rgba(0,0,0,0)),
-          radial-gradient(1px 1px at 50% 40%, #fff, rgba(0,0,0,0)),
-          radial-gradient(1.5px 1.5px at 10% 80%, #fff, rgba(0,0,0,0)),
-          radial-gradient(1.5px 1.5px at 90% 20%, #fff, rgba(0,0,0,0)),
-          radial-gradient(2px 2px at 75% 60%, #fff, rgba(0,0,0,0)),
-          radial-gradient(1px 1px at 40% 90%, #fff, rgba(0,0,0,0));
-        background-repeat: repeat;
-        background-size: 300px 300px;
-        opacity: 0.3; /* Subtle static starfield */
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
-  }
-}
-</script>
-  <link rel="stylesheet" href="/index.css">
-  <meta name="keywords"
-    content="Me'mor, memorchilik, arxitektor, arxitektura, naqsh, ornament, san’at, o‘zbek arxitekturasi, pattern, design" />
-  <link rel="canonical" href="https://memor.uz/" />
-  <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#111111" />
-
-  <!-- Favicons / App icons (yangi fayl nomlari cachingni yangilaydi) -->
-  <link rel="icon" type="image/png" href="/favicons/favicon-2025.png" sizes="48x48" />
-  <link rel="icon" type="image/png" href="/favicons/favicon-32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="/favicons/favicon-16.png" sizes="16x16" />
-  <link rel="apple-touch-icon" href="/favicons/apple-touch-2025.png" sizes="180x180" />
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
+  <link rel="apple-touch-icon" href="/favicon-light.svg" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  <!-- (ixtiyoriy) rang rejimiga mos favikonlar -->
-  <link rel="icon" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
-  <link rel="icon" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
-
-  <!-- Open Graph -->
+  <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Me'mor" />
-  <meta property="og:title" content="Me'mor — memorchilik, arxitektura va naqsh falsafasi platformasi" />
-  <meta property="og:description"
-    content="Me'mor — O‘zbek memorchiligi, arxitektura, naqsh (ornament) va san’atga oid maqolalar, vektor kutubxona va tadqiqotlar jamlanmasi." />
+  <meta property="og:title" content="Me'mor — Arxitektura va Naqsh" />
+  <meta property="og:description" content="O‘zbek memorchiligi, arxitektura va naqsh san’ati platformasi." />
   <meta property="og:url" content="https://memor.uz/" />
   <meta property="og:image" content="https://memor.uz/og/cover-main.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="uz_UZ" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <meta property="og:locale:alternate" content="ru_RU" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Me'mor — memorchilik, arxitektura va naqsh falsafasi platformasi" />
-  <meta name="twitter:description"
-    content="Me'mor — O‘zbek memorchiligi, arxitektura, naqsh (ornament) va san’atga oid maqolalar, vektor kutubxona va tadqiqotlar jamlanmasi." />
+  <meta name="twitter:title" content="Me'mor — Arxitektura va Naqsh" />
+  <meta name="twitter:description" content="O‘zbek memorchiligi va naqsh san’ati platformasi." />
   <meta name="twitter:image" content="https://memor.uz/og/cover-main.jpg" />
 
-  <!-- Hreflang (agar til versiyalari bo‘lsa, quyidagilarni oching va URL’larni moslang) -->
-  <!--
-    <link rel="alternate" hreflang="uz" href="https://memor.uz/" />
-    <link rel="alternate" hreflang="en" href="https://memor.uz/en/" />
-    <link rel="alternate" hreflang="ru" href="https://memor.uz/ru/" />
-    <link rel="alternate" hreflang="x-default" href="https://memor.uz/" />
-    -->
-
-  <!-- Structured Data: WebSite (site name + internal search) -->
+  <!-- Structured Data: WebSite & Sitelinks Search Box -->
   <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                "url": "https://memor.uz/",
-                "name": "Me'mor",
-                "alternateName": ["memor", "memor.uz", "Me'mor platforma"],
-                "inLanguage": ["uz", "en", "ru"],
-                "publisher": {
-                    "@type": "Organization",
-                    "name": "Me'mor",
-                    "url": "https://memor.uz/"
-                },
-                "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": "https://memor.uz/search?q={search_term_string}",
-                    "query-input": "required name=search_term_string"
-                }
-            }
-        </script>
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://memor.uz/",
+      "name": "Me'mor",
+      "alternateName": ["memor", "memor.uz"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://memor.uz/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
 
-  <!-- Structured Data: Organization (logo & brand signallari) -->
+  <!-- Structured Data: Site Navigation (Sitelinks) -->
   <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "Organization",
-                "name": "Me'mor",
-                "url": "https://memor.uz/",
-                "logo": "https://memor.uz/brand/logo-2025.svg",
-                "sameAs": [
-                    "https://www.instagram.com/your_memor",
-                    "https://t.me/your_memor",
-                    "https://www.youtube.com/@your_memor"
-                ],
-                "foundingDate": "2024",
-                "founder": "Biloliddin Tursunov",
-                "email": "info@memor.uz"
-            }
-        </script>
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "ILM",
+          "url": "https://memor.uz/uz/knowledge"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "Harakat",
+          "url": "https://memor.uz/uz/action"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "Ijod",
+          "url": "https://memor.uz/uz/creation"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "Biz haqimizda",
+          "url": "https://memor.uz/uz/about"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 5,
+          "name": "Aloqa",
+          "url": "https://memor.uz/uz/contact"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 6,
+          "name": "Qo'llab-quvvatlash",
+          "url": "https://memor.uz/uz/support"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 7,
+          "name": "Xabarlar",
+          "url": "https://memor.uz/uz/news"
+        }
+      ]
+    }
+  </script>
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Me'mor",
+      "url": "https://memor.uz/",
+      "logo": "https://memor.uz/brand/logo-2025.svg",
+      "sameAs": [
+        "https://www.instagram.com/memor.uz_",
+        "https://t.me/memor_space"
+      ]
+    }
+  </script>
 </head>
 
 <body>
   <div id="root"></div>
-  <script type="module" src="./src/main.tsx"></script>
+  <script type="module" src="/src/main.tsx"></script>
 </body>
 
 </html>

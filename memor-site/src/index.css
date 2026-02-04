@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-parchment: #FBF9F4;
+    --color-parchment-dark: #0F172A;
+    --color-graphite: #151515;
+    --color-graphite-light: #F1F5F9;
+    --color-teal: #1F4E5F;
+    --color-teal-dark: #1F4E5F;
+    --color-teal-light: #1F4E5F;
+    --color-teal-accent: #1F4E5F;
+    --color-sepia: #B08968;
+    --color-sepia-dark: #B08968;
+    --color-sepia-light: #B08968;
+    --color-sepia-accent: #B08968;
+
+    --font-serif: "Lora", serif;
+    --font-display: "Playfair Display", serif;
+
+    --animate-twinkle: twinkle 5s ease-in-out infinite;
+    --animate-float: float 20s linear infinite;
+    --animate-pulse-slow: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+    @keyframes twinkle {
+
+        0%,
+        100% {
+            opacity: 0.3;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        100% {
+            transform: translateY(-100px) rotate(360deg);
+        }
+    }
+}
+
+@layer base {
+    :root {
+        background-color: var(--color-parchment);
+        color: var(--color-graphite);
+        font-family: var(--font-serif);
+        transition: background-color 0.5s ease, color 0.5s ease;
+        overflow-x: hidden;
+    }
+
+    .dark {
+        --color-parchment: var(--color-parchment-dark);
+        --color-graphite: var(--color-graphite-light);
+        --color-teal: var(--color-teal-accent);
+        --color-sepia: var(--color-sepia-accent);
+    }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.cosmic-bg {
+    background: linear-gradient(to bottom, #020617, #0f172a);
+    position: relative;
+}
+
+.nebula {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(31, 78, 95, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(127, 85, 57, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 1) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.stars-overlay {
+    background-image:
+        radial-gradient(1px 1px at 25% 10%, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 50% 40%, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 10% 80%, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 90% 20%, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 75% 60%, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 40% 90%, #fff, rgba(0, 0, 0, 0));
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    opacity: 0.3;
+}

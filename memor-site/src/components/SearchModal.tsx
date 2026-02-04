@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { MOCK_ARTICLES, MOCK_PROJECTS, MOCK_VIDEOS, MOCK_BOOKS, TRANSLATIONS } from '../constants';
+import { TRANSLATIONS } from '../constants';
+import { useStore } from '../store/useStore';
 import { DisplayItem, Language } from '../types';
 import { Ornament } from './Ornament';
 
@@ -12,22 +13,33 @@ interface SearchModalProps {
 }
 
 const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onItemClick, language }) => {
+  const { articles, projects, videos, books } = useStore();
   const [query, setQuery] = useState('');
   const t = TRANSLATIONS[language];
 
   // Barcha ma'lumotlarni qidiruv uchun bitta massivga yig'ish
-  const allData: DisplayItem[] = useMemo(() => [
-    ...MOCK_ARTICLES.map(a => ({ id: a.id, title: a.title, subtitle: a.author, description: a.excerpt, imageUrl: a.imageUrl, type: 'Maqola' })),
-    ...MOCK_PROJECTS.map(p => ({ id: p.id, title: p.title, subtitle: p.location, description: p.description, imageUrl: p.imageUrl, type: 'Loyiha' })),
-    ...MOCK_VIDEOS.map(v => ({ id: v.id, title: v.title, subtitle: v.author, imageUrl: v.thumbnailUrl, type: 'Video' })),
-    ...MOCK_BOOKS.map(b => ({ id: b.id, title: b.title, subtitle: b.author, imageUrl: b.coverUrl, type: 'Kitob' })),
-  ], []);
+  const allData: DisplayItem[] = useMemo(() => {
+    const categories = {
+      uz: { article: 'Maqola', project: 'Loyiha', video: 'Video', book: 'Kitob' },
+      en: { article: 'Article', project: 'Project', video: 'Video', book: 'Book' },
+      ru: { article: 'Статья', project: 'Проект', video: 'Видео', book: 'Книга' },
+      tr: { article: 'Makale', project: 'Proje', video: 'Video', book: 'Kitap' }
+    };
+    const c = categories[language] || categories.uz;
+
+    return [
+      ...articles.map(a => ({ id: a.id, title: a.title, subtitle: a.author, description: a.excerpt, imageUrl: a.imageUrl, type: c.article })),
+      ...projects.map(p => ({ id: p.id, title: p.title, subtitle: p.location, description: p.description, imageUrl: p.imageUrl, type: c.project })),
+      ...videos.map(v => ({ id: v.id, title: v.title, subtitle: v.author, imageUrl: v.thumbnailUrl, type: c.video })),
+      ...books.map(b => ({ id: b.id, title: b.title, subtitle: b.author, imageUrl: b.coverUrl, type: c.book })),
+    ];
+  }, [language, articles, projects, videos, books]);
 
   const results = useMemo(() => {
     if (!query.trim()) return [];
     const q = query.toLowerCase();
-    return allData.filter(item => 
-      item.title.toLowerCase().includes(q) || 
+    return allData.filter(item =>
+      item.title.toLowerCase().includes(q) ||
       item.subtitle?.toLowerCase().includes(q) ||
       item.description?.toLowerCase().includes(q)
     ).slice(0, 8);
@@ -38,15 +50,15 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onItemClick,
   return (
     <div className="fixed inset-0 z-[60] flex items-start justify-center pt-[15vh] px-4 sm:px-6">
       <div className="absolute inset-0 bg-graphite/60 dark:bg-black/80 backdrop-blur-md" onClick={onClose} />
-      
+
       <div className="relative w-full max-w-2xl bg-parchment dark:bg-slate-900 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 rounded-lg border border-graphite/10 dark:border-white/10">
         <div className="p-6 border-b border-graphite/10 dark:border-white/10 flex items-center gap-4">
           <svg className="w-6 h-6 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
-          <input 
+          <input
             autoFocus
-            type="text" 
+            type="text"
             placeholder={t.search + '...'}
             className="w-full bg-transparent border-none focus:ring-0 text-xl font-display text-graphite dark:text-white placeholder-graphite/30 dark:placeholder-white/20"
             value={query}
@@ -83,11 +95,11 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onItemClick,
           ) : query ? (
             <div className="py-12 text-center">
               <Ornament type="flourish" className="mb-4 opacity-20" />
-              <p className="text-graphite/40 dark:text-white/20 font-serif italic">Natijalar topilmadi...</p>
+              <p className="text-graphite/40 dark:text-white/20 font-serif italic">{language === 'uz' ? 'Natijalar topilmadi...' : (language === 'ru' ? 'Результаты не найдены...' : (language === 'tr' ? 'Sonuç bulunamadı...' : 'No results found...'))}</p>
             </div>
           ) : (
             <div className="py-8 text-center">
-              <p className="text-graphite/30 dark:text-white/20 text-xs uppercase tracking-[0.3em] font-bold">{t.search} orqali tarixni o'rganing</p>
+              <p className="text-graphite/30 dark:text-white/20 text-xs uppercase tracking-[0.3em] font-bold">{t.clickForFull}</p>
             </div>
           )}
         </div>

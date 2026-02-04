@@ -2,16 +2,12 @@
 import { NavItem, PageRoute, Article, VideoResource, Book, Creator, EventItem, Project, CreationItem, PortfolioItem } from './types';
 
 export const HADITH_DATA = {
-  arabic: "وَعَنْ أَبِي الدَّرْدَاءِ رضي اللَّه عنهُ قَالَ سَمِعْتُ رَسُولَ اللَّهِ ﷺ يَقُولُ: «مَنْ سَلَكَ طَرِيقًا يَبْتَغِي فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ طَرِيقًا إِلَى الْجَنَّةِ وَإِنَّ الْمَلَائِكَةَ لَتَضَعُ أَجْنِحَتَهَا لِطَالِبِ الْعِلْمِ رِضًى بِمَا يَصْنَعُ ، وَإِنَّ الْعَالِمَ لَيَسْتَغْفِرُ لَهُ مَنْ فِي السَّمَاوَاتِ وَمَنْ فِي الْأَرْضِ حَتَّى الْحِيتَانُ فِي الْمَاءِ وَفَضْلُ الْعَالِمِ عَلَى الْعَابِدِ كَفَضْلِ الْقَمَرِ عَلَى سَائِرِ الْكَوَاكِبِ وَإِنَّ الْعُلَمَاءَ وَرَثَةُ الْأَنْبِيَاءِ وَإِنَّ الْأَنْبِيَاءَ لَمْ يُوَرِّثُوا دِينَارًا وَلَا دِرْهَمًا وَإِنَّمَا وَرَّثُوا الْعِلْمَ فَمَنْ أَخَذَهُ أَخَذَ بِحَظٍّ وَافِرٍ»",
-  uzbekShort: "“Kim ilm izlab yo‘lga tushsa, Alloh Taolo unga Jannat yo‘lini oson qiladi;”",
-  uzbekFull: "“Agar kimdir ilm olish istagi bilan yo'lga chiqsa, Alloh unga jannat yo'lini osonlashtiradi. Darhaqiqat, farishtalar ilm izlovchining qilyotgan ishidan mamnun bo'lib, qanotlarini yoyadilar. Osmon va yerdagilar, hatto suvdagi baliqlar ham Allohdan olim uchun mag'firat so'rashadi. Olimning ibodat qiluvchidan ustunligi oyning boshqa yulduzlardan ustunligiga o'xshaydi. Albatta, olimlar payg'ambarlarning merosxo'rlaridir. Payg'ambarlar oltin va kumushni meros qilib qoldirmaydilar; ular faqat ilmni qoldiradilar. Kimki bu merosni olsa, mo'l-ko'l baraka va omadga ega bo'ladi.”",
-  info: "Ushbu kengaytirilgan hadis bitta alohida hadis emas. U ilmning fazilati haqida kelgan bir necha sahih va hasan hadislar mazmunidan jamlangan.",
-  sources: [
-    { name: "Sahih Muslim (2699)", detail: "“Kim ilm izlab yo‘lga chiqsa, Alloh unga jannat yo‘lini oson qiladi.”" },
-    { name: "Sunan Abu Dovud (3641)", detail: "Ilm talabaga farishtalarning qanot yoyishi, olimlarning payg‘ambarlar vorisi ekani" },
-    { name: "Sunan at-Tirmiziy (2646, 2682)", detail: "Ilmning fazilati, mavjudotlarning istig‘fori" },
-    { name: "Ibn Moja (223)", detail: "Olim va obid fazilati" }
-  ]
+  arabic: "مَنْ سَلَكَ طَرِيقًا يَبْتَغِي فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ طَرِيقًا إِلَى الْجَنَّةِ",
+  uz: "“Kim ilm izlab yo‘lga chiqsa, Alloh unga jannat yo‘lini oson qiladi.”",
+  en: "“Whoever follows a path in pursuit of knowledge, Allah will make easy for him a path to Paradise.”",
+  ru: "“Кто вступил на путь поиска знаний, тому Аллах облегчит путь в Рай.”",
+  tr: "“Kim ilim öğrenmek için bir yola girerse, Allah ona cennet yolunu kolaylaştırır.”",
+  source: "Sahih Muslim (2699)"
 };
 
 export const TRANSLATIONS = {
@@ -20,96 +16,368 @@ export const TRANSLATIONS = {
     harakat: 'HARAKAT',
     ijod: 'IJOD',
     about: 'Biz Haqimizda',
-    news: 'Yangiliklar',
-    support: 'Homiylik',
+    news: 'Xabarlar',
+    support: 'Qo\'llab-Quvvatlash',
     contact: 'Aloqa',
     search: 'Qidiruv',
-    socials: 'Ijtimoiy Tarmoqlar',
     menu: 'Menyu',
-    settings: 'Sozalamalar',
+    settings: 'Sozlamalar',
     language: 'Til',
     theme: 'Mavzu',
-    themeDark: 'Tun',
-    themeLight: 'Kun',
-    readMore: "Batafsil ko'rish",
-    download: 'Yuklab Olish',
-    view: "Ko'rish",
-    upcoming: 'Yaqin Tadbir',
+    themeLight: 'Yorug\'',
+    themeDark: 'Tungi',
+    copyright: '© 2025 ME\'MOR. BARCHA HUQUQLAR HIMOAYALANGAN.',
+    pillarsTitle: 'ASOSIY USTUNLAR',
+    ilmTitle: 'ILM MASKANI',
+    ilmDesc: 'Arxitektura va san\'atga oid ilmiy maqolalar, videodarslar va nodir manbalar jamlangan xazina.',
+    ilmLink: 'KUTUBXONAGA KIRISH',
+    amaliyotTitle: 'AMALIYOT MAYDONI',
+    amaliyotDesc: 'Haqiqiy loyihalar, qurilish jarayonlari va ustoz-shogird an\'analarining zamonaviy ko\'rinishi.',
+    amaliyotLink: 'LOYIHALARNI KO\'RISH',
+    sanatTitle: 'RAQAMLI SAN\'AT',
+    sanatDesc: 'Milliy naqshlarning vektor ko\'rinishlari, 3D modellar va zamonaviy dizayn elementlari.',
+    sanatLink: 'GALEREYAGA O\'TISH',
+    aboutTitle: 'ME\'MOR PLATFORMASI HAQIDA',
+    aboutP1: 'Bizning maqsadimiz — unutilayotgan me\'morchilik an\'analarini zamonaviy raqamli texnologiyalar orqali qayta tiklash va kelajak avlodga bezavol yetkazishdir.',
+    aboutP2: 'Bu yerda siz nafaqat nazariy bilim, balki usta-shogird an\'analari asosidagi amaliy tajribalarni ham topasiz.',
+    teamTitle: 'JAMOA',
+    teamDesc: 'Platforma ustida ishlayotgan mutaxassislar guruhi.',
+    supportTitle: 'LOYIHANI QO\'LLAB-QUVVATLASH',
+    supportDesc: '"Me\'mor" mustaqil platforma bo\'lib, siz kabi san\'at ixlosmandlari ko\'magida yashaydi.',
+    supportFooter: 'Sizning yordamingiz — tariximizni saqlab qolishga qo\'shilgan hissa.',
+    localCards: 'Mahalliy kartalar (Uzcard, Humo) orqali tezkor va qulay yordam.',
+    intlCards: 'Xalqaro kartalar (Visa, MasterCard) orqali yordam berish.',
+    sponsorButton: 'Homiylik Qilish',
+    coffeeButton: 'Coffee Olib Berish',
+    back: 'Ortga',
+    notFound: 'Ma\'lumot topilmadi',
+    ourTeam: 'Bizning Jamoa',
+    // Action
+    actionTitle: 'Harakat',
+    actionDesc: 'Nazariyadan amaliyotga. Bizning loyihalarimiz va kelajak rejalari.',
+    events: 'Tadbirlar',
+    projects: 'Loyihalar',
+    participate: 'Ishtirok etish',
+    // News
+    latestNews: 'So\'nggi Xabarlar',
+    archive: 'Arxiv',
+    readMoreNews: 'Batafsil o\'qish',
+    // Creations
+    creationTitle: 'Ijod Namunalari',
+    creationDesc: 'Vektor naqshlar, konseptual dizaynlar va raqamli san\'at.',
+    view: 'Ko\'rish',
+    quote: '"Go\'zallik tafsilotlarda yashirin"',
+    // Hadith
+    hadithTitle: 'Ilm Fazilati',
+    sources: 'Manbalar',
+    hadithClose: 'Yopish',
+    clickForFull: 'To\'liq matn uchun bosing',
+    prophetName: 'Rasululloh ﷺ',
+    readMore: 'Batafsil',
+    // Detail Labels
+    description: 'Tavsif',
+    technicalDrawing: 'Texnik Chizma',
+    materialTexture: 'Materiallar Fakturasi',
+    specifications: 'Ma\'lumotlar',
+    start: 'Boshlanish',
+    type: 'Tur',
+    scale: 'Hajm',
+    team: 'Jamoa',
+    experts: 'Ekspert',
+    downloadFiles: 'Fayllarni yuklash',
+    register: 'Ro\'yxatdan O\'tish',
+    student: 'Shogird',
+    experience: 'Tajriba',
+    share: 'ULASHISH',
+    author: 'Muallif',
+    duration: 'Davomiyligi',
+    // Home.tsx uchun yo'qolgan kalitlar
+    harakatDesc: 'Haqiqiy loyihalar, qurilish jarayonlari va ustoz-shogird an\'analarining zamonaviy ko\'rinishi.',
+    ijodDesc: 'Milliy naqshlarning vektor ko\'rinishlari, 3D modellar va zamonaviy dizayn elementlari.',
+    knowledgeTreasury: 'Bilimlar Xazinasi',
+    allArticles: 'Barcha Maqolalar',
     project: 'Loyiha',
-    footerLinks: 'Tezkor Havolalar',
-    copyright: "© 2025 Me'mor Loyihasi. Barcha huquqlar himoyalangan."
+    artGallery: 'San\'at Galereyasi',
+    viewAll: 'Barchasini Ko\'rish',
+    beautifyWorld: '"Dunyoni go\'zallashtirish uchun ..."',
+    projectYear: 'ME\'MOR • 2025',
+    teamMeeting: 'Jamoa Yig\'ilishi'
   },
   en: {
     ilm: 'KNOWLEDGE',
-    harakat: 'ACTION',
+    harakat: 'MOVEMENT',
     ijod: 'CREATION',
     about: 'About Us',
     news: 'News',
     support: 'Support',
     contact: 'Contact',
     search: 'Search',
-    socials: 'Social Media',
     menu: 'Menu',
     settings: 'Settings',
     language: 'Language',
     theme: 'Theme',
-    themeDark: 'Dark',
     themeLight: 'Light',
-    readMore: 'Read More',
-    download: 'Download',
+    themeDark: 'Dark',
+    copyright: '© 2025 ME\'MOR. ALL RIGHTS RESERVED.',
+    pillarsTitle: 'CORE PILLARS',
+    ilmTitle: 'HOUSE OF KNOWLEDGE',
+    ilmDesc: 'A treasury of scientific articles, video lessons and rare sources on architecture and art.',
+    ilmLink: 'ENTER LIBRARY',
+    amaliyotTitle: 'FIELD OF PRACTICE',
+    amaliyotDesc: 'Real projects, construction processes and a modern take on master-apprentice traditions.',
+    amaliyotLink: 'VIEW PROJECTS',
+    sanatTitle: 'DIGITAL ART',
+    sanatDesc: 'Vector images of national patterns, 3D models and modern design elements.',
+    sanatLink: 'GO TO GALLERY',
+    aboutTitle: 'ABOUT ME\'MOR PLATFORM',
+    aboutP1: 'Our goal is to revive forgotten architectural traditions through modern digital technologies and pass them on to future generations.',
+    aboutP2: 'Here you will find not only theoretical knowledge, but also practical experience based on "master-apprentice" traditions.',
+    teamTitle: 'TEAM',
+    teamDesc: 'A group of specialists working on the platform.',
+    supportTitle: 'PROJECT SUPPORT',
+    supportDesc: '"Me\'mor" is an independent platform that lives with the help of art enthusiasts like you.',
+    supportFooter: 'Your help is a contribution to preserving our history.',
+    localCards: 'Fast and convenient support via local cards (Uzcard, Humo).',
+    intlCards: 'Support via international cards (Visa, MasterCard).',
+    sponsorButton: 'Become a Sponsor',
+    coffeeButton: 'Buy Me a Coffee',
+    back: 'Back',
+    notFound: 'Information not found',
+    ourTeam: 'Our Team',
+    // Action
+    actionTitle: 'Action',
+    actionDesc: 'From theory to practice. Our projects and future plans.',
+    events: 'Events',
+    projects: 'Projects',
+    participate: 'Participate',
+    // News
+    latestNews: 'Latest News',
+    archive: 'Archive',
+    readMoreNews: 'Read more',
+    // Creations
+    creationTitle: 'Creations',
+    creationDesc: 'Vector patterns, conceptual designs, and digital art.',
     view: 'View',
-    upcoming: 'Upcoming',
+    quote: '"Beauty is hidden in the details"',
+    // Hadith
+    hadithTitle: 'Virtue of Knowledge',
+    sources: 'Sources',
+    hadithClose: 'Close',
+    clickForFull: 'Click for full text',
+    prophetName: 'Prophet Muhammad ﷺ',
+    readMore: 'Read More',
+    // Detail Labels
+    description: 'Description',
+    technicalDrawing: 'Technical Drawing',
+    materialTexture: 'Material Texture',
+    specifications: 'Specifications',
+    start: 'Start',
+    type: 'Type',
+    scale: 'Scale',
+    team: 'Team',
+    experts: 'Experts',
+    downloadFiles: 'Download Files',
+    register: 'Register',
+    student: 'Student',
+    experience: 'Experience',
+    share: 'SHARE',
+    author: 'Author',
+    duration: 'Duration',
+    // Missing keys from Home.tsx
+    harakatDesc: 'Real projects, construction processes and a modern take on master-apprentice traditions.',
+    ijodDesc: 'Vector images of national patterns, 3D models and modern design elements.',
+    knowledgeTreasury: 'Treasury of Knowledge',
+    allArticles: 'All Articles',
     project: 'Project',
-    footerLinks: 'Quick Links',
-    copyright: "© 2025 Me'mor Project. All Rights Reserved."
+    artGallery: 'Art Gallery',
+    viewAll: 'View All',
+    beautifyWorld: '"Dunyoni go\'zallashtirish uchun ..."',
+    projectYear: 'ME\'MOR • 2025',
+    teamMeeting: 'Team Meeting'
   },
   ru: {
-    ilm: 'ЗНАНИЕ',
-    harakat: 'ДЕЙСТВИЕ',
-    ijod: 'ТВОРЧЕСТВО',
-    about: 'О Нас',
+    ilm: 'НАУКА',
+    harakat: 'ТЕЧЕНИЕ',
+    ijod: 'ТВОРЕНИЕ',
+    about: 'О нас',
     news: 'Новости',
     support: 'Поддержка',
     contact: 'Контакты',
     search: 'Поиск',
-    socials: 'Социальные сети',
     menu: 'Меню',
     settings: 'Настройки',
     language: 'Язык',
     theme: 'Тема',
-    themeDark: 'Темная',
     themeLight: 'Светлая',
-    readMore: 'Подробнее',
-    download: 'Скачать',
+    themeDark: 'Темная',
+    copyright: '© 2025 ME\'MOR. ВСЕ ПРАВА ЗАЩИЩЕНЫ.',
+    pillarsTitle: 'ОСНОВНЫЕ СТОЛПЫ',
+    ilmTitle: 'ОБИТЕЛЬ ЗНАНИЙ',
+    ilmDesc: 'Сокровищница научных статей, видеоуроков и редких источников по архитектуре и искусству.',
+    ilmLink: 'ВОЙТИ В БИБЛИОТЕКУ',
+    amaliyotTitle: 'ПОЛЕ ПРАКТИКИ',
+    amaliyotDesc: 'Реальные проекты, процессы строительства и современный взгляд на традиции наставничества.',
+    amaliyotLink: 'СМОТРЕТЬ ПРОЕКТЫ',
+    sanatTitle: 'ЦИФРОВОЕ ИСКУССТВО',
+    sanatDesc: 'Векторные изображения национальных узоров, 3D-модели и современные элементы дизайна.',
+    sanatLink: 'ПЕРЕЙТИ В ГАЛЕРЕЮ',
+    aboutTitle: 'О ПЛАТФОРМЕ ME\'MOR',
+    aboutP1: 'Наша цель — возродить забытые архитектурные традиции с помощью современных цифровых технологий и передать их будущим поколениям.',
+    aboutP2: 'Здесь вы найдете не только теоретические знания, но и практический опыт, основанный на традициях «мастер-ученик».',
+    teamTitle: 'КОМАНДА',
+    teamDesc: 'Группа специалистов, работающих над платформой.',
+    supportTitle: 'ПОДДЕРЖКА ПРОЕКТА',
+    supportDesc: '«Me\'mor» — независимая платформа, которая живет благодаря поддержке таких любителей искусства, как вы.',
+    supportFooter: 'Ваша помощь — вклад в сохранение нашей истории.',
+    localCards: 'Быстрая и удобная помощь через местные карты (Uzcard, Humo).',
+    intlCards: 'Помощь через международные карты (Visa, MasterCard).',
+    sponsorButton: 'Стать спонсором',
+    coffeeButton: 'Угостить кофе',
+    back: 'Назад',
+    notFound: 'Информация не найдена',
+    ourTeam: 'Наша Команда',
+    // Action
+    actionTitle: 'Действие',
+    actionDesc: 'От теории к практике. Наши проекты и планы на будущее.',
+    events: 'Мероприятия',
+    projects: 'Проекты',
+    participate: 'Участвовать',
+    // News
+    latestNews: 'Последние новости',
+    archive: 'Архив',
+    readMoreNews: 'Читать далее',
+    // Creations
+    creationTitle: 'Творческие работы',
+    creationDesc: 'Векторные узоры, концептуальные дизайны и цифровое искусство.',
     view: 'Смотреть',
-    upcoming: 'Событие',
+    quote: '"Красота скрыта в деталях"',
+    // Hadith
+    hadithTitle: 'Достоинство знаний',
+    sources: 'Источники',
+    hadithClose: 'Закрыть',
+    clickForFull: 'Нажмите для полного текста',
+    prophetName: 'Пророк Мухаммад ﷺ',
+    readMore: 'Подробнее',
+    // Detail Labels
+    description: 'Описание',
+    technicalDrawing: 'Технический чертеж',
+    materialTexture: 'Фактура материалов',
+    specifications: 'Характеристики',
+    start: 'Начало',
+    type: 'Тип',
+    scale: 'Масштаб',
+    team: 'Команда',
+    experts: 'Эксперт',
+    downloadFiles: 'Скачать файлы',
+    register: 'Регистрация',
+    student: 'Ученик',
+    experience: 'Опыт',
+    share: 'ПОДЕЛИТЬСЯ',
+    author: 'Автор',
+    duration: 'Продолжительность',
+    // Missing keys from Home.tsx
+    harakatDesc: 'Реальные проекты, процессы строительства и современный взгляд на традиции наставничества.',
+    ijodDesc: 'Векторные изображения национальных узоров, 3D-модели и современные элементы дизайна.',
+    knowledgeTreasury: 'Сокровищница Знаний',
+    allArticles: 'Все Статьи',
     project: 'Проект',
-    footerLinks: 'Ссылки',
-    copyright: "© 2025 Проект Me'mor. Все права защищены."
+    artGallery: 'Художественная Галерея',
+    viewAll: 'Смотреть Все',
+    beautifyWorld: '"Dunyoni go\'zallashtirish uchun ..."',
+    projectYear: 'ME\'MOR • 2025',
+    teamMeeting: 'Встреча Команды'
   },
   tr: {
     ilm: 'İLİM',
     harakat: 'HAREKET',
     ijod: 'İCAD',
-    about: 'Hakkımızda',
+    about: 'Biz Haqimizda',
     news: 'Haberler',
     support: 'Destek',
     contact: 'İletişim',
-    search: 'Ara',
-    socials: 'Sosyal Medya',
+    search: 'Arama',
     menu: 'Menü',
     settings: 'Ayarlar',
     language: 'Dil',
     theme: 'Tema',
-    themeDark: 'Koyu',
-    themeLight: 'Açık',
-    readMore: 'Daha Fazla',
-    download: 'İndir',
+    themeLight: 'Aydınlık',
+    themeDark: 'Karanlık',
+    copyright: '© 2025 ME\'MOR. TÜM HAKLARI SAKLIDIR.',
+    pillarsTitle: 'TEMEL SÜTUNLAR',
+    ilmTitle: 'İLİM KÖŞKÜ',
+    ilmDesc: 'Mimarlık ve sanata dair bilimsel makaleler, video dersler ve nadir kaynakların toplandığı hazine.',
+    ilmLink: 'KÜTÜPHANEYE GİRİŞ',
+    amaliyotTitle: 'UYGULAMA ALANI',
+    amaliyotDesc: 'Gerçek projeler, inşaat süreçleri ve usta-çırak geleneklerinin modern görünümü.',
+    amaliyotLink: 'PROJELERİ GÖR',
+    sanatTitle: 'DİJİTAL SANAT',
+    sanatDesc: 'Milli motiflerin vektör çizimleri, 3D modeller ve modern tasarım öğeleri.',
+    sanatLink: 'GALERİYE GİT',
+    aboutTitle: 'ME\'MOR PLATFORMU HAKKINDA',
+    aboutP1: 'Amacımız, unutulmakta olan mimari gelenekleri modern dijital teknolojiler aracılığıyla yeniden canlandırmak ve gelecek nesillere aktarmaktır.',
+    aboutP2: 'Burada sadece teorik bilgi değil, usta-çırak geleneklerine dayalı pratik deneyimler de bulacaksınız.',
+    teamTitle: 'EKİBİMİZ',
+    teamDesc: 'Platform üzerinde çalışan uzman kadrosu.',
+    supportTitle: 'PROJEYİ DESTEKLE',
+    supportDesc: '"Me\'mor", sizin gibi sanatseverlerin desteğiyle yaşayan bağımsız bir platformdur.',
+    supportFooter: 'Desteğiniz, tarihimizi korumaya yönelik bir katkıdır.',
+    localCards: 'Yerel kartlar (Uzcard, Humo) aracılığıyla hızlı ve kolay destek.',
+    intlCards: 'Uluslararası kartlar (Visa, MasterCard) aracılığıyla destek.',
+    sponsorButton: 'Sponsor Ol',
+    coffeeButton: 'Kahve Ismarla',
+    back: 'Geri',
+    notFound: 'Bilgi bulunamadı',
+    ourTeam: 'Ekibimiz',
+    // Action
+    actionTitle: 'Hareket',
+    actionDesc: 'Teoriden pratiğe. Projelerimiz ve gelecek planlarımız.',
+    events: 'Etkinlikler',
+    projects: 'Projeler',
+    participate: 'Katıl',
+    // News
+    latestNews: 'Son Haberler',
+    archive: 'Arşiv',
+    readMoreNews: 'Devamını oku',
+    // Creations
+    creationTitle: 'Sanat Eserleri',
+    creationDesc: 'Vektör desenler, kavramsal tasarımlar và dijital sanat.',
     view: 'Görüntüle',
-    upcoming: 'Yaklaşan',
+    quote: '"Güzellik detaylarda gizlidir"',
+    // Hadith
+    hadithTitle: 'İlim Fazileti',
+    sources: 'Kaynaklar',
+    hadithClose: 'Kapat',
+    clickForFull: 'Tam metin için tıklayın',
+    prophetName: 'Peygamber ﷺ',
+    readMore: 'Daha Fazla',
+    // Detail Labels
+    description: 'Açıklama',
+    technicalDrawing: 'Teknik Çizim',
+    materialTexture: 'Malzeme Dokusu',
+    specifications: 'Özellikler',
+    start: 'Başlangıç',
+    type: 'Tür',
+    scale: 'Hacim',
+    team: 'Ekip',
+    experts: 'Uzman',
+    downloadFiles: 'Dosyaları indir',
+    register: 'Kayıt Ol',
+    student: 'Öğrenci',
+    experience: 'Deneyim',
+    share: 'PAYLAŞ',
+    author: 'Yazar',
+    duration: 'Süre',
+    // Missing keys from Home.tsx
+    harakatDesc: 'Gerçek projeler, inşaat süreçleri ve usta-çırak geleneklerinin modern görünümü.',
+    ijodDesc: 'Milli motiflerin vektör çizimleri, 3D modeller ve modern tasarım öğeleri.',
+    knowledgeTreasury: 'Bilgi Hazinesi',
+    allArticles: 'Tüm Makaleler',
     project: 'Proje',
-    footerLinks: 'Hızlı Bağlantılar',
-    copyright: "© 2025 Me'mor Projesi. Tüm hakları saklıdır."
+    artGallery: 'Sanat Galerisi',
+    viewAll: 'Hepsini Gör',
+    beautifyWorld: '"Dunyoni go\'zallashtirish uchun ..."',
+    projectYear: 'ME\'MOR • 2025',
+    teamMeeting: 'Ekip Toplantısı'
   }
 };
 
@@ -117,40 +385,6 @@ export const NAV_ITEMS: NavItem[] = [
   { id: 'ilm', roman: 'I', label: 'ILM', subLabel: '(KNOWLEDGE)', route: PageRoute.KNOWLEDGE },
   { id: 'harakat', roman: 'II', label: 'HARAKAT', subLabel: '(ACTION)', route: PageRoute.ACTION },
   { id: 'ijod', roman: 'III', label: 'IJOD', subLabel: '(CREATION)', route: PageRoute.CREATION },
-];
-
-export const MOCK_ARTICLES: Article[] = [
-  
- 
-];
-
-export const MOCK_NEWS_DATA: Article[] = [
-
- 
-];
-
-export const MOCK_VIDEOS: VideoResource[] = [
-  
-];
-
-export const MOCK_PROJECTS: Project[] = [
-  
-];
-
-export const MOCK_CREATIONS: CreationItem[] = [
- 
-];
-
-export const MOCK_BOOKS: Book[] = [
- 
-];
-
-export const MOCK_CREATORS: Creator[] = [
-  
-];
-
-export const MOCK_EVENTS: EventItem[] = [
- 
 ];
 
 export const TEAM_MEMBERS: any[] = [
@@ -161,15 +395,3 @@ export const TEAM_MEMBERS: any[] = [
   { name: 'Jasmina', role: 'Creativ Partner', image: 'https://memor.uz/people/jasmina.png' },
   { name: 'Aminaxon', role: 'Kontent Menejeri', image: 'https://memor.uz/people/aminaxon.png' },
 ];
-
-export const PORTFOLIO_ITEMS: PortfolioItem[] = [];
-
-// Data Fetchers
-export const findArticle = (id: string) => MOCK_ARTICLES.find(a => a.id === id);
-export const findNews = (id: string) => MOCK_NEWS_DATA.find(n => n.id === id);
-export const findProject = (id: string) => MOCK_PROJECTS.find(p => p.id === id);
-export const findVideo = (id: string) => MOCK_VIDEOS.find(v => v.id === id);
-export const findCreation = (id: string) => MOCK_CREATIONS.find(c => c.id === id);
-export const findBook = (id: string) => MOCK_BOOKS.find(b => b.id === id);
-export const findCreator = (id: string) => MOCK_CREATORS.find(u => u.id === id);
-export const findEvent = (id: string) => MOCK_EVENTS.find(e => e.id === id);

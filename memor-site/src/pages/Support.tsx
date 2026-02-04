@@ -1,14 +1,17 @@
-
 import React from 'react';
 import { Ornament } from '../components/Ornament';
+import { TRANSLATIONS } from '../constants';
+import { Language } from '../types';
 
-const Support: React.FC = () => {
+const Support: React.FC<{ language: Language }> = ({ language }) => {
+  const t = TRANSLATIONS[language];
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 text-center">
       <Ornament type="flourish" className="mb-6 opacity-60" />
-      <h2 className="font-display text-4xl mb-6 text-graphite dark:text-white">Loyihani Qo'llab-Quvvatlash</h2>
+      <h2 className="font-display text-4xl mb-6 text-graphite dark:text-white">{t.supportTitle}</h2>
       <p className="font-serif text-xl italic text-graphite/70 dark:text-gray-300 mb-16 max-w-2xl mx-auto">
-        "Me'mor" mustaqil platforma bo'lib, siz kabi san'at ixlosmandlari ko'magida yashaydi.
+        {t.supportDesc}
       </p>
 
       {/* Donation Platforms */}
@@ -39,12 +42,12 @@ const Support: React.FC = () => {
             <div>
               <h3 className="font-bold text-2xl text-graphite dark:text-white mb-2 font-sans tracking-tight">Tirikchilik</h3>
               <p className="text-graphite/60 dark:text-gray-400 text-sm mb-6 font-medium leading-relaxed">
-                Mahalliy kartalar (Uzcard, Humo) orqali tezkor va qulay yordam.
+                {t.localCards}
               </p>
             </div>
 
             <div className="w-full py-4 rounded-xl bg-[#3396FF] text-white font-bold text-sm uppercase tracking-wider group-hover:bg-[#2879D0] transition-colors shadow-md hover:shadow-lg flex items-center justify-center gap-2">
-              <span>Homiylik Qilish</span>
+              <span>{t.sponsorButton}</span>
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
             </div>
           </div>
@@ -75,12 +78,12 @@ const Support: React.FC = () => {
             <div>
               <h3 className="font-bold text-2xl text-graphite dark:text-white mb-2 font-sans tracking-tight">Buy Me a Coffee</h3>
               <p className="text-graphite/60 dark:text-gray-400 text-sm mb-6 font-medium leading-relaxed">
-                Xalqaro kartalar (Visa, MasterCard) orqali yordam berish.
+                {t.intlCards}
               </p>
             </div>
 
             <div className="w-full py-4 rounded-xl bg-[#FFDD00] text-black font-bold text-sm uppercase tracking-wider group-hover:bg-[#FFEA55] transition-colors shadow-md hover:shadow-lg flex items-center justify-center gap-2">
-              <span>Coffee Olib Berish</span>
+              <span>{t.coffeeButton}</span>
               <span className="text-xl">☕</span>
             </div>
           </div>
@@ -90,7 +93,7 @@ const Support: React.FC = () => {
 
       <div className="border-t border-graphite/10 dark:border-white/10 pt-8">
         <p className="text-xs font-mono text-graphite/40 dark:text-gray-500">
-          Sizning yordamingiz — tariximizni saqlab qolishga qo'shilgan hissa.
+          {t.supportFooter}
         </p>
       </div>
     </div>

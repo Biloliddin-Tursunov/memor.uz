@@ -1,16 +1,27 @@
 
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { PORTFOLIO_ITEMS } from '../constants';
-import { PortfolioItem } from '../types';
+import { PortfolioItem, Language } from '../types';
 
 const Portfolio: React.FC = () => {
+  const { lang } = useParams<{ lang: Language }>();
+  const currentLang = (lang && ['uz', 'en', 'ru', 'tr'].includes(lang)) ? lang : 'uz';
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       <div className="text-center mb-16">
-        <h2 className="font-display text-5xl mb-4 text-graphite">Usta Alisherning Ishlari</h2>
+        <h2 className="font-display text-5xl mb-4 text-graphite dark:text-white">
+          {currentLang === 'uz' ? 'Usta Alisherning Ishlari' :
+            currentLang === 'ru' ? 'Работы Мастера Алишера' :
+              currentLang === 'tr' ? 'Usta Alişer\'in İşleri' :
+                'Works of Master Alisher'}
+        </h2>
         <p className="font-serif italic text-graphite/60 dark:text-gray-400 max-w-2xl mx-auto">
-          Qurilish maydonidan olingan eskizlar va fotosuratlar jamlanmasi.
-          Ramkasiz, samimiy va haqiqiy.
+          {currentLang === 'uz' ? "Qurilish maydonidan olingan eskizlar va fotosuratlar jamlanmasi. Ramkasiz, samimiy va haqiqiy." :
+            currentLang === 'ru' ? "Коллекция эскизов и фотографий со строительной площадки. Без рамок, искренне и правдиво." :
+              currentLang === 'tr' ? "Şantiyeden alınan eskiz ve fotoğraf koleksiyonu. Çerçevesiz, samimi ve gerçek." :
+                "A collection of sketches and photographs from the construction site. Frameless, sincere, and real."}
         </p>
       </div>
 
