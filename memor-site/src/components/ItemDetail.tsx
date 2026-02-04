@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { DisplayItem, Language } from '../types';
 import { Ornament } from './Ornament';
 import { getLocalizedContent } from '../lib/content';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface ItemDetailProps {
     item: DisplayItem;
@@ -21,11 +22,15 @@ const ArticleView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
             <button onClick={onBack} className="mb-8 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-teal hover:text-sepia transition-colors">
                 &larr; Ortga
             </button>
+
             <div className="text-center mb-8">
                 <span className="inline-block px-3 py-1 mb-4 border border-teal/30 text-teal text-[10px] md:text-xs font-bold uppercase tracking-widest bg-teal/5">
                     {item.type || 'Maqola'}
                 </span>
                 <h1 className="font-display text-3xl md:text-5xl text-graphite mb-4 leading-tight">{title}</h1>
+                <div className="flex justify-center mb-6">
+                    <LanguageSwitcher currentLang={currentLang} />
+                </div>
                 <div className="flex justify-center items-center gap-4 text-xs font-mono text-graphite/50">
                     {item.subtitle && <span>Muallif: {item.subtitle}</span>}
                     {item.date && <span>• {item.date}</span>}
@@ -68,6 +73,7 @@ const VideoView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                 &larr; Videolarga qaytish
             </button>
 
+
             {/* Video Player Placeholder */}
             <div className="relative w-full aspect-video bg-black shadow-2xl rounded-lg overflow-hidden border border-graphite/20 dark:border-white/10 mb-8 group">
                 <img src={item.imageUrl} alt={title} className="w-full h-full object-cover opacity-60" />
@@ -78,6 +84,9 @@ const VideoView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent">
                     <h1 className="text-white font-display text-2xl md:text-4xl mb-2">{title}</h1>
+                    <div className="mb-4">
+                        <LanguageSwitcher currentLang={currentLang} className="bg-black/20 backdrop-blur-sm p-1 rounded-md inline-block" />
+                    </div>
                     <p className="text-white/70 font-mono text-sm">{item.subtitle} • {description?.slice(0, 50)}...</p>
                 </div>
             </div>
@@ -90,7 +99,6 @@ const VideoView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                         Har bir detalga alohida e'tibor qaratilgan.
                     </p>
                     <div className="flex gap-4">
-                        <button className="px-6 py-2 bg-teal text-white font-bold uppercase text-xs tracking-widest hover:bg-teal-dark transition-colors">Ulashish</button>
                         <button className="px-6 py-2 border border-graphite/20 dark:border-white/20 font-bold uppercase text-xs tracking-widest hover:bg-graphite/5 dark:hover:bg-white/5 transition-colors">Saqlash</button>
                     </div>
                 </div>
@@ -121,6 +129,7 @@ const BookView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                 &larr; Kutubxonaga qaytish
             </button>
 
+
             <div className="flex flex-col md:flex-row gap-12 items-start">
                 {/* Book Details */}
                 <div className="w-full md:w-1/3 flex justify-center sticky top-24">
@@ -133,6 +142,9 @@ const BookView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                 <div className="w-full md:w-2/3">
                     <span className="text-sepia font-bold uppercase tracking-widest text-xs mb-2 block">Nodir Kitoblar To'plami</span>
                     <h1 className="font-display text-4xl md:text-6xl text-graphite dark:text-white mb-4">{title}</h1>
+                    <div className="mb-6">
+                        <LanguageSwitcher currentLang={currentLang} />
+                    </div>
                     <p className="font-serif italic text-xl text-graphite/60 dark:text-gray-400 mb-8">{item.subtitle} (Nashr: {item.date})</p>
 
                     <div className="prose prose-lg dark:prose-invert mb-8">
@@ -176,6 +188,7 @@ const CreatorView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                 &uarr; Ustalar Ro'yxatiga Qaytish
             </button>
 
+
             <div className="text-center relative mb-16">
                 <div className="w-32 h-32 md:w-48 md:h-48 mx-auto rounded-full overflow-hidden border-4 border-parchment shadow-xl relative z-10">
                     <img src={item.imageUrl} alt={title} className="w-full h-full object-cover" />
@@ -183,6 +196,9 @@ const CreatorView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                 <div className="absolute top-1/2 left-0 w-full h-px bg-graphite/10 dark:bg-white/10 -z-0"></div>
 
                 <h1 className="font-display text-4xl md:text-5xl mt-6 mb-2 text-graphite dark:text-white">{title}</h1>
+                <div className="flex justify-center mb-4">
+                    <LanguageSwitcher currentLang={currentLang} />
+                </div>
                 <span className="inline-block px-4 py-1 bg-sepia text-white text-xs font-bold uppercase tracking-widest rounded-full">
                     {item.subtitle}
                 </span>
@@ -235,6 +251,7 @@ const EventView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                 &larr; Tadbirlar
             </button>
 
+
             <div className="bg-parchment dark:bg-[#1a1a1a] border-2 border-dashed border-sepia p-8 md:p-12 relative shadow-2xl">
                 {/* Ticket Cutouts */}
                 <div className="absolute -left-3 top-1/2 w-6 h-6 bg-parchment dark:bg-[#1E1E1E] rounded-full transform -translate-y-1/2"></div>
@@ -247,6 +264,9 @@ const EventView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
 
                 <div className="border-y border-graphite/10 dark:border-white/10 py-8 text-center space-y-4">
                     <h1 className="font-display text-3xl md:text-5xl text-graphite dark:text-white leading-tight uppercase">{title}</h1>
+                    <div className="flex justify-center mb-4">
+                        <LanguageSwitcher currentLang={currentLang} />
+                    </div>
                     <div className="flex justify-center items-center gap-2 text-teal font-mono uppercase tracking-widest text-xs">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                         {item.subtitle?.split('|')[1] || 'Lokatsiya aniqlanmoqda'}
@@ -289,11 +309,16 @@ const ProjectView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                     &larr; Ortga
                 </button>
 
+
+
                 <div className="absolute bottom-0 left-0 p-8 md:p-16 w-full md:w-2/3">
                     <span className="bg-sepia text-white px-3 py-1 text-xs font-bold uppercase tracking-widest mb-4 inline-block">
                         {item.type} {item.date ? `• ${item.date}` : ''}
                     </span>
                     <h1 className="font-display text-5xl md:text-7xl text-white mb-6 leading-none">{title}</h1>
+                    <div className="mb-6">
+                        <LanguageSwitcher currentLang={currentLang} className="bg-black/20 backdrop-blur-sm p-1 rounded-md inline-block" />
+                    </div>
                     <p className="font-serif text-xl text-white/80 leading-relaxed border-l-2 border-white/30 pl-6">
                         {description}
                     </p>

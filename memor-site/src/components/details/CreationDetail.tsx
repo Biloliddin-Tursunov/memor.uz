@@ -3,7 +3,9 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { TRANSLATIONS } from '../../constants';
 import { useStore } from '../../store/useStore';
+import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
+import { getLocalizedContent } from '../../lib/content';
 
 export const CreationDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
@@ -21,11 +23,13 @@ export const CreationDetail: React.FC<{ language: Language }> = ({ language }) =
   if (isLoading && !creation) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
   if (!creation) return <div className="p-20 text-center">{t.notFound}</div>;
 
+  const { title, description } = getLocalizedContent(creation, language);
+
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 animate-in fade-in zoom-in duration-700">
       <div className="flex flex-col lg:flex-row gap-16 items-start">
         <div className="w-full lg:w-3/5 bg-white dark:bg-white/5 p-4 border border-graphite/10 shadow-sm">
-          <img src={creation.imageUrl} alt={creation.title} className="w-full h-auto" />
+          <img src={creation.imageUrl} alt={title} className="w-full h-auto" />
         </div>
 
         <div className="w-full lg:w-2/5 sticky top-32">
@@ -37,10 +41,13 @@ export const CreationDetail: React.FC<{ language: Language }> = ({ language }) =
           </button>
 
           <span className="text-teal text-[10px] font-bold uppercase tracking-[0.3em] mb-4 block">{creation.type}</span>
-          <h1 className="font-display text-4xl md:text-5xl dark:text-white mb-8 leading-tight">{creation.title}</h1>
+          <h1 className="font-display text-4xl md:text-5xl dark:text-white mb-8 leading-tight">{title}</h1>
+          <div className="flex justify-start mb-8">
+            <LanguageSwitcher currentLang={language} />
+          </div>
 
           <div className="prose prose-lg dark:prose-invert font-serif text-graphite/70 mb-10">
-            <p>{creation.description}</p>
+            <p>{description}</p>
           </div>
 
           <div className="space-y-6 border-t border-graphite/10 pt-8">

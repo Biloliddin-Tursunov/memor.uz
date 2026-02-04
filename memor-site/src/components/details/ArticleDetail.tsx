@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { TRANSLATIONS } from '../../constants';
 import { useStore } from '../../store/useStore';
 import { Ornament } from '../Ornament';
+import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
 import { getLocalizedContent } from '../../lib/content';
 
@@ -45,6 +46,9 @@ export const ArticleDetail: React.FC<{ language: Language }> = ({ language }) =>
         <h1 className="font-display text-4xl md:text-5xl text-graphite dark:text-white leading-tight mb-6">
           {title}
         </h1>
+        <div className="flex justify-start mb-6">
+          <LanguageSwitcher currentLang={language} />
+        </div>
         <div className="flex items-center gap-4 text-[10px] font-mono text-graphite/40 uppercase tracking-widest border-t border-graphite/5 pt-4">
           <span>{article.author}</span>
           <span className="w-1 h-1 bg-sepia rounded-full opacity-30"></span>

@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
+import { getLocalizedContent } from '../lib/content';
 import { TRANSLATIONS } from '../constants';
 import { useStore } from '../store/useStore';
 import { DisplayItem, Language } from '../types';
@@ -28,10 +29,22 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onItemClick,
     const c = categories[language] || categories.uz;
 
     return [
-      ...articles.map(a => ({ id: a.id, title: a.title, subtitle: a.author, description: a.excerpt, imageUrl: a.imageUrl, type: c.article })),
-      ...projects.map(p => ({ id: p.id, title: p.title, subtitle: p.location, description: p.description, imageUrl: p.imageUrl, type: c.project })),
-      ...videos.map(v => ({ id: v.id, title: v.title, subtitle: v.author, imageUrl: v.thumbnailUrl, type: c.video })),
-      ...books.map(b => ({ id: b.id, title: b.title, subtitle: b.author, imageUrl: b.coverUrl, type: c.book })),
+      ...articles.map(a => {
+        const { title, description } = getLocalizedContent(a, language);
+        return { id: a.id, title, subtitle: a.author, description, imageUrl: a.imageUrl, type: c.article };
+      }),
+      ...projects.map(p => {
+        const { title, description, location } = getLocalizedContent(p, language);
+        return { id: p.id, title, subtitle: location, description, imageUrl: p.imageUrl, type: c.project };
+      }),
+      ...videos.map(v => {
+        const { title } = getLocalizedContent(v, language);
+        return { id: v.id, title, subtitle: v.author, imageUrl: v.thumbnailUrl, type: c.video };
+      }),
+      ...books.map(b => {
+        const { title } = getLocalizedContent(b, language);
+        return { id: b.id, title, subtitle: b.author, imageUrl: b.coverUrl, type: c.book };
+      }),
     ];
   }, [language, articles, projects, videos, books]);
 
@@ -39,7 +52,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onItemClick,
     if (!query.trim()) return [];
     const q = query.toLowerCase();
     return allData.filter(item =>
-      item.title.toLowerCase().includes(q) ||
+      (item.title || '').toLowerCase().includes(q) ||
       item.subtitle?.toLowerCase().includes(q) ||
       item.description?.toLowerCase().includes(q)
     ).slice(0, 8);

@@ -156,7 +156,11 @@ const AppContent: React.FC = () => {
 
     // Agar tipi aniqlanmasa, default 'creation' ga o'tadi
     const routePrefix = routeMap[type] || 'creation';
-    navigate(`/${language}/${routePrefix}/${item.id}`);
+
+    // Foydalanuvchi talabi: /article/slug ko'rinishida bo'lishi kerak
+    const identifier = item.slug || item.id;
+
+    navigate(`/${language}/${routePrefix}/${identifier}`);
     setIsSearchOpen(false); // Qidiruv oynasini yopish
   };
 

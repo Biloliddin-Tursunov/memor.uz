@@ -4,7 +4,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { TRANSLATIONS } from '../../constants';
 import { useStore } from '../../store/useStore';
 import { Ornament } from '../Ornament';
+import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
+import { getLocalizedContent } from '../../lib/content';
 
 export const EventDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
@@ -21,6 +23,8 @@ export const EventDetail: React.FC<{ language: Language }> = ({ language }) => {
 
   if (isLoading && !event) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
   if (!event) return <div className="p-20 text-center">{t.notFound}</div>;
+
+  const { title, description, location } = getLocalizedContent(event, language);
 
   return (
     <div className="w-full animate-in fade-in duration-700 bg-parchment dark:bg-[#020617]">
@@ -39,16 +43,19 @@ export const EventDetail: React.FC<{ language: Language }> = ({ language }) => {
           </div>
 
           <div className="border-y border-graphite/5 py-10 text-center">
-            <h1 className="font-display text-3xl md:text-5xl dark:text-white mb-6 uppercase tracking-tight">{event.title}</h1>
+            <h1 className="font-display text-3xl md:text-5xl dark:text-white mb-6 uppercase tracking-tight">{title}</h1>
+            <div className="flex justify-center mb-6">
+              <LanguageSwitcher currentLang={language} />
+            </div>
             <p className="font-mono text-xs text-teal uppercase tracking-widest flex items-center justify-center gap-2">
               <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" /></svg>
-              {event.location}
+              {location}
             </p>
           </div>
 
           <div className="py-10 text-center">
             <p className="font-serif text-lg text-graphite/70 dark:text-slate-300 leading-relaxed max-w-lg mx-auto italic">
-              {event.description}
+              {description}
             </p>
           </div>
 

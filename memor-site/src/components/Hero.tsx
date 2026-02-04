@@ -21,7 +21,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate, language, featuredItem }) => {
   const { title, description } = hasFeatured && featuredItem ? getLocalizedContent(featuredItem, language) : { title: '', description: '' };
 
   return (
-    <section className="relative w-full h-[95vh] flex items-center justify-center bg-[#01030a] overflow-hidden">
+    <section className="relative w-full min-h-screen flex items-center justify-center bg-[#01030a] overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 z-0">
         {hasFeatured && featuredItem?.imageUrl ? (
@@ -65,17 +65,17 @@ const Hero: React.FC<HeroProps> = ({ onNavigate, language, featuredItem }) => {
         ) : (
           // Fallback / Initial State (Logo)
           <>
-            <h1 className="font-display text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-b from-sepia to-sepia/50 mb-4 tracking-tight drop-shadow-3xl">
+            <h1 className="font-display text-5xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-b from-sepia to-sepia/50 mb-4 tracking-tight drop-shadow-3xl">
               ME'MOR
             </h1>
             <p className="font-mono text-xs md:text-sm text-teal uppercase tracking-[0.6em] mb-12 opacity-80">
               {language === 'uz' ? "O'tmish va Kelajak Garmoniyasi" : "Harmony of Past & Future"}
             </p>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-              <button onClick={() => onNavigate(PageRoute.KNOWLEDGE)} className="px-10 py-4 bg-teal text-white font-display uppercase tracking-widest text-xs hover:bg-teal-dark transition-all shadow-lg hover:shadow-teal/20 transform hover:-translate-y-1">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 w-full px-4">
+              <button onClick={() => onNavigate(PageRoute.KNOWLEDGE)} className="w-full md:w-auto px-8 py-3 md:px-10 md:py-4 bg-teal text-white font-display uppercase tracking-widest text-xs hover:bg-teal-dark transition-all shadow-lg hover:shadow-teal/20 transform hover:-translate-y-1">
                 {t.explore}
               </button>
-              <button onClick={() => onNavigate(PageRoute.ABOUT)} className="px-10 py-4 border border-white/10 text-white font-display uppercase tracking-widest text-xs hover:bg-white/5 transition-all">
+              <button onClick={() => onNavigate(PageRoute.ABOUT)} className="w-full md:w-auto px-8 py-3 md:px-10 md:py-4 border border-white/10 text-white font-display uppercase tracking-widest text-xs hover:bg-white/5 transition-all">
                 {t.aboutUs}
               </button>
             </div>

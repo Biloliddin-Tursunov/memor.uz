@@ -4,7 +4,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { TRANSLATIONS } from '../../constants';
 import { useStore } from '../../store/useStore';
 import { Ornament } from '../Ornament';
+import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
+import { getLocalizedContent } from '../../lib/content';
 
 export const ProjectDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
@@ -21,6 +23,8 @@ export const ProjectDetail: React.FC<{ language: Language }> = ({ language }) =>
   if (isLoading && !project) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
   if (!project) return <div className="p-20 text-center">{TRANSLATIONS[language].notFound}</div>;
 
+  const { title, description, location } = getLocalizedContent(project, language);
+
   return (
     <div className="w-full animate-in fade-in duration-700 bg-parchment dark:bg-[#020617]">
       {/* Back Button Container */}
@@ -36,18 +40,21 @@ export const ProjectDetail: React.FC<{ language: Language }> = ({ language }) =>
       {/* Compact Cover Section */}
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="relative h-[45vh] min-h-[300px] overflow-hidden rounded-sm shadow-2xl border border-graphite/5">
-          <img src={project.imageUrl} className="w-full h-full object-cover" alt={project.title} />
+          <img src={project.imageUrl} className="w-full h-full object-cover" alt={title} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
           <div className="absolute bottom-8 left-8 right-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="max-w-2xl">
               <div className="flex items-center gap-3 mb-3">
                 <span className="px-2 py-0.5 bg-teal text-white text-[9px] font-bold uppercase tracking-widest">{project.status}</span>
-                <span className="text-white/60 font-mono text-[10px] tracking-widest uppercase">{project.location}</span>
+                <span className="text-white/60 font-mono text-[10px] tracking-widest uppercase">{location}</span>
               </div>
               <h1 className="font-display text-3xl md:text-5xl text-white leading-none tracking-tight">
-                {project.title}
+                {title}
               </h1>
+              <div className="flex justify-start mt-4">
+                <LanguageSwitcher currentLang={language} />
+              </div>
             </div>
           </div>
         </div>
@@ -62,7 +69,7 @@ export const ProjectDetail: React.FC<{ language: Language }> = ({ language }) =>
 
           <div className="prose prose-lg dark:prose-invert font-serif text-graphite/80 dark:text-slate-300 max-w-none">
             <p className="leading-relaxed mb-8 text-xl italic text-sepia">
-              {project.description}
+              {description}
             </p>
             <p className="leading-relaxed mb-10">
               {language === 'uz' ? "Ushbu loyiha Me'mor jamoasining uzoq yillik izlanishlari mahsulidir. Biz har bir detalda tarixiy haqiqiylikni saqlab qolgan holda, zamonaviy hayot talablariga javob beradigan muhandislik yechimlarini qo'lladik. Bu nafaqat bino, balki madaniy merosning davomidir." :

@@ -3,7 +3,9 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { TRANSLATIONS } from '../../constants';
 import { useStore } from '../../store/useStore';
+import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
+import { getLocalizedContent } from '../../lib/content';
 
 export const VideoDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
@@ -20,6 +22,8 @@ export const VideoDetail: React.FC<{ language: Language }> = ({ language }) => {
 
   if (isLoading && !video) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
   if (!video) return <div className="p-20 text-center">{t.notFound}</div>;
+
+  const { title } = getLocalizedContent(video, language);
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-12 animate-in fade-in duration-700">
@@ -42,7 +46,10 @@ export const VideoDetail: React.FC<{ language: Language }> = ({ language }) => {
       <div className="flex flex-col md:flex-row gap-12 items-start">
         <div className="flex-grow">
           <span className="text-teal text-[10px] font-bold uppercase tracking-widest mb-3 block">{video.type}</span>
-          <h1 className="font-display text-3xl md:text-5xl dark:text-white mb-6 leading-tight">{video.title}</h1>
+          <h1 className="font-display text-3xl md:text-5xl dark:text-white mb-6 leading-tight">{title}</h1>
+          <div className="flex justify-start mb-6">
+            <LanguageSwitcher currentLang={language} />
+          </div>
           <p className="font-serif text-lg text-graphite/70 dark:text-slate-300 leading-relaxed max-w-2xl">
             {language === 'uz' ? `Ushbu darslikda ${video.author} tomonidan an'anaviy hunarmandchilikning eng nozik jihatlari ko'rsatib beriladi.` :
               language === 'ru' ? `В этом уроке ${video.author} демонстрирует тончайшие аспекты традиционного мастерства.` :

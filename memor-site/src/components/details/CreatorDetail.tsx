@@ -4,7 +4,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { TRANSLATIONS } from '../../constants';
 import { useStore } from '../../store/useStore';
 import { Ornament } from '../Ornament';
+import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
+import { getLocalizedContent } from '../../lib/content';
 
 export const CreatorDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
@@ -21,6 +23,8 @@ export const CreatorDetail: React.FC<{ language: Language }> = ({ language }) =>
 
   if (isLoading && !creator) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
   if (!creator) return <div className="p-20 text-center">{t.notFound}</div>;
+
+  const { role, bio } = getLocalizedContent(creator, language);
 
   return (
     <div className="w-full animate-in fade-in duration-700 bg-parchment dark:bg-[#020617]">
@@ -40,10 +44,13 @@ export const CreatorDetail: React.FC<{ language: Language }> = ({ language }) =>
         </div>
 
         <h1 className="font-display text-4xl md:text-5xl dark:text-white mb-2 uppercase tracking-tight">{creator.name}</h1>
-        <p className="text-teal font-display text-xl uppercase tracking-widest mb-8">{creator.role}</p>
+        <div className="flex justify-center mb-2">
+          <LanguageSwitcher currentLang={language} />
+        </div>
+        <p className="text-teal font-display text-xl uppercase tracking-widest mb-8">{role}</p>
 
         <div className="prose dark:prose-invert font-serif text-xl italic text-graphite/60 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed mb-12">
-          <p>"{creator.bio}"</p>
+          <p>"{bio}"</p>
         </div>
 
         <div className="grid grid-cols-3 gap-8 border-t border-graphite/10 pt-10">

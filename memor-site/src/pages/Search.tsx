@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
+import { getLocalizedContent } from '../lib/content';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useStore } from '../store/useStore';
 import { TRANSLATIONS } from '../constants';
@@ -36,42 +37,65 @@ const Search: React.FC = () => {
 
         const lowQuery = query.toLowerCase();
 
-        const matchedArticles = articles.filter(a =>
-            a.title.toLowerCase().includes(lowQuery) ||
-            a.excerpt.toLowerCase().includes(lowQuery) ||
-            a.content?.toLowerCase().includes(lowQuery)
-        ).map(a => ({ ...a, type: 'article', link: `/${currentLang}/article/${a.id}` }));
+        const safeIncludes = (text?: string) => (text || '').toLowerCase().includes(lowQuery);
 
-        const matchedProjects = projects.filter(p =>
-            p.title.toLowerCase().includes(lowQuery) ||
-            p.description.toLowerCase().includes(lowQuery)
-        ).map(p => ({ ...p, type: 'project', link: `/${currentLang}/project/${p.id}` }));
+        const matchedArticles = articles.filter(a => {
+            const { title, description, content } = getLocalizedContent(a, currentLang);
+            return safeIncludes(title) || safeIncludes(description) || safeIncludes(content);
+        }).map(a => {
+            const { title, description } = getLocalizedContent(a, currentLang);
+            return {
+                ...a, title, excerpt: description, type: 'article', link: `/${currentLang}/article/${a.id}`
+            };
+        });
 
-        const matchedCreations = creations.filter(c =>
-            c.title.toLowerCase().includes(lowQuery) ||
-            c.description.toLowerCase().includes(lowQuery)
-        ).map(c => ({ ...c, type: 'creation', link: `/${currentLang}/creation/${c.id}` }));
+        const matchedProjects = projects.filter(p => {
+            const { title, description } = getLocalizedContent(p, currentLang);
+            return safeIncludes(title) || safeIncludes(description);
+        }).map(p => {
+            const { title, description } = getLocalizedContent(p, currentLang);
+            return { ...p, title, description, type: 'project', link: `/${currentLang}/project/${p.id}` };
+        });
 
-        const matchedVideos = videos.filter(v =>
-            v.title.toLowerCase().includes(lowQuery) ||
-            v.author.toLowerCase().includes(lowQuery)
-        ).map(v => ({ ...v, type: 'video', link: `/${currentLang}/video/${v.id}` }));
+        const matchedCreations = creations.filter(c => {
+            const { title, description } = getLocalizedContent(c, currentLang);
+            return safeIncludes(title) || safeIncludes(description);
+        }).map(c => {
+            const { title, description } = getLocalizedContent(c, currentLang);
+            return { ...c, title, description, type: 'creation', link: `/${currentLang}/creation/${c.id}` };
+        });
 
-        const matchedBooks = books.filter(b =>
-            b.title.toLowerCase().includes(lowQuery) ||
-            b.author.toLowerCase().includes(lowQuery) ||
-            b.description.toLowerCase().includes(lowQuery)
-        ).map(b => ({ ...b, type: 'book', link: `/${currentLang}/book/${b.id}` }));
+        const matchedVideos = videos.filter(v => {
+            const { title } = getLocalizedContent(v, currentLang);
+            return safeIncludes(title) || safeIncludes(v.author);
+        }).map(v => {
+            const { title } = getLocalizedContent(v, currentLang);
+            return { ...v, title, type: 'video', link: `/${currentLang}/video/${v.id}` };
+        });
 
-        const matchedCreators = creators.filter(u =>
-            u.name.toLowerCase().includes(lowQuery) ||
-            u.bio.toLowerCase().includes(lowQuery)
-        ).map(u => ({ ...u, title: u.name, type: 'creator', link: `/${currentLang}/creator/${u.id}` }));
+        const matchedBooks = books.filter(b => {
+            const { title, description } = getLocalizedContent(b, currentLang);
+            return safeIncludes(title) || safeIncludes(b.author) || safeIncludes(description);
+        }).map(b => {
+            const { title, description } = getLocalizedContent(b, currentLang);
+            return { ...b, title, description, type: 'book', link: `/${currentLang}/book/${b.id}` };
+        });
 
-        const matchedEvents = events.filter(e =>
-            e.title.toLowerCase().includes(lowQuery) ||
-            e.description.toLowerCase().includes(lowQuery)
-        ).map(e => ({ ...e, type: 'event', link: `/${currentLang}/event/${e.id}` }));
+        const matchedCreators = creators.filter(u => {
+            const { bio } = getLocalizedContent(u, currentLang);
+            return safeIncludes(u.name) || safeIncludes(bio);
+        }).map(u => {
+            const { bio } = getLocalizedContent(u, currentLang);
+            return { ...u, title: u.name, bio, type: 'creator', link: `/${currentLang}/creator/${u.id}` };
+        });
+
+        const matchedEvents = events.filter(e => {
+            const { title, description } = getLocalizedContent(e, currentLang);
+            return safeIncludes(title) || safeIncludes(description);
+        }).map(e => {
+            const { title, description } = getLocalizedContent(e, currentLang);
+            return { ...e, title, description, type: 'event', link: `/${currentLang}/event/${e.id}` };
+        });
 
         return [
             ...matchedArticles,

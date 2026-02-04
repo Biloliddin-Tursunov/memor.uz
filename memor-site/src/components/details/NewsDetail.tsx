@@ -4,7 +4,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { TRANSLATIONS } from '../../constants';
 import { useStore } from '../../store/useStore';
 import { Ornament } from '../Ornament';
+import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
+import { getLocalizedContent } from '../../lib/content';
 
 export const NewsDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
@@ -22,6 +24,8 @@ export const NewsDetail: React.FC<{ language: Language }> = ({ language }) => {
   if (isLoading && !news) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
   if (!news) return <div className="p-20 text-center">{t.notFound}</div>;
 
+  const { title, description: excerpt, content } = getLocalizedContent(news, language);
+
   return (
     <div className="max-w-4xl mx-auto px-6 py-12 animate-in fade-in duration-700">
       <button
@@ -36,21 +40,24 @@ export const NewsDetail: React.FC<{ language: Language }> = ({ language }) => {
           {news.category} • {news.date}
         </span>
         <h1 className="font-display text-4xl md:text-6xl dark:text-white leading-tight mb-6">
-          {news.title}
+          {title}
         </h1>
+        <div className="flex justify-start mb-6">
+          <LanguageSwitcher currentLang={language} />
+        </div>
         <p className="font-serif text-xl italic text-graphite/60 dark:text-slate-400 leading-relaxed">
-          {news.excerpt}
+          {excerpt}
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="lg:col-span-8">
           <div className="aspect-video bg-graphite/5 mb-10 rounded-sm overflow-hidden border border-graphite/5 shadow-sm">
-            <img src={news.imageUrl} alt={news.title} className="w-full h-full object-cover" />
+            <img src={news.imageUrl} alt={title} className="w-full h-full object-cover" />
           </div>
           <div className="prose dark:prose-invert font-serif text-lg leading-relaxed text-graphite/80 dark:text-slate-300">
             <p>
-              {news.content || "Bugun biz uchun muhim kun. Me'mor jamoasi yangi loyihalarni amalga oshirishda davom etmoqda. Ushbu xabar sohamiz rivojidagi yana bir qadamdir."}
+              {content || "Bugun biz uchun muhim kun. Me'mor jamoasi yangi loyihalarni amalga oshirishda davom etmoqda. Ushbu xabar sohamiz rivojidagi yana bir qadamdir."}
             </p>
             <p className="mt-6">
               Batafsil ma'lumot olish uchun bizning ijtimoiy tarmoqlarimizni kuzatib boring. Biz bilan bo'lganingiz uchun rahmat.

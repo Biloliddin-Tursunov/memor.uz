@@ -3,16 +3,16 @@ export type Language = 'uz' | 'en' | 'ru' | 'tr';
 
 export enum PageRoute {
   HOME = 'HOME',
-  KNOWLEDGE = 'KNOWLEDGE', // Ilm
-  ACTION = 'ACTION',       // Harakat
-  CREATION = 'CREATION',   // Ijod
+  KNOWLEDGE = 'KNOWLEDGE',
+  ACTION = 'ACTION',
+  CREATION = 'CREATION',
   LOGIN = 'LOGIN',
   ABOUT = 'ABOUT',
   SUPPORT = 'SUPPORT',
   CONTACT = 'CONTACT',
   NEWS = 'NEWS',
   SEARCH = 'SEARCH',
-  DETAIL = 'DETAIL' // New route for reading content
+  DETAIL = 'DETAIL'
 }
 
 export interface NavItem {
@@ -23,16 +23,16 @@ export interface NavItem {
   route: PageRoute;
 }
 
-// Common Interface for Display
+// Common Interface for Display (Aggregated)
 export interface DisplayItem {
   id: string;
-  title?: string; // Legacy fallback or computed
+  title?: string;
   title_uz?: string;
   title_en?: string;
   title_ru?: string;
   title_tr?: string;
   subtitle?: string;
-  description?: string; // Legacy
+  description?: string;
   description_uz?: string;
   description_en?: string;
   description_ru?: string;
@@ -43,6 +43,7 @@ export interface DisplayItem {
   date?: string;
   link?: string;
   tags?: string[];
+  slug?: string;
 }
 
 // --- KNOWLEDGE (ILM) ---
@@ -60,11 +61,11 @@ export interface Article {
   content_en?: string;
   content_ru?: string;
   content_tr?: string;
-  author: string;
-  date: string;
-  category: string;
-  imageUrl: string;
-  slug: string;
+  author?: string;
+  date?: string; // mapped from created_at
+  category?: string;
+  imageUrl?: string; // mapped from image_url
+  slug?: string;
 }
 
 export interface VideoResource {
@@ -73,11 +74,11 @@ export interface VideoResource {
   title_en?: string;
   title_ru?: string;
   title_tr?: string;
-  duration: string;
-  thumbnailUrl: string;
-  videoUrl?: string;
-  author: string;
-  type: 'Darslik' | 'Hujjatli' | 'Suhbat';
+  duration?: string;
+  thumbnailUrl?: string; // mapped from thumbnail_url
+  videoUrl?: string; // mapped from video_url
+  author?: string;
+  type?: 'Darslik' | 'Hujjatli' | 'Suhbat';
 }
 
 export interface Book {
@@ -86,14 +87,14 @@ export interface Book {
   title_en?: string;
   title_ru?: string;
   title_tr?: string;
-  author: string;
-  year: string;
-  coverUrl: string;
+  author?: string;
+  year?: string;
+  coverUrl?: string; // mapped from cover_url
   description_uz?: string;
   description_en?: string;
   description_ru?: string;
   description_tr?: string;
-  downloadUrl?: string;
+  downloadUrl?: string; // mapped from download_url
 }
 
 export interface Creator {
@@ -103,7 +104,7 @@ export interface Creator {
   role_en?: string;
   role_ru?: string;
   role_tr?: string;
-  avatarUrl: string;
+  avatarUrl?: string; // mapped from avatar_url
   bio_uz?: string;
   bio_en?: string;
   bio_ru?: string;
@@ -117,7 +118,7 @@ export interface EventItem {
   title_en?: string;
   title_ru?: string;
   title_tr?: string;
-  date: string;
+  date?: string; // mapped
   location_uz?: string;
   location_en?: string;
   location_ru?: string;
@@ -126,7 +127,7 @@ export interface EventItem {
   description_en?: string;
   description_ru?: string;
   description_tr?: string;
-  isUpcoming: boolean;
+  isUpcoming?: boolean; // mapped from is_upcoming
 }
 
 export interface Project {
@@ -135,12 +136,12 @@ export interface Project {
   title_en?: string;
   title_ru?: string;
   title_tr?: string;
-  status: 'Jarayonda' | 'Yakunlangan' | 'Rejada';
+  status?: 'Jarayonda' | 'Yakunlangan' | 'Rejada';
   description_uz?: string;
   description_en?: string;
   description_ru?: string;
   description_tr?: string;
-  imageUrl: string;
+  imageUrl?: string; // mapped from image_url
   location_uz?: string;
   location_en?: string;
   location_ru?: string;
@@ -154,14 +155,14 @@ export interface CreationItem {
   title_en?: string;
   title_ru?: string;
   title_tr?: string;
-  author: string;
-  type: 'Vector' | 'Concept' | 'Artwork';
-  imageUrl: string;
+  author?: string;
+  type?: 'Vector' | 'Concept' | 'Artwork';
+  imageUrl?: string; // mapped from image_url
   description_uz?: string;
   description_en?: string;
   description_ru?: string;
   description_tr?: string;
-  downloadUrl?: string;
+  downloadUrl?: string; // mapped from download_url
 }
 
 // --- PORTFOLIO ---
@@ -171,9 +172,9 @@ export interface PortfolioItem {
   title_en?: string;
   title_ru?: string;
   title_tr?: string;
-  imageUrl: string;
-  year: string;
-  architect: string;
+  imageUrl: string; // mapped from image_url (NOT NULL in schema)
+  year?: string;
+  architect?: string;
   type_uz?: string;
   type_en?: string;
   type_ru?: string;
