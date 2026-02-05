@@ -92,7 +92,7 @@ const Contact: React.FC = () => {
               <span className="block text-xs uppercase tracking-widest text-teal mb-1">
                 {currentLang === 'uz' ? 'Xat yo\'llash' : currentLang === 'en' ? 'Email' : currentLang === 'ru' ? 'Электронная почта' : 'E-posta'}
               </span>
-              <p>biloliddin@memor.uz</p>
+              <p>info@memor.uz</p>
             </div>
 
             <div>
