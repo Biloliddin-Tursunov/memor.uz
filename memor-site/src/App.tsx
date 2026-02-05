@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, useNavigate, Link } from 'react-router-dom';
+import { Analytics } from "@vercel/analytics/react"
 
 // Asosiy komponentlar
 import Header from './components/Header';
@@ -260,6 +261,7 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <AppContent />
+      <Analytics />
     </BrowserRouter>
   );
 };
