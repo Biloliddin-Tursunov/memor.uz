@@ -85,7 +85,7 @@ const Contact: React.FC = () => {
                 {currentLang === 'uz' ? 'Manzil' : currentLang === 'en' ? 'Address' : currentLang === 'ru' ? 'Адрес' : 'Adres'}
               </span>
               <p>Samarqand shahri, Lolazor ko'chasi, 70-uy</p>
-              <p className="text-sm text-graphite/60">Samarqand Davlat Arxitektura-Qurilish Universiteti, Yangi Campus 5-qavat 525-xona</p>
+              <p className="text-sm text-graphite/60">Samarqand Davlat Arxitektura-Qurilish Universiteti, Yangi Bino 5-qavat 525-xona</p>
             </div>
 
             <div>
