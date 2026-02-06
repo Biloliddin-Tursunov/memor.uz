@@ -21,7 +21,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate, language, featuredItem }) => {
   const { title, description } = hasFeatured && featuredItem ? getLocalizedContent(featuredItem, language) : { title: '', description: '' };
 
   return (
-    <section className="relative w-full pt-20 pb-8 px-3 md:pt-24 md:pb-12 md:px-6 lg:px-8">
+    <section className="relative w-full pt-40 pb-8 px-3 md:pt-24 md:pb-12 md:px-6 lg:px-8">
       <div className="relative w-full min-h-[500px] md:min-h-[85vh] rounded-[2rem] flex flex-col items-center justify-center bg-[#01030a] overflow-hidden shadow-2xl border border-graphite/5 dark:border-white/10 px-4 py-16 md:px-12 md:py-24 transition-all duration-500">
         {/* Background */}
         <div className="absolute inset-0 z-0">
