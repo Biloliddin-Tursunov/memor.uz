@@ -7,6 +7,7 @@ import { Ornament } from '../Ornament';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
 import { getLocalizedContent } from '../../lib/content';
+import SEO from '../SEO';
 
 export const ArticleDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { slug } = useParams();
@@ -34,6 +35,13 @@ export const ArticleDetail: React.FC<{ language: Language }> = ({ language }) =>
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+      <SEO
+        title={title}
+        description={description}
+        image={article.imageUrl}
+        type="article"
+      />
+
       <button
         onClick={() => navigate(-1)}
         className="mb-8 group flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-graphite/40 hover:text-teal transition-all"

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { getLocalizedContent } from '../lib/content';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { useStore } from '../store/useStore';
 import { TRANSLATIONS } from '../constants';
 import { Language } from '../types';
@@ -26,7 +26,18 @@ const Search: React.FC = () => {
         isLoading
     } = useStore();
 
-    const [query, setQuery] = useState('');
+    const [searchParams, setSearchParams] = useSearchParams();
+    const initialQuery = searchParams.get('q') || '';
+    const [query, setQuery] = useState(initialQuery);
+
+    // Update URL when query changes
+    useEffect(() => {
+        if (query.trim()) {
+            setSearchParams({ q: query });
+        } else {
+            setSearchParams({});
+        }
+    }, [query, setSearchParams]);
 
     useEffect(() => {
         fetchAllData();

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, useNavigate, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate, Link, Navigate } from 'react-router-dom';
 import { Analytics } from "@vercel/analytics/react"
 
 // Asosiy komponentlar
@@ -7,6 +7,7 @@ import Header from './components/Header';
 import { Ornament } from './components/Ornament';
 import IntroScreen from './components/IntroScreen';
 import SearchModal from './components/SearchModal';
+import SEO from './components/SEO';
 
 // Sahifalar
 import Home from './pages/Home';
@@ -196,17 +197,47 @@ const AppContent: React.FC = () => {
       <main className={`flex-grow w-full relative z-20 ${currentRoute === PageRoute.HOME || location.pathname.includes('/paper') ? '' : 'pt-[100px] md:pt-[120px]'}`}>
         <Routes>
           {/* Default redirect to UZ */}
-          <Route path="/" element={<Home onNavigate={handleNavigate} onItemClick={handleItemClick} language={language} />} />
+          <Route path="/" element={<Navigate to="/uz" replace />} />
 
           <Route path="/:lang">
-            <Route index element={<Home onNavigate={handleNavigate} onItemClick={handleItemClick} language={language} />} />
+            <Route index element={
+              <>
+                <SEO title="Bosh sahifa" />
+                <Home onNavigate={handleNavigate} onItemClick={handleItemClick} language={language} />
+              </>
+            } />
 
             {/* Asosiy Sahifalar */}
-            <Route path="knowledge" element={<Knowledge onItemClick={handleItemClick} />} />
-            <Route path="knowledge/:tab" element={<Knowledge onItemClick={handleItemClick} />} />
-            <Route path="action" element={<Action onItemClick={handleItemClick} />} />
-            <Route path="creation" element={<Creation onItemClick={handleItemClick} />} />
-            <Route path="news" element={<News onItemClick={handleItemClick} />} />
+            <Route path="knowledge" element={
+              <>
+                <SEO title="Ilm" description="Me'mor — Ilm sahifasi" />
+                <Knowledge onItemClick={handleItemClick} />
+              </>
+            } />
+            <Route path="knowledge/:tab" element={
+              <>
+                <SEO title="Ilm" />
+                <Knowledge onItemClick={handleItemClick} />
+              </>
+            } />
+            <Route path="action" element={
+              <>
+                <SEO title="Harakat" description="Me'mor — Harakat" />
+                <Action onItemClick={handleItemClick} />
+              </>
+            } />
+            <Route path="creation" element={
+              <>
+                <SEO title="Ijod" description="Me'mor — Ijod namunalari" />
+                <Creation onItemClick={handleItemClick} />
+              </>
+            } />
+            <Route path="news" element={
+              <>
+                <SEO title="Yangiliklar" description="Me'mor — So'nggi yangiliklar" />
+                <News onItemClick={handleItemClick} />
+              </>
+            } />
 
             {/* Batafsil (Detail) Sahifalar - Dynamic URLs */}
             <Route path="article/:slug" element={<ArticleDetail language={language} />} />
@@ -219,16 +250,41 @@ const AppContent: React.FC = () => {
             <Route path="news-detail/:id" element={<NewsDetail language={language} />} />
 
             {/* Statik Sahifalar */}
-            <Route path="login" element={<Login />} />
-            <Route path="about" element={<About language={language} />} />
-            <Route path="support" element={<Support language={language} />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="search" element={<Search />} />
+            <Route path="login" element={
+              <>
+                <SEO title="Kirish" />
+                <Login />
+              </>
+            } />
+            <Route path="about" element={
+              <>
+                <SEO title="Biz haqimizda" />
+                <About language={language} />
+              </>
+            } />
+            <Route path="support" element={
+              <>
+                <SEO title="Qo'llab-quvvatlash" />
+                <Support language={language} />
+              </>
+            } />
+            <Route path="contact" element={
+              <>
+                <SEO title="Aloqa" />
+                <Contact />
+              </>
+            } />
+            <Route path="search" element={
+              <>
+                <SEO title="Qidiruv" />
+                <Search />
+              </>
+            } />
             <Route path="paper" element={<Paper />} />
           </Route>
 
-          {/* 404 - Sahifa topilmasa Home ga qaytadi */}
-          <Route path="*" element={<Home onNavigate={handleNavigate} onItemClick={handleItemClick} language={language} />} />
+          {/* 404 - Sahifa topilmasa Home ga qaytadi (Navigate orqali /uz ga) */}
+          <Route path="*" element={<Navigate to={`/${language}`} replace />} />
         </Routes>
       </main>
 
