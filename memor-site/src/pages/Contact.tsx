@@ -1,10 +1,10 @@
-
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Ornament } from '../components/Ornament';
 import { supabase } from '../lib/supabase';
 import { TRANSLATIONS } from '../constants';
 import { Language } from '../types';
+import SEO from '../components/SEO';
 
 const Contact: React.FC = () => {
   const { lang } = useParams<{ lang: Language }>();
@@ -64,6 +64,11 @@ const Contact: React.FC = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-16">
+      <SEO
+        title={t.seoContactTitle}
+        description={t.seoContactDesc}
+        lang={currentLang}
+      />
       <div className="flex flex-col md:flex-row gap-12">
 
         {/* Contact Info */}

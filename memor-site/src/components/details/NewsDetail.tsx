@@ -7,6 +7,7 @@ import { Ornament } from '../Ornament';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
 import { getLocalizedContent } from '../../lib/content';
+import SEO from '../SEO';
 
 export const NewsDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
@@ -28,6 +29,14 @@ export const NewsDetail: React.FC<{ language: Language }> = ({ language }) => {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12 animate-in fade-in duration-700">
+      <SEO
+        title={title}
+        description={excerpt}
+        image={news.imageUrl}
+        type="article"
+        lang={language}
+      />
+
       <button
         onClick={() => navigate(-1)}
         className="mb-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-graphite/40 hover:text-teal transition-all"

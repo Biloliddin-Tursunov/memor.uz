@@ -6,6 +6,7 @@ import { useStore } from '../../store/useStore';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
 import { getLocalizedContent } from '../../lib/content';
+import SEO from '../SEO';
 
 export const CreationDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
@@ -27,6 +28,12 @@ export const CreationDetail: React.FC<{ language: Language }> = ({ language }) =
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 animate-in fade-in zoom-in duration-700">
+      <SEO
+        title={title}
+        description={description}
+        image={creation.imageUrl}
+        lang={language}
+      />
       <div className="flex flex-col lg:flex-row gap-16 items-start">
         <div className="w-full lg:w-3/5 bg-white dark:bg-white/5 p-4 border border-graphite/10 shadow-sm">
           <img src={creation.imageUrl} alt={title} className="w-full h-auto" />

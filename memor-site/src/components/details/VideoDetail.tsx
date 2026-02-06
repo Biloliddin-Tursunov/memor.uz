@@ -6,6 +6,7 @@ import { useStore } from '../../store/useStore';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
 import { getLocalizedContent } from '../../lib/content';
+import SEO from '../SEO';
 
 export const VideoDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
@@ -27,6 +28,16 @@ export const VideoDetail: React.FC<{ language: Language }> = ({ language }) => {
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-12 animate-in fade-in duration-700">
+      <SEO
+        title={title}
+        description={language === 'uz' ? `${video.author} tomonidan mahorat darsi.` :
+          language === 'ru' ? `Мастер-класс от ${video.author}.` :
+            language === 'tr' ? `${video.author} tarafından ustalık sınıfı.` :
+              `Masterclass by ${video.author}.`}
+        image={video.thumbnailUrl}
+        type="video.other"
+        lang={language}
+      />
       <button
         onClick={() => navigate(-1)}
         className="mb-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-graphite/40 hover:text-teal transition-all"

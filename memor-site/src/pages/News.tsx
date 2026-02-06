@@ -5,6 +5,7 @@ import { TRANSLATIONS } from '../constants';
 import { useStore } from '../store/useStore';
 import { Ornament } from '../components/Ornament';
 import { getLocalizedContent } from '../lib/content';
+import SEO from '../components/SEO';
 
 interface NewsProps {
   onItemClick: (item: any) => void;
@@ -12,6 +13,7 @@ interface NewsProps {
 
 const News: React.FC<NewsProps> = ({ onItemClick }) => {
   const { lang } = useParams<{ lang: string }>();
+  // ... (rest of code)
   const language = (lang || 'uz') as keyof typeof TRANSLATIONS;
   const t = TRANSLATIONS[language];
   const {
@@ -62,6 +64,11 @@ const News: React.FC<NewsProps> = ({ onItemClick }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
+      <SEO
+        title={t.seoNewsTitle}
+        description={t.seoNewsDesc}
+        lang={language}
+      />
       <div className="flex items-center justify-between mb-16 px-4">
         <div>
           <span className="text-teal text-xs font-bold uppercase tracking-[0.4em] mb-3 block">{t.news}</span>

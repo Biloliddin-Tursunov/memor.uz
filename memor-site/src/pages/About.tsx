@@ -3,12 +3,18 @@ import { Ornament } from '../components/Ornament';
 import TeamSection from '../components/TeamSection';
 import { TRANSLATIONS } from '../constants';
 import { Language } from '../types';
+import SEO from '../components/SEO';
 
 const About: React.FC<{ language: Language }> = ({ language }) => {
   const t = TRANSLATIONS[language];
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-16">
+      <SEO
+        title={t.seoAboutTitle}
+        description={t.seoAboutDesc}
+        lang={language}
+      />
       <div className="text-center mb-12">
         <h2 className="font-display text-4xl mb-4 text-graphite dark:text-white">{t.aboutTitle}</h2>
         <Ornament type="divider" className="w-48 mx-auto" />

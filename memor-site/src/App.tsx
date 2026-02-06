@@ -21,7 +21,7 @@ import Support from './pages/Support';
 import Contact from './pages/Contact';
 import Search from './pages/Search';
 
-// Batafsil (Detail) Sahifalar - Bularni ./components/details ichida yaratishingiz kerak
+// Batafsil (Detail) Sahifalar
 import { ArticleDetail } from './components/details/ArticleDetail';
 import { ProjectDetail } from './components/details/ProjectDetail';
 import { VideoDetail } from './components/details/VideoDetail';
@@ -201,42 +201,24 @@ const AppContent: React.FC = () => {
 
           <Route path="/:lang">
             <Route index element={
-              <>
-                <SEO title="Bosh sahifa" />
-                <Home onNavigate={handleNavigate} onItemClick={handleItemClick} language={language} />
-              </>
+              <Home onNavigate={handleNavigate} onItemClick={handleItemClick} language={language} />
             } />
 
             {/* Asosiy Sahifalar */}
             <Route path="knowledge" element={
-              <>
-                <SEO title="Ilm" description="Me'mor — Ilm sahifasi" />
-                <Knowledge onItemClick={handleItemClick} />
-              </>
+              <Knowledge onItemClick={handleItemClick} />
             } />
             <Route path="knowledge/:tab" element={
-              <>
-                <SEO title="Ilm" />
-                <Knowledge onItemClick={handleItemClick} />
-              </>
+              <Knowledge onItemClick={handleItemClick} />
             } />
             <Route path="action" element={
-              <>
-                <SEO title="Harakat" description="Me'mor — Harakat" />
-                <Action onItemClick={handleItemClick} />
-              </>
+              <Action onItemClick={handleItemClick} />
             } />
             <Route path="creation" element={
-              <>
-                <SEO title="Ijod" description="Me'mor — Ijod namunalari" />
-                <Creation onItemClick={handleItemClick} />
-              </>
+              <Creation onItemClick={handleItemClick} />
             } />
             <Route path="news" element={
-              <>
-                <SEO title="Yangiliklar" description="Me'mor — So'nggi yangiliklar" />
-                <News onItemClick={handleItemClick} />
-              </>
+              <News onItemClick={handleItemClick} />
             } />
 
             {/* Batafsil (Detail) Sahifalar - Dynamic URLs */}
@@ -251,34 +233,19 @@ const AppContent: React.FC = () => {
 
             {/* Statik Sahifalar */}
             <Route path="login" element={
-              <>
-                <SEO title="Kirish" />
-                <Login />
-              </>
+              <Login />
             } />
             <Route path="about" element={
-              <>
-                <SEO title="Biz haqimizda" />
-                <About language={language} />
-              </>
+              <About language={language} />
             } />
             <Route path="support" element={
-              <>
-                <SEO title="Qo'llab-quvvatlash" />
-                <Support language={language} />
-              </>
+              <Support language={language} />
             } />
             <Route path="contact" element={
-              <>
-                <SEO title="Aloqa" />
-                <Contact />
-              </>
+              <Contact />
             } />
             <Route path="search" element={
-              <>
-                <SEO title="Qidiruv" />
-                <Search />
-              </>
+              <Search />
             } />
             <Route path="paper" element={<Paper />} />
           </Route>

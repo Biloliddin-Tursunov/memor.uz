@@ -7,6 +7,7 @@ import { Ornament } from '../Ornament';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
 import { getLocalizedContent } from '../../lib/content';
+import SEO from '../SEO';
 
 export const ProjectDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
@@ -27,6 +28,13 @@ export const ProjectDetail: React.FC<{ language: Language }> = ({ language }) =>
 
   return (
     <div className="w-full animate-in fade-in duration-700 bg-parchment dark:bg-[#020617]">
+      <SEO
+        title={title}
+        description={description}
+        image={project.imageUrl}
+        type="website"
+        lang={language}
+      />
       {/* Back Button Container */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 mb-6">
         <button

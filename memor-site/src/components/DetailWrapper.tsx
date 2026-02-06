@@ -3,9 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useStore } from '../store/useStore';
 import ItemDetail from './ItemDetail';
 import { DisplayItem } from '../types';
+import SEO from './SEO';
+import { getLocalizedContent } from '../lib/content';
+import { Language } from '../types';
 
 const DetailWrapper: React.FC = () => {
-    const { id, slug } = useParams<{ id?: string; slug?: string }>();
+    const { id, slug, lang } = useParams<{ id?: string; slug?: string; lang?: string }>();
     const navigate = useNavigate();
     const store = useStore();
     const [item, setItem] = useState<DisplayItem | null>(null);
@@ -158,7 +161,23 @@ const DetailWrapper: React.FC = () => {
         );
     }
 
-    return <ItemDetail item={item} onBack={() => navigate(-1)} />;
+    // Extract SEO metadata from item
+    const currentLang = (lang || 'uz') as Language;
+    const { title, description } = getLocalizedContent(item, currentLang);
+    const seoImage = item.imageUrl || '/og/cover-main.jpg';
+
+    return (
+        <>
+            <SEO
+                title={title}
+                description={description || `Me'mor — ${title}`}
+                image={seoImage}
+                type="article"
+                lang={currentLang}
+            />
+            <ItemDetail item={item} onBack={() => navigate(-1)} />
+        </>
+    );
 };
 
 export default DetailWrapper;

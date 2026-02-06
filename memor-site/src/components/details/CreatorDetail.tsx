@@ -7,6 +7,7 @@ import { Ornament } from '../Ornament';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
 import { getLocalizedContent } from '../../lib/content';
+import SEO from '../SEO';
 
 export const CreatorDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
@@ -28,6 +29,13 @@ export const CreatorDetail: React.FC<{ language: Language }> = ({ language }) =>
 
   return (
     <div className="w-full animate-in fade-in duration-700 bg-parchment dark:bg-[#020617]">
+      <SEO
+        title={creator.name}
+        description={bio}
+        image={creator.avatarUrl}
+        type="profile"
+        lang={language}
+      />
       <div className="max-w-4xl mx-auto px-6 pt-12 pb-24 text-center">
         <button
           onClick={() => navigate(-1)}

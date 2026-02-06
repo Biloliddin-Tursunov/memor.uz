@@ -7,6 +7,7 @@ import { Ornament } from '../Ornament';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
 import { getLocalizedContent } from '../../lib/content';
+import SEO from '../SEO';
 
 export const EventDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
@@ -28,6 +29,12 @@ export const EventDetail: React.FC<{ language: Language }> = ({ language }) => {
 
   return (
     <div className="w-full animate-in fade-in duration-700 bg-parchment dark:bg-[#020617]">
+      <SEO
+        title={title}
+        description={description}
+        type="event"
+        lang={language}
+      />
       <div className="max-w-4xl mx-auto px-6 pt-12 pb-24">
         <button
           onClick={() => navigate(-1)}

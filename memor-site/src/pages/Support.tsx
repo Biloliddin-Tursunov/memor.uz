@@ -2,12 +2,18 @@ import React from 'react';
 import { Ornament } from '../components/Ornament';
 import { TRANSLATIONS } from '../constants';
 import { Language } from '../types';
+import SEO from '../components/SEO';
 
 const Support: React.FC<{ language: Language }> = ({ language }) => {
   const t = TRANSLATIONS[language];
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 text-center">
+      <SEO
+        title={t.seoSupportTitle}
+        description={t.seoSupportDesc}
+        lang={language}
+      />
       <Ornament type="flourish" className="mb-6 opacity-60" />
       <h2 className="font-display text-4xl mb-6 text-graphite dark:text-white">{t.supportTitle}</h2>
       <p className="font-serif text-xl italic text-graphite/70 dark:text-gray-300 mb-16 max-w-2xl mx-auto">

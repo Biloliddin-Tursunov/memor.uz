@@ -8,6 +8,7 @@ import { Skeleton } from '../components/Skeleton';
 import { HadithBlock } from '../components/HadithBlock';
 import { Language } from '../types';
 import { getLocalizedContent } from '../lib/content';
+import SEO from '../components/SEO';
 
 type Tab = 'articles' | 'videos' | 'books' | 'creators';
 
@@ -140,8 +141,23 @@ const Knowledge: React.FC = () => {
       { id: 'creators', label: currentLang === 'uz' ? 'Ustalar' : currentLang === 'ru' ? 'Мастера' : currentLang === 'tr' ? 'Ustalar' : 'Masters' }
    ];
 
+   const getPageTitle = () => {
+      switch (activeTab) {
+         case 'articles': return currentLang === 'uz' ? 'Maqolalar' : 'Articles';
+         case 'videos': return currentLang === 'uz' ? 'Videolar' : 'Videos';
+         case 'books': return currentLang === 'uz' ? 'Kutubxona' : 'Library';
+         case 'creators': return currentLang === 'uz' ? 'Ustalar' : 'Creators';
+         default: return t.ilm;
+      }
+   };
+
    return (
       <div className="max-w-6xl mx-auto px-4 py-12">
+         <SEO
+            title={t.seoIlmTitle}
+            description={t.seoIlmDesc}
+            lang={currentLang}
+         />
          <div className="text-center mb-16 px-4">
             <h2 className="font-display text-5xl md:text-7xl mb-8 dark:text-white">{currentLang === 'uz' ? 'Ilm Maskani' : currentLang === 'ru' ? 'Обитель Знаний' : currentLang === 'tr' ? 'İlim Köşkü' : 'House of Knowledge'}</h2>
             <div className="max-w-2xl mx-auto">

@@ -10,6 +10,7 @@ import { Skeleton } from '../components/Skeleton';
 import Hero from '../components/Hero';
 import { HadithBlock } from '../components/HadithBlock';
 import { getLocalizedContent } from '../lib/content';
+import SEO from '../components/SEO';
 
 interface HomeProps {
   onNavigate: (route: PageRoute) => void;
@@ -32,6 +33,11 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onItemClick, language }) => {
 
   return (
     <div className="w-full overflow-hidden">
+      <SEO
+        title={t.seoHomeTitle}
+        description={t.seoHomeDesc}
+        lang={language}
+      />
       <Hero
         onNavigate={onNavigate}
         onItemClick={onItemClick}

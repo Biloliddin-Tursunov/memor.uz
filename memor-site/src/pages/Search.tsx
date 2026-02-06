@@ -7,6 +7,7 @@ import { TRANSLATIONS } from '../constants';
 import { Language } from '../types';
 import { Search as SearchIcon, X, ArrowRight } from 'lucide-react';
 import { Ornament } from '../components/Ornament';
+import SEO from '../components/SEO';
 
 const Search: React.FC = () => {
     const { lang } = useParams<{ lang: string }>();
@@ -44,6 +45,7 @@ const Search: React.FC = () => {
     }, [fetchAllData]);
 
     const results = useMemo(() => {
+        // ... (results logic logic kept same as much as possible but hidden for brevity in instruction if strict matching works)
         if (!query.trim()) return [];
 
         const lowQuery = query.toLowerCase();
@@ -121,6 +123,10 @@ const Search: React.FC = () => {
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-12 min-h-screen">
+            <SEO
+                title={t.search}
+                lang={currentLang}
+            />
             <div className="text-center mb-16">
                 <h2 className="font-display text-5xl md:text-7xl mb-8 dark:text-white uppercase tracking-tighter">
                     {t.search}

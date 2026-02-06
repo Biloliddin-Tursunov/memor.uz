@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { TRANSLATIONS } from '../../constants';
@@ -40,6 +39,7 @@ export const ArticleDetail: React.FC<{ language: Language }> = ({ language }) =>
         description={description}
         image={article.imageUrl}
         type="article"
+        lang={language}
       />
 
       <button
