@@ -44,8 +44,8 @@ export const EventDetail: React.FC<{ language: Language }> = ({ language }) => {
 
           <div className="border-y border-graphite/5 py-10 text-center">
             <h1 className="font-display text-3xl md:text-5xl dark:text-white mb-6 uppercase tracking-tight">{title}</h1>
-            <div className="flex justify-center mb-6">
-              <LanguageSwitcher currentLang={language} />
+            <div className="flex justify-center mb-4">
+              <LanguageSwitcher currentLang={language} variant="list" />
             </div>
             <p className="font-mono text-xs text-teal uppercase tracking-widest flex items-center justify-center gap-2">
               <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" /></svg>

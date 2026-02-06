@@ -45,7 +45,6 @@ export const useStore = create<AppState>((set, get) => ({
         if (error) {
             set({ error: error.message, isLoading: false });
         } else {
-            console.log('Raw articles from Supabase:', data);
             const mappedArticles = data.map((item: any) => ({
                 id: item.id,
                 title_uz: item.title_uz,

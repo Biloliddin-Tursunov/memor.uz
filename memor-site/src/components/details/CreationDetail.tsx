@@ -42,8 +42,8 @@ export const CreationDetail: React.FC<{ language: Language }> = ({ language }) =
 
           <span className="text-teal text-[10px] font-bold uppercase tracking-[0.3em] mb-4 block">{creation.type}</span>
           <h1 className="font-display text-4xl md:text-5xl dark:text-white mb-8 leading-tight">{title}</h1>
-          <div className="flex justify-start mb-8">
-            <LanguageSwitcher currentLang={language} />
+          <div className="flex justify-center mb-4">
+            <LanguageSwitcher currentLang={language} variant="list" />
           </div>
 
           <div className="prose prose-lg dark:prose-invert font-serif text-graphite/70 mb-10">

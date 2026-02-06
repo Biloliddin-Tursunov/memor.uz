@@ -44,8 +44,8 @@ export const CreatorDetail: React.FC<{ language: Language }> = ({ language }) =>
         </div>
 
         <h1 className="font-display text-4xl md:text-5xl dark:text-white mb-2 uppercase tracking-tight">{creator.name}</h1>
-        <div className="flex justify-center mb-2">
-          <LanguageSwitcher currentLang={language} />
+        <div className="flex justify-center mb-4">
+          <LanguageSwitcher currentLang={language} variant="list" />
         </div>
         <p className="text-teal font-display text-xl uppercase tracking-widest mb-8">{role}</p>
 

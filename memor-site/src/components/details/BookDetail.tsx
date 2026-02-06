@@ -43,8 +43,8 @@ export const BookDetail: React.FC<{ language: Language }> = ({ language }) => {
           <div className="flex-grow">
             <span className="text-sepia text-[10px] font-bold uppercase tracking-widest mb-2 block">{book.year}</span>
             <h1 className="font-display text-4xl dark:text-white mb-4 uppercase tracking-tight">{title}</h1>
-            <div className="flex justify-start mb-6">
-              <LanguageSwitcher currentLang={language} />
+            <div className="mb-6">
+              <LanguageSwitcher currentLang={language} variant="list" />
             </div>
             <p className="font-serif italic text-xl text-graphite/50 dark:text-gray-400 mb-8">{book.author}</p>
             <div className="prose dark:prose-invert font-serif text-lg leading-relaxed text-graphite/80 dark:text-gray-300">

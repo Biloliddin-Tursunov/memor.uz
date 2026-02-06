@@ -29,7 +29,7 @@ const ArticleView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                 </span>
                 <h1 className="font-display text-3xl md:text-5xl text-graphite mb-4 leading-tight">{title}</h1>
                 <div className="flex justify-center mb-6">
-                    <LanguageSwitcher currentLang={currentLang} />
+                    <LanguageSwitcher currentLang={currentLang} variant="list" />
                 </div>
                 <div className="flex justify-center items-center gap-4 text-xs font-mono text-graphite/50">
                     {item.subtitle && <span>Muallif: {item.subtitle}</span>}
@@ -85,7 +85,7 @@ const VideoView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent">
                     <h1 className="text-white font-display text-2xl md:text-4xl mb-2">{title}</h1>
                     <div className="mb-4">
-                        <LanguageSwitcher currentLang={currentLang} className="bg-black/20 backdrop-blur-sm p-1 rounded-md inline-block" />
+                        <LanguageSwitcher currentLang={currentLang} variant="list" className="bg-black/20 backdrop-blur-sm p-1 rounded-md inline-block" />
                     </div>
                     <p className="text-white/70 font-mono text-sm">{item.subtitle} • {description?.slice(0, 50)}...</p>
                 </div>
@@ -143,7 +143,7 @@ const BookView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                     <span className="text-sepia font-bold uppercase tracking-widest text-xs mb-2 block">Nodir Kitoblar To'plami</span>
                     <h1 className="font-display text-4xl md:text-6xl text-graphite dark:text-white mb-4">{title}</h1>
                     <div className="mb-6">
-                        <LanguageSwitcher currentLang={currentLang} />
+                        <LanguageSwitcher currentLang={currentLang} variant="list" />
                     </div>
                     <p className="font-serif italic text-xl text-graphite/60 dark:text-gray-400 mb-8">{item.subtitle} (Nashr: {item.date})</p>
 
@@ -197,7 +197,7 @@ const CreatorView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
 
                 <h1 className="font-display text-4xl md:text-5xl mt-6 mb-2 text-graphite dark:text-white">{title}</h1>
                 <div className="flex justify-center mb-4">
-                    <LanguageSwitcher currentLang={currentLang} />
+                    <LanguageSwitcher currentLang={currentLang} variant="list" />
                 </div>
                 <span className="inline-block px-4 py-1 bg-sepia text-white text-xs font-bold uppercase tracking-widest rounded-full">
                     {item.subtitle}
@@ -265,7 +265,7 @@ const EventView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                 <div className="border-y border-graphite/10 dark:border-white/10 py-8 text-center space-y-4">
                     <h1 className="font-display text-3xl md:text-5xl text-graphite dark:text-white leading-tight uppercase">{title}</h1>
                     <div className="flex justify-center mb-4">
-                        <LanguageSwitcher currentLang={currentLang} />
+                        <LanguageSwitcher currentLang={currentLang} variant="list" />
                     </div>
                     <div className="flex justify-center items-center gap-2 text-teal font-mono uppercase tracking-widest text-xs">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
@@ -317,7 +317,7 @@ const ProjectView: React.FC<ItemDetailProps> = ({ item, onBack }) => {
                     </span>
                     <h1 className="font-display text-5xl md:text-7xl text-white mb-6 leading-none">{title}</h1>
                     <div className="mb-6">
-                        <LanguageSwitcher currentLang={currentLang} className="bg-black/20 backdrop-blur-sm p-1 rounded-md inline-block" />
+                        <LanguageSwitcher currentLang={currentLang} variant="list" className="bg-black/20 backdrop-blur-sm p-1 rounded-md inline-block" />
                     </div>
                     <p className="font-serif text-xl text-white/80 leading-relaxed border-l-2 border-white/30 pl-6">
                         {description}

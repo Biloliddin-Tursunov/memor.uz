@@ -52,8 +52,8 @@ export const ProjectDetail: React.FC<{ language: Language }> = ({ language }) =>
               <h1 className="font-display text-3xl md:text-5xl text-white leading-none tracking-tight">
                 {title}
               </h1>
-              <div className="flex justify-start mt-4">
-                <LanguageSwitcher currentLang={language} />
+              <div className="mb-6">
+                <LanguageSwitcher currentLang={language} variant="list" className="bg-black/20 backdrop-blur-sm p-1 rounded-md inline-block" />
               </div>
             </div>
           </div>

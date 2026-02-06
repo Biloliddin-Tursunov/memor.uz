@@ -46,8 +46,8 @@ export const ArticleDetail: React.FC<{ language: Language }> = ({ language }) =>
         <h1 className="font-display text-4xl md:text-5xl text-graphite dark:text-white leading-tight mb-6">
           {title}
         </h1>
-        <div className="flex justify-start mb-6">
-          <LanguageSwitcher currentLang={language} />
+        <div className="flex justify-center mb-6">
+          <LanguageSwitcher currentLang={language} variant="list" />
         </div>
         <div className="flex items-center gap-4 text-[10px] font-mono text-graphite/40 uppercase tracking-widest border-t border-graphite/5 pt-4">
           <span>{article.author}</span>

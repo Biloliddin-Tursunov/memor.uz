@@ -42,8 +42,8 @@ export const NewsDetail: React.FC<{ language: Language }> = ({ language }) => {
         <h1 className="font-display text-4xl md:text-6xl dark:text-white leading-tight mb-6">
           {title}
         </h1>
-        <div className="flex justify-start mb-6">
-          <LanguageSwitcher currentLang={language} />
+        <div className="flex justify-center mb-6">
+          <LanguageSwitcher currentLang={language} variant="list" />
         </div>
         <p className="font-serif text-xl italic text-graphite/60 dark:text-slate-400 leading-relaxed">
           {excerpt}

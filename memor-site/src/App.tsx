@@ -181,7 +181,6 @@ const AppContent: React.FC = () => {
           onNavigate={handleNavigate}
           onSearchOpen={() => handleNavigate(PageRoute.SEARCH)}
           language={language}
-          setLanguage={handleLanguageChange}
           theme={theme}
           setTheme={setTheme}
         />

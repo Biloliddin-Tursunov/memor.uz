@@ -47,8 +47,8 @@ export const VideoDetail: React.FC<{ language: Language }> = ({ language }) => {
         <div className="flex-grow">
           <span className="text-teal text-[10px] font-bold uppercase tracking-widest mb-3 block">{video.type}</span>
           <h1 className="font-display text-3xl md:text-5xl dark:text-white mb-6 leading-tight">{title}</h1>
-          <div className="flex justify-start mb-6">
-            <LanguageSwitcher currentLang={language} />
+          <div className="mb-4">
+            <LanguageSwitcher currentLang={language} variant="list" className="bg-black/20 backdrop-blur-sm p-1 rounded-md inline-block" />
           </div>
           <p className="font-serif text-lg text-graphite/70 dark:text-slate-300 leading-relaxed max-w-2xl">
             {language === 'uz' ? `Ushbu darslikda ${video.author} tomonidan an'anaviy hunarmandchilikning eng nozik jihatlari ko'rsatib beriladi.` :
