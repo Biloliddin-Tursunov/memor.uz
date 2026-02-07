@@ -225,7 +225,7 @@ const AppContent: React.FC = () => {
             <Route path="article/:slug" element={<ArticleDetail language={language} />} />
             <Route path="project/:id" element={<ProjectDetail language={language} />} />
             <Route path="video/:id" element={<VideoDetail language={language} />} />
-            <Route path="creation/:id" element={<CreationDetail language={language} />} />
+            <Route path="creation/:slug" element={<CreationDetail language={language} />} />
             <Route path="book/:id" element={<BookDetail language={language} />} />
             <Route path="creator/:id" element={<CreatorDetail language={language} />} />
             <Route path="event/:id" element={<EventDetail language={language} />} />

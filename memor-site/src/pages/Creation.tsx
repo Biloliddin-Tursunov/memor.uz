@@ -34,31 +34,53 @@ const Creation: React.FC = () => {
             </p>
          </div>
 
-         <div className="columns-1 md:columns-2 lg:columns-3 gap-10 space-y-10">
+         <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
             {creations.length > 0 ? (
                creations.map((item) => {
-                  const { title, description } = getLocalizedContent(item, language);
+                  const { title } = getLocalizedContent(item, language);
                   return (
                      <div
                         key={item.id}
-                        className="break-inside-avoid bg-white dark:bg-white/5 p-5 shadow-sm hover:shadow-2xl transition-all duration-700 group border border-graphite/5 cursor-pointer"
-                        onClick={() => navigate(`/${language}/creation/${item.id}`)}
+                        className="break-inside-avoid group cursor-pointer relative"
+                        onClick={() => navigate(`/${language}/creation/${item.slug || item.id}`)}
                      >
-                        <div className="relative overflow-hidden mb-6 rounded-sm">
-                           <img src={item.imageUrl} alt={title} className="w-full object-cover group-hover:scale-110 transition-all duration-1000" />
-                           <div className="absolute inset-0 bg-graphite/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
-                              <span className="text-white font-display uppercase tracking-[0.4em] text-[10px] border border-white/40 px-6 py-3">{t.view}</span>
-                           </div>
-                        </div>
+                        <div className="bg-white dark:bg-white/5 p-4 shadow-sm group-hover:shadow-2xl transition-all duration-700 border border-graphite/5 dark:border-white/5 relative overflow-hidden">
+                           {/* Decorative Corners */}
+                           <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-teal/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                           <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-teal/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                           <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-teal/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                           <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-teal/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                        <span className="text-teal text-[9px] font-bold uppercase tracking-[0.3em] mb-2 block">{item.type}</span>
-                        <h3 className="font-display text-2xl mb-3 dark:text-white group-hover:text-teal transition-colors">{title}</h3>
-                        <p className="font-serif text-sm text-graphite/60 dark:text-gray-400 leading-relaxed mb-6">
-                           {description}
-                        </p>
-                        <div className="flex justify-between items-center text-[10px] font-mono text-graphite/30 uppercase tracking-widest pt-4 border-t border-dashed border-graphite/10">
-                           <span>{item.author}</span>
-                           <Ornament type="corner" className="w-3 h-3 opacity-20" />
+                           <div className="relative overflow-hidden mb-5 rounded-sm aspect-[4/5]">
+                              <img
+                                 src={item.imageUrl}
+                                 alt={title}
+                                 className="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000 grayscale-[0.2] group-hover:grayscale-0"
+                              />
+                              <div className="absolute inset-0 bg-graphite/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                                 <div className="flex flex-col items-center gap-4">
+                                    <span className="text-white font-display uppercase tracking-[0.4em] text-[10px] border border-white/20 px-8 py-3 bg-white/5">
+                                       {t.view}
+                                    </span>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div className="px-1">
+                              <div className="flex items-center gap-3 mb-3">
+                                 <span className="text-teal text-[8px] font-bold uppercase tracking-[0.4em]">{item.type}</span>
+                                 <div className="h-px flex-1 bg-graphite/5 dark:bg-white/5" />
+                              </div>
+
+                              <h3 className="font-display text-xl mb-4 dark:text-white group-hover:text-teal transition-colors leading-tight">
+                                 {title}
+                              </h3>
+
+                              <div className="flex justify-between items-center text-[10px] font-mono text-graphite/40 dark:text-white/30 uppercase tracking-[0.2em] pt-4 border-t border-graphite/5 dark:border-white/5">
+                                 <span className="font-bold">{item.author}</span>
+                                 <Ornament type="corner" className="w-3 h-3 opacity-20 group-hover:rotate-90 transition-transform duration-700" />
+                              </div>
+                           </div>
                         </div>
                      </div>
                   );

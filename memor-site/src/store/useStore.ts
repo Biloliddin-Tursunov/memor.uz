@@ -206,7 +206,8 @@ export const useStore = create<AppState>((set, get) => ({
                 description_en: c.description_en,
                 description_ru: c.description_ru,
                 description_tr: c.description_tr,
-                downloadUrl: c.download_url
+                downloadUrl: c.download_url,
+                slug: c.title_uz ? c.title_uz.toLowerCase().trim().replace(/\s+/g, '-') : c.id
             })) as CreationItem[],
             isLoading: false
         });

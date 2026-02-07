@@ -163,6 +163,7 @@ export interface CreationItem {
   description_ru?: string;
   description_tr?: string;
   downloadUrl?: string; // mapped from download_url
+  slug?: string;
 }
 
 // --- PORTFOLIO ---
