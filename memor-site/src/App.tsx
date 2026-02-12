@@ -7,6 +7,7 @@ import MainLayout from './layouts/MainLayout';
 
 // Biloliddin Personal Site (Lazy Loaded)
 const BiloliddinApp = lazy(() => import('./biloliddin/App'));
+const Paper = lazy(() => import('./components/paper/Paper'));
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,13 @@ const App: React.FC = () => {
         <Route path="/biloliddin/*" element={
           <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-teal-900">Yuklanmoqda...</div>}>
             <BiloliddinApp />
+          </Suspense>
+        } />
+
+        {/* Paper Generator Route - Isolated App */}
+        <Route path="/paper" element={
+          <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-gray-50 text-gray-900">Yuklanmoqda...</div>}>
+            <Paper />
           </Suspense>
         } />
 
