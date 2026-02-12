@@ -1,0 +1,40 @@
+/* Scoped styles for Biloliddin sub-site */
+
+.biloliddin-layout {
+  scroll-behavior: smooth;
+  /* background-color: #FBF9F4; Already covered by tailwind bg-parchment */
+  /* color: #151515; Already covered by tailwind text-graphite */
+}
+
+.biloliddin-layout .glass-panel {
+  background: rgba(251, 249, 244, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(176, 137, 104, 0.2);
+}
+
+/* Font remapping for Biloliddin site */
+.biloliddin-layout {
+  /* User config: sans -> Lora, serif -> Playfair */
+  /* Main config: serif -> Lora, display -> Playfair */
+  --font-sans: var(--font-serif);
+  --font-serif: var(--font-display);
+}
+
+/* Custom scrollbar for deep teal look - specifically for this layout */
+.biloliddin-layout ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.biloliddin-layout ::-webkit-scrollbar-track {
+  background: #FBF9F4;
+}
+
+.biloliddin-layout ::-webkit-scrollbar-thumb {
+  background: #B08968;
+  border-radius: 4px;
+}
+
+.biloliddin-layout ::-webkit-scrollbar-thumb:hover {
+  background: #1F4E5F;
+}

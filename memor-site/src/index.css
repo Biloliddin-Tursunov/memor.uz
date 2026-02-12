@@ -16,6 +16,10 @@
     --color-sepia-light: #B08968;
     --color-sepia-accent: #B08968;
 
+    /* Biloliddin aliases */
+    --color-deep-teal: #1F4E5F;
+    --color-cosmic-night: #0F172A;
+
     --font-serif: "Lora", serif;
     --font-display: "Playfair Display", serif;
 
@@ -44,6 +48,60 @@
 
         100% {
             transform: translateY(-100px) rotate(360deg);
+        }
+    }
+
+    /* Biloliddin specific animations */
+    --animate-biloliddin-float: biloliddin-float 6s ease-in-out infinite;
+    --animate-biloliddin-twinkle: biloliddin-twinkle 4s ease-in-out infinite;
+
+    @keyframes biloliddin-float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes biloliddin-twinkle {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    /* Common Fade Animations used in Baloliddin components */
+    --animate-fade-in: fade-in 1s ease-out forwards;
+    --animate-fade-in-up: fade-in-up 1s ease-out forwards;
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fade-in-up {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
 }
