@@ -26,7 +26,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({ className = '', language = 'u
   };
 
   const handleSeeMore = () => {
-    navigate('/biloliddin');
+    navigate('/my-journey');
   };
 
   return (

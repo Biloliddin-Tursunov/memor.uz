@@ -14,7 +14,7 @@ const App: React.FC = () => {
     <BrowserRouter>
       <Routes>
         {/* Biloliddin's Personal Blog Route */}
-        <Route path="/biloliddin/*" element={
+        <Route path="/my-journey/*" element={
           <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-teal-900">Yuklanmoqda...</div>}>
             <BiloliddinApp />
           </Suspense>

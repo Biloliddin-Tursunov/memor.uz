@@ -14,10 +14,10 @@ const Navigation: React.FC<NavigationProps> = ({ activePage, onNavigate }) => {
 
   const navLinks: { name: string; value: PageView | string; path: string; external?: boolean }[] = [
     { name: 'Me\'mor', value: 'memor', path: 'https://memor.uz', external: true },
-    { name: 'Blog', value: 'blog', path: '/biloliddin/blog' },
-    { name: 'Loyihalar', value: 'projects', path: '/biloliddin/projects' },
-    { name: 'Haqimda', value: 'about', path: '/biloliddin/about' },
-    { name: 'Aloqa', value: 'contact', path: '/biloliddin/contact' },
+    { name: 'Blog', value: 'blog', path: '/my-journey/blog' },
+    { name: 'Loyihalar', value: 'projects', path: '/my-journey/projects' },
+    { name: 'Haqimda', value: 'about', path: '/my-journey/about' },
+    { name: 'Aloqa', value: 'contact', path: '/my-journey/contact' },
   ];
 
   const handleNavClick = (value: PageView | string) => {
@@ -40,7 +40,7 @@ const Navigation: React.FC<NavigationProps> = ({ activePage, onNavigate }) => {
     <nav className="fixed top-0 w-full z-50 glass-panel transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
-          <Link to="/biloliddin" className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => setIsOpen(false)}>
+          <Link to="/my-journey" className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => setIsOpen(false)}>
             <span className="font-serif text-2xl font-bold tracking-tight text-deep-teal">
               Biloliddin<span className="text-sepia">.</span>
             </span>

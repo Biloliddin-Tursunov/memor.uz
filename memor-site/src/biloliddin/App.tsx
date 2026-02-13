@@ -35,10 +35,10 @@ function App() {
   // Wrapper for onNavigate to support legacy props until refactored
   const handleNavigate = (view: PageView) => {
     if (typeof view === 'string') {
-      if (view === 'home') navigate('/biloliddin');
-      else navigate(`/biloliddin/${view}`);
+      if (view === 'home') navigate('/my-journey');
+      else navigate(`/my-journey/${view}`);
     } else if (typeof view === 'object' && view.type === 'post') {
-      navigate(`/biloliddin/blog/${view.id}`);
+      navigate(`/my-journey/blog/${view.id}`);
     }
   };
 
@@ -57,15 +57,15 @@ function App() {
               <Hero onNavigate={handleNavigate} />
             </>
           } />
-          <Route path="/blog" element={<BlogList onReadPost={(id) => navigate(`/biloliddin/blog/${id}`)} />} />
-          <Route path="/blog/:id" element={<BlogPostWrapper onBack={() => navigate('/biloliddin/blog')} />} />
+          <Route path="/blog" element={<BlogList onReadPost={(id) => navigate(`/my-journey/blog/${id}`)} />} />
+          <Route path="/blog/:id" element={<BlogPostWrapper onBack={() => navigate('/my-journey/blog')} />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Hero onNavigate={handleNavigate} />} />
         </Routes>
       </main>
-      {location.pathname !== '/biloliddin' && location.pathname !== '/biloliddin/' && <Footer />}
+      {location.pathname !== '/my-journey' && location.pathname !== '/my-journey/' && <Footer />}
     </Layout>
   );
 }
