@@ -7,12 +7,13 @@ interface NavigationProps {
 }
 
 import { Link } from 'react-router-dom';
+import { personalInfo } from '../data/localDb';
 
 const Navigation: React.FC<NavigationProps> = ({ activePage, onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navLinks: { name: string; value: PageView | string; path: string }[] = [
-    { name: 'Bosh Sahifa', value: 'home', path: '/biloliddin' },
+  const navLinks: { name: string; value: PageView | string; path: string; external?: boolean }[] = [
+    { name: 'Me\'mor', value: 'memor', path: 'https://memor.uz', external: true },
     { name: 'Blog', value: 'blog', path: '/biloliddin/blog' },
     { name: 'Loyihalar', value: 'projects', path: '/biloliddin/projects' },
     { name: 'Haqimda', value: 'about', path: '/biloliddin/about' },
@@ -48,21 +49,39 @@ const Navigation: React.FC<NavigationProps> = ({ activePage, onNavigate }) => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`text-sm font-sans tracking-wide uppercase border-b pb-1 transition-colors ${isLinkActive(link.value as string)
+              link.external ? (
+                <a
+                  key={link.name}
+                  href={link.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={link.value === 'memor'
+                    ? "font-serif text-sm tracking-widest uppercase border border-sepia px-4 py-1 text-deep-teal hover:bg-sepia/10 flex items-center gap-2 group transition-all"
+                    : "text-sm font-sans tracking-wide uppercase border-b pb-1 transition-colors text-graphite border-transparent hover:text-deep-teal hover:border-sepia/50"
+                  }
+                >
+                  {link.value === 'memor' && <span className="text-sepia group-hover:rotate-180 transition-transform duration-500">❖</span>}
+                  {link.name}
+                  {link.value === 'memor' && <span className="text-sepia group-hover:-rotate-180 transition-transform duration-500">❖</span>}
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={`text-sm font-sans tracking-wide uppercase border-b pb-1 transition-colors ${isLinkActive(link.value as string)
                     ? 'text-deep-teal border-sepia font-medium'
                     : 'text-graphite border-transparent hover:text-deep-teal hover:border-sepia/50'
-                  }`}
-              >
-                {link.name}
-              </Link>
+                    }`}
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
+
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-4">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-deep-teal hover:text-sepia focus:outline-none"
@@ -84,15 +103,28 @@ const Navigation: React.FC<NavigationProps> = ({ activePage, onNavigate }) => {
         <div className="md:hidden bg-parchment border-b border-sepia/20">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={`block w-full text-left px-3 py-4 rounded-md text-base font-serif hover:bg-sepia/10 ${isLinkActive(link.value as string) ? 'text-deep-teal font-bold bg-sepia/5' : 'text-graphite'
-                  }`}
-              >
-                {link.name}
-              </Link>
+              link.external ? (
+                <a
+                  key={link.name}
+                  href={link.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-left px-3 py-4 rounded-md text-base font-serif text-graphite hover:bg-sepia/10"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`block w-full text-left px-3 py-4 rounded-md text-base font-serif hover:bg-sepia/10 ${isLinkActive(link.value as string) ? 'text-deep-teal font-bold bg-sepia/5' : 'text-graphite'
+                    }`}
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
           </div>
         </div>

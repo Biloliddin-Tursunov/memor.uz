@@ -129,7 +129,8 @@ export const TRANSLATIONS = {
     seoNewsTitle: 'Yangiliklar va Voqealar',
     seoNewsDesc: 'Platformadagi so\'nggi o\'zgarishlar, yangi qo\'shilgan manbalar va muhim xabarlar.',
     seoSupportTitle: 'Loyihani Qo\'llab-Quvvatlash',
-    seoSupportDesc: 'Me\'mor platformasi rivojiga hissa qo\'shing va milliy merosimizni saqlab qolishga yordam bering.'
+    seoSupportDesc: 'Me\'mor platformasi rivojiga hissa qo\'shing va milliy merosimizni saqlab qolishga yordam bering.',
+    seeMore: 'Ko\'proq ma\'lumot'
   },
   en: {
     ilm: 'KNOWLEDGE',
@@ -249,7 +250,8 @@ export const TRANSLATIONS = {
     seoNewsTitle: 'News & Events',
     seoNewsDesc: 'Latest updates from the platform, newly added resources, and important announcements.',
     seoSupportTitle: 'Support the Project',
-    seoSupportDesc: 'Contribute to the development of the Me\'mor platform and help preserve our national heritage.'
+    seoSupportDesc: 'Contribute to the development of the Me\'mor platform and help preserve our national heritage.',
+    seeMore: 'See More'
   },
   ru: {
     ilm: 'НАУКА',
@@ -369,7 +371,8 @@ export const TRANSLATIONS = {
     seoNewsTitle: 'Новости и События',
     seoNewsDesc: 'Последние обновления платформы, новые ресурсы и важные объявления.',
     seoSupportTitle: 'Поддержать Проект',
-    seoSupportDesc: 'Внесите свой вклад в развитие платформы Me\'mor и помогите сохранить наше национальное наследие.'
+    seoSupportDesc: 'Внесите свой вклад в развитие платформы Me\'mor и помогите сохранить наше национальное наследие.',
+    seeMore: 'Подробнее'
   },
   tr: {
     ilm: 'İLİM',
@@ -489,7 +492,8 @@ export const TRANSLATIONS = {
     seoNewsTitle: 'Haberler ve Etkinlikler',
     seoNewsDesc: 'Platformdan en son güncellemeler, yeni eklenen kaynaklar ve önemli duyurular.',
     seoSupportTitle: 'Projeyi Destekle',
-    seoSupportDesc: 'Me\'mor platformunun gelişimine katkıda bulunun ve ulusal mirasımızı korumaya yardımcı olun.'
+    seoSupportDesc: 'Me\'mor platformunun gelişimine katkıda bulunun ve ulusal mirasımızı korumaya yardımcı olun.',
+    seeMore: 'Daha Fazla'
   }
 };
 

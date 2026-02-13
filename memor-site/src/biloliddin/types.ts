@@ -1,7 +1,7 @@
 export interface Project {
-  id: number;
+  id: number | string;
   title: string;
-  category: 'Architecture' | 'Urban Planning' | 'Code';
+  category: 'Architecture' | 'Urban Planning' | 'Coding';
   description: string;
   imageUrl: string;
   visible: boolean;
@@ -9,10 +9,10 @@ export interface Project {
 }
 
 export interface BlogPost {
-  id: string;
+  id: string | number;
   title: string;
   excerpt: string;
-  content: string; // HTML or Markdown content
+  content: string;
   date: string;
   readTime: string;
   category: string;
@@ -24,4 +24,4 @@ export interface ChatMessage {
   text: string;
 }
 
-export type PageView = 'home' | 'blog' | 'projects' | 'about' | 'contact' | { type: 'post', id: string };
+export type PageView = 'home' | 'blog' | 'projects' | 'about' | 'contact' | { type: 'post', id: string | number };

@@ -55,15 +55,6 @@ function App() {
           <Route path="/" element={
             <>
               <Hero onNavigate={handleNavigate} />
-              <div className="bg-parchment py-12">
-                <div className="max-w-7xl mx-auto px-4 mb-8">
-                  <h3 className="font-sans text-xs font-bold text-sepia uppercase tracking-widest text-center">So'nggi Maqolalar</h3>
-                </div>
-                <BlogList onReadPost={(id) => navigate(`/biloliddin/blog/${id}`)} limit={3} />
-                <div className="text-center pb-12">
-                  <button onClick={() => navigate('/biloliddin/blog')} className="text-deep-teal border-b border-deep-teal hover:text-sepia hover:border-sepia transition-colors font-serif italic">Barcha maqolalar &rarr;</button>
-                </div>
-              </div>
             </>
           } />
           <Route path="/blog" element={<BlogList onReadPost={(id) => navigate(`/biloliddin/blog/${id}`)} />} />
@@ -74,7 +65,7 @@ function App() {
           <Route path="*" element={<Hero onNavigate={handleNavigate} />} />
         </Routes>
       </main>
-      <Footer />
+      {location.pathname !== '/biloliddin' && location.pathname !== '/biloliddin/' && <Footer />}
     </Layout>
   );
 }
