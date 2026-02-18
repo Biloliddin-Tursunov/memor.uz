@@ -10,13 +10,14 @@ export interface Project {
 
 export interface BlogPost {
   id: string | number;
-  title: string;
-  excerpt: string;
-  content: string;
-  date: string;
-  readTime: string;
-  category: string;
+  title?: string;
+  excerpt?: string;
+  content?: string;
+  date?: string;
+  readTime?: string;
+  category?: string;
   imageUrl?: string;
+  telegramUrl?: string; // Optional field for Telegram posts
 }
 
 export interface ChatMessage {
