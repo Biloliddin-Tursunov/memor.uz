@@ -6,7 +6,7 @@ import { useStore } from '../../store/useStore';
 import { Ornament } from '../Ornament';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
-import { getLocalizedContent } from '../../lib/content';
+import { getLocalizedContent, stripHtml } from '../../lib/content';
 import SEO from '../SEO';
 
 export const ProjectDetail: React.FC<{ language: Language }> = ({ language }) => {
@@ -77,7 +77,7 @@ export const ProjectDetail: React.FC<{ language: Language }> = ({ language }) =>
 
           <div className="prose prose-lg dark:prose-invert font-serif text-graphite/80 dark:text-slate-300 max-w-none">
             <p className="leading-relaxed mb-8 text-xl italic text-sepia">
-              {description}
+              {stripHtml(description)}
             </p>
             <p className="leading-relaxed mb-10">
               {language === 'uz' ? "Ushbu loyiha Me'mor jamoasining uzoq yillik izlanishlari mahsulidir. Biz har bir detalda tarixiy haqiqiylikni saqlab qolgan holda, zamonaviy hayot talablariga javob beradigan muhandislik yechimlarini qo'lladik. Bu nafaqat bino, balki madaniy merosning davomidir." :

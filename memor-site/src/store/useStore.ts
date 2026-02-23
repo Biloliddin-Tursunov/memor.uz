@@ -2,6 +2,7 @@
 import { create } from 'zustand';
 import { supabase } from '../lib/supabase';
 import { Article, VideoResource, Book, Creator, EventItem, Project, CreationItem, PortfolioItem } from '../types';
+import { generateSlug } from '../lib/content';
 
 interface AppState {
     articles: Article[];
@@ -63,7 +64,7 @@ export const useStore = create<AppState>((set, get) => ({
                 date: item.created_at ? new Date(item.created_at).toLocaleDateString('uz-UZ') : new Date().toLocaleDateString('uz-UZ'),
                 category: item.category || 'Maqola',
                 imageUrl: item.image_url,
-                slug: item.slug || (item.title_uz ? item.title_uz.toLowerCase().trim().replace(/\s+/g, '-') : item.id)
+                slug: item.slug || generateSlug(item.title_uz || item.id)
             })) as Article[];
             set({ articles: mappedArticles, isLoading: false });
         }
@@ -84,7 +85,8 @@ export const useStore = create<AppState>((set, get) => ({
                 thumbnailUrl: v.thumbnail_url,
                 videoUrl: v.video_url,
                 author: v.author,
-                type: v.type
+                type: v.type,
+                slug: v.slug || generateSlug(v.title_uz || v.id)
             })) as VideoResource[],
             isLoading: false
         });
@@ -206,8 +208,9 @@ export const useStore = create<AppState>((set, get) => ({
                 description_en: c.description_en,
                 description_ru: c.description_ru,
                 description_tr: c.description_tr,
+                gallery_images: c.gallery_images || [], // <-- SHU QATOR QO'SHILDI
                 downloadUrl: c.download_url,
-                slug: c.title_uz ? c.title_uz.toLowerCase().trim().replace(/\s+/g, '-') : c.id
+                slug: c.slug || generateSlug(c.title_uz || c.id)
             })) as CreationItem[],
             isLoading: false
         });

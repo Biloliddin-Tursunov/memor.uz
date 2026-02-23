@@ -5,7 +5,7 @@ import { useStore } from '../../store/useStore';
 import { Ornament } from '../Ornament';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
-import { getLocalizedContent } from '../../lib/content';
+import { getLocalizedContent, stripHtml } from '../../lib/content';
 import SEO from '../SEO';
 
 export const ArticleDetail: React.FC<{ language: Language }> = ({ language }) => {
@@ -73,7 +73,7 @@ export const ArticleDetail: React.FC<{ language: Language }> = ({ language }) =>
       <div className="max-w-2xl mx-auto">
         <article className="prose prose-lg prose-headings:font-display prose-p:font-serif prose-p:text-graphite/80 dark:prose-invert max-w-none">
           <p className="text-xl leading-relaxed first-letter:text-6xl first-letter:float-left first-letter:mr-4 first-letter:text-sepia first-letter:font-display italic mb-10 opacity-90">
-            {description}
+            {stripHtml(description)}
           </p>
           <div className="space-y-6 text-lg leading-relaxed text-graphite/80 dark:text-slate-300">
             {content ? (

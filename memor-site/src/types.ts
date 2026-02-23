@@ -79,6 +79,7 @@ export interface VideoResource {
   videoUrl?: string; // mapped from video_url
   author?: string;
   type?: 'Darslik' | 'Hujjatli' | 'Suhbat';
+  slug?: string;
 }
 
 export interface Book {
@@ -148,6 +149,11 @@ export interface Project {
   location_tr?: string;
 }
 
+export interface GalleryImage {
+  url: string;
+  direction: 'left' | 'right';
+}
+
 // --- CREATION (IJOD) ---
 export interface CreationItem {
   id: string;
@@ -155,13 +161,14 @@ export interface CreationItem {
   title_en?: string;
   title_ru?: string;
   title_tr?: string;
-  author?: string;
-  type?: 'Vector' | 'Concept' | 'Artwork';
-  imageUrl?: string; // mapped from image_url
-  description_uz?: string;
+  author: string;
+  type: string;
+  imageUrl: string; // mapped from image_url (Hero image)
+  description_uz: string; // contains raw HTML
   description_en?: string;
   description_ru?: string;
   description_tr?: string;
+  gallery_images: GalleryImage[]; // JSONB structure
   downloadUrl?: string; // mapped from download_url
   slug?: string;
 }

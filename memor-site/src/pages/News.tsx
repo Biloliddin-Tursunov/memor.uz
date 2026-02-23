@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { TRANSLATIONS } from '../constants';
 import { useStore } from '../store/useStore';
 import { Ornament } from '../components/Ornament';
-import { getLocalizedContent } from '../lib/content';
+import { getLocalizedContent, stripHtml } from '../lib/content';
 import SEO from '../components/SEO';
 
 interface NewsProps {
@@ -112,7 +112,7 @@ const News: React.FC<NewsProps> = ({ onItemClick }) => {
                   {title}
                 </h3>
                 <p className="font-serif text-sm text-graphite/60 dark:text-gray-400 line-clamp-3 mb-8 italic">
-                  {description}
+                  {stripHtml(description)}
                 </p>
 
                 <div className="mt-auto pt-6 border-t border-dashed border-graphite/10 flex justify-between items-center group-hover:border-teal/30">

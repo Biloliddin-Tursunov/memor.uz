@@ -37,7 +37,7 @@ const Creation: React.FC = () => {
          <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
             {creations.length > 0 ? (
                creations.map((item) => {
-                  const { title } = getLocalizedContent(item, language);
+                  const { title, type } = getLocalizedContent(item, language);
                   return (
                      <div
                         key={item.id}
@@ -68,7 +68,7 @@ const Creation: React.FC = () => {
 
                            <div className="px-1">
                               <div className="flex items-center gap-3 mb-3">
-                                 <span className="text-teal text-[8px] font-bold uppercase tracking-[0.4em]">{item.type}</span>
+                                 <span className="text-teal text-[8px] font-bold uppercase tracking-[0.4em]">{type}</span>
                                  <div className="h-px flex-1 bg-graphite/5 dark:bg-white/5" />
                               </div>
 

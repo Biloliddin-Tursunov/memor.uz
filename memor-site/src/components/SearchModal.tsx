@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { getLocalizedContent } from '../lib/content';
+import { getLocalizedContent, stripHtml } from '../lib/content';
 import { TRANSLATIONS } from '../constants';
 import { useStore } from '../store/useStore';
 import { DisplayItem, Language } from '../types';
@@ -31,11 +31,11 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onItemClick,
     return [
       ...articles.map(a => {
         const { title, description } = getLocalizedContent(a, language);
-        return { id: a.id, title, subtitle: a.author, description, imageUrl: a.imageUrl, type: c.article };
+        return { id: a.id, title, subtitle: a.author, description: stripHtml(description), imageUrl: a.imageUrl, type: c.article };
       }),
       ...projects.map(p => {
         const { title, description, location } = getLocalizedContent(p, language);
-        return { id: p.id, title, subtitle: location, description, imageUrl: p.imageUrl, type: c.project };
+        return { id: p.id, title, subtitle: location, description: stripHtml(description), imageUrl: p.imageUrl, type: c.project };
       }),
       ...videos.map(v => {
         const { title } = getLocalizedContent(v, language);

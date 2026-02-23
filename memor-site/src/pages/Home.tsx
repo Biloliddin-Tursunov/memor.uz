@@ -9,7 +9,7 @@ import TeamSection from '../components/TeamSection';
 import { Skeleton } from '../components/Skeleton';
 import Hero from '../components/Hero';
 import { HadithBlock } from '../components/HadithBlock';
-import { getLocalizedContent } from '../lib/content';
+import { getLocalizedContent, stripHtml } from '../lib/content';
 import SEO from '../components/SEO';
 
 interface HomeProps {
@@ -108,7 +108,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onItemClick, language }) => {
                     >
                       <img src={articles[0].imageUrl} className="w-full h-[250px] md:h-[450px] object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 mb-8" />
                       <h4 className="font-display text-2xl md:text-4xl mb-4 dark:text-white leading-tight">{title}</h4>
-                      <p className="font-serif text-base md:text-lg text-graphite/60 dark:text-slate-300 mb-6 italic border-l-2 border-sepia pl-4 md:pl-6 line-clamp-3">{description}</p>
+                      <p className="font-serif text-base md:text-lg text-graphite/60 dark:text-slate-300 mb-6 italic border-l-2 border-sepia pl-4 md:pl-6 line-clamp-3">{stripHtml(description)}</p>
                       <div className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-widest text-graphite/30">
                         <span>{articles[0].author}</span>
                         <span>•</span>
@@ -165,7 +165,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onItemClick, language }) => {
                         <div className="absolute top-4 left-4 px-3 py-1 bg-sepia text-white text-[9px] font-bold uppercase tracking-widest">{proj.status}</div>
                       </div>
                       <h3 className="font-display text-2xl dark:text-white mb-2 group-hover:text-sepia transition-colors">{title}</h3>
-                      <p className="font-serif text-graphite/60 dark:text-slate-400 italic text-sm line-clamp-2">{description}</p>
+                      <p className="font-serif text-graphite/60 dark:text-slate-400 italic text-sm line-clamp-2">{stripHtml(description)}</p>
                     </div>
                   );
                 }) : [1, 2].map(i => <Skeleton key={i} className="h-64 w-full" />)}

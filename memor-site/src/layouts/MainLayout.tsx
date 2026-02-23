@@ -122,8 +122,8 @@ const MainLayout: React.FC = () => {
         const langPrefix = `/${language}`;
         switch (route) {
             case PageRoute.HOME: navigate(langPrefix); break;
-            case PageRoute.KNOWLEDGE: navigate(`${langPrefix}/knowledge/articles`); break;
-            case PageRoute.ACTION: navigate(`${langPrefix}/action`); break;
+            case PageRoute.KNOWLEDGE: navigate(`${langPrefix}/knowledge/books`); break;
+            case PageRoute.ACTION: navigate(`${langPrefix}/action/articles`); break;
             case PageRoute.CREATION: navigate(`${langPrefix}/creation`); break;
             case PageRoute.LOGIN: navigate(`${langPrefix}/login`); break;
             case PageRoute.ABOUT: navigate(`${langPrefix}/about`); break;
@@ -215,6 +215,9 @@ const MainLayout: React.FC = () => {
                         <Route path="action" element={
                             <Action onItemClick={handleItemClick} />
                         } />
+                        <Route path="action/:tab" element={
+                            <Action onItemClick={handleItemClick} />
+                        } />
                         <Route path="creation" element={
                             <Creation onItemClick={handleItemClick} />
                         } />
@@ -225,7 +228,7 @@ const MainLayout: React.FC = () => {
                         {/* Batafsil (Detail) Sahifalar - Dynamic URLs */}
                         <Route path="article/:slug" element={<ArticleDetail language={language} />} />
                         <Route path="project/:id" element={<ProjectDetail language={language} />} />
-                        <Route path="video/:id" element={<VideoDetail language={language} />} />
+                        <Route path="video/:slug" element={<VideoDetail language={language} />} />
                         <Route path="creation/:slug" element={<CreationDetail language={language} />} />
                         <Route path="book/:id" element={<BookDetail language={language} />} />
                         <Route path="creator/:id" element={<CreatorDetail language={language} />} />
@@ -260,8 +263,8 @@ const MainLayout: React.FC = () => {
                     <Ornament type="divider" className="w-64 mb-6" />
                     <h2 className="font-display text-4xl mb-4 dark:text-white uppercase tracking-tighter">ME'MOR</h2>
                     <div className="flex flex-wrap justify-center gap-6 text-[10px] uppercase tracking-[0.3em] text-graphite/60 dark:text-white/40 mb-8 font-bold">
-                        <Link to={`/${language}/knowledge/articles`} className="hover:text-teal transition-colors">{t.ilm}</Link>
-                        <Link to={`/${language}/action`} className="hover:text-teal transition-colors">{t.harakat}</Link>
+                        <Link to={`/${language}/knowledge/books`} className="hover:text-teal transition-colors">{t.ilm}</Link>
+                        <Link to={`/${language}/action/projects`} className="hover:text-teal transition-colors">{t.harakat}</Link>
                         <Link to={`/${language}/creation`} className="hover:text-teal transition-colors">{t.ijod}</Link>
                         <span className="text-graphite/20 dark:text-white/10">|</span>
                         <Link to={`/${language}/about`} className="hover:text-teal transition-colors">{t.about}</Link>

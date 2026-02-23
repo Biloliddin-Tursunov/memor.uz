@@ -6,7 +6,7 @@ import { useStore } from '../../store/useStore';
 import { Ornament } from '../Ornament';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
-import { getLocalizedContent } from '../../lib/content';
+import { getLocalizedContent, stripHtml } from '../../lib/content';
 import SEO from '../SEO';
 
 export const NewsDetail: React.FC<{ language: Language }> = ({ language }) => {
@@ -55,7 +55,7 @@ export const NewsDetail: React.FC<{ language: Language }> = ({ language }) => {
           <LanguageSwitcher currentLang={language} variant="list" />
         </div>
         <p className="font-serif text-xl italic text-graphite/60 dark:text-slate-400 leading-relaxed">
-          {excerpt}
+          {stripHtml(excerpt)}
         </p>
       </div>
 

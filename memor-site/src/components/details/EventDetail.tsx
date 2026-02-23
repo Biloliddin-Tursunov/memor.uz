@@ -6,7 +6,7 @@ import { useStore } from '../../store/useStore';
 import { Ornament } from '../Ornament';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { Language } from '../../types';
-import { getLocalizedContent } from '../../lib/content';
+import { getLocalizedContent, stripHtml } from '../../lib/content';
 import SEO from '../SEO';
 
 export const EventDetail: React.FC<{ language: Language }> = ({ language }) => {
@@ -62,7 +62,7 @@ export const EventDetail: React.FC<{ language: Language }> = ({ language }) => {
 
           <div className="py-10 text-center">
             <p className="font-serif text-lg text-graphite/70 dark:text-slate-300 leading-relaxed max-w-lg mx-auto italic">
-              {description}
+              {stripHtml(description)}
             </p>
           </div>
 
