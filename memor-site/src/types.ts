@@ -74,6 +74,10 @@ export interface VideoResource {
   title_en?: string;
   title_ru?: string;
   title_tr?: string;
+  description_uz?: string;
+  description_en?: string;
+  description_ru?: string;
+  description_tr?: string;
   duration?: string;
   thumbnailUrl?: string; // mapped from thumbnail_url
   videoUrl?: string; // mapped from video_url
