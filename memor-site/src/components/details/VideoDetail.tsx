@@ -28,7 +28,7 @@ export const VideoDetail: React.FC<{ language: Language }> = ({ language }) => {
   if (isLoading && !video) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
   if (!video) return <div className="p-20 text-center">{t.notFound}</div>;
 
-  const { title } = getLocalizedContent(video, language);
+  const { title, description } = getLocalizedContent(video, language);
   const youtubeId = getYoutubeID(video.videoUrl || '');
   const isGood = 'Hammasi Good'
   console.log(isGood);
@@ -89,15 +89,10 @@ export const VideoDetail: React.FC<{ language: Language }> = ({ language }) => {
           <div className="mb-6">
             <LanguageSwitcher currentLang={language} variant="list" className="bg-black/5 dark:bg-white/5 backdrop-blur-sm p-1 rounded-md inline-block" />
           </div>
-          <p className="font-serif text-lg text-graphite/70 dark:text-slate-300 leading-relaxed max-w-2xl">
-            {language === 'uz' ? `Tabiatdagi har bir gul, o'simlik va boshqa elementlar asosida geometriya yotishi va ular o'zida naqshlarni jamlagani bizni hayratda qoldirdi. Ustozlar tomonidan berilgan har bir bilim bizni chuqur fikrlashga undadi; birgalikda jonli san’at muhiti va qadim naqshlar dunyosini kashf etdik. Amaliy mashg‘ulotlarda naqqoshlik sirlarini o‘rgandik va ulardan ilhom, sokinlik topdik. Bu imkoniyat bizga chin dildan shukr tuyg‘usini hamda sabr-bardoshlik sabog‘ini baxsh etdi.` :
-
-              language === 'ru' ? `Геометрия, лежащая в основе каждого цветка, растения и других природных элементов, а также узоры, которые они в себе содержат, поразили нас. Каждое знание, переданное наставниками, побуждало нас к глубокому размышлению; вместе мы открыли живую атмосферу искусства и мир древних орнаментов. На практических занятиях мы изучили секреты орнаментального искусства и нашли в нём вдохновение и спокойствие. Эта возможность подарила нам искреннее чувство благодарности и урок терпения и стойкости.` :
-
-                language === 'tr' ? `Doğadaki her çiçeğin, bitkinin ve diğer unsurların temelinde yatan geometri ve onların içinde barındırdığı desenler bizi hayran bıraktı. Hocalarımız tarafından verilen her bilgi bizi derin düşünmeye teşvik etti; birlikte canlı bir sanat ortamını ve kadim motifler dünyasını keşfettik. Uygulamalı derslerde nakış sanatının inceliklerini öğrendik ve onlardan ilham ile huzur bulduk. Bu fırsat bize içten bir şükür duygusu ve sabır dersi kazandırdı.` :
-
-                  `The geometry underlying every flower, plant, and other natural elements, and the patterns they embody, left us in awe. Every piece of knowledge given by our teachers encouraged us to think deeply; together we discovered a living artistic environment and the world of ancient ornaments. During practical sessions, we learned the secrets of ornamental art and found inspiration and tranquility in them. This opportunity granted us a sincere sense of gratitude and a lesson in patience and perseverance.`}
-          </p>
+          <div
+            className="font-serif text-lg text-graphite/70 dark:text-slate-300 leading-relaxed max-w-2xl"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </div>
 
         <div className="w-full md:w-64 flex-shrink-0 pt-4">
