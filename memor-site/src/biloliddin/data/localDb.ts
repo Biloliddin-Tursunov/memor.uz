@@ -19,6 +19,10 @@ export const personalInfo = {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 'tg-56',
+    telegramUrl: "https://t.me/biloliddin_space/83"
+  },
+  {
     id: 'tg-1',
     telegramUrl: "https://t.me/biloliddin_space/702"
   },
@@ -38,14 +42,7 @@ export const blogPosts: BlogPost[] = [
     id: 'tg-3',
     telegramUrl: "https://t.me/biloliddin_space/690"
   },
-  {
-    id: 'tg-4',
-    telegramUrl: "https://t.me/biloliddin_space/688"
-  },
-  {
-    id: 'tg-5',
-    telegramUrl: "https://t.me/biloliddin_space/686"
-  },
+
   {
     id: 'tg-6',
     telegramUrl: "https://t.me/biloliddin_space/683"
@@ -62,14 +59,7 @@ export const blogPosts: BlogPost[] = [
     id: 'tg-9',
     telegramUrl: "https://t.me/biloliddin_space/658"
   },
-  {
-    id: 'tg-10',
-    telegramUrl: "https://t.me/biloliddin_space/657"
-  },
-  {
-    id: 'tg-11',
-    telegramUrl: "https://t.me/biloliddin_space/655"
-  },
+
   {
     id: 'tg-12',
     telegramUrl: "https://t.me/biloliddin_space/652"
@@ -78,26 +68,17 @@ export const blogPosts: BlogPost[] = [
     id: 'tg-13',
     telegramUrl: "https://t.me/biloliddin_space/648"
   },
-  {
-    id: 'tg-14',
-    telegramUrl: "https://t.me/biloliddin_space/615"
-  },
+
   {
     id: 'tg-15',
     telegramUrl: "https://t.me/biloliddin_space/593"
   },
-  {
-    id: 'tg-16',
-    telegramUrl: "https://t.me/biloliddin_space/588"
-  },
+
   {
     id: 'tg-17',
     telegramUrl: "https://t.me/biloliddin_space/587"
   },
-  {
-    id: 'tg-18',
-    telegramUrl: "https://t.me/biloliddin_space/583"
-  },
+
   {
     id: 'tg-19',
     telegramUrl: "https://t.me/biloliddin_space/582"
@@ -106,22 +87,12 @@ export const blogPosts: BlogPost[] = [
     id: 'tg-20',
     telegramUrl: "https://t.me/biloliddin_space/577"
   },
-  {
-    id: 'tg-21',
-    telegramUrl: "https://t.me/biloliddin_space/573"
-  },
-  {
-    id: 'tg-22',
-    telegramUrl: "https://t.me/biloliddin_space/560"
-  },
+
   {
     id: 'tg-23',
     telegramUrl: "https://t.me/biloliddin_space/559"
   },
-  {
-    id: 'tg-24',
-    telegramUrl: "https://t.me/biloliddin_space/552"
-  },
+
   {
     id: 'tg-25',
     telegramUrl: "https://t.me/biloliddin_space/529"
@@ -174,18 +145,7 @@ export const blogPosts: BlogPost[] = [
     id: 'tg-37',
     telegramUrl: "https://t.me/biloliddin_space/358"
   },
-  {
-    id: 'tg-38',
-    telegramUrl: "https://t.me/biloliddin_space/354"
-  },
-  {
-    id: 'tg-39',
-    telegramUrl: "https://t.me/biloliddin_space/338"
-  },
-  {
-    id: 'tg-40',
-    telegramUrl: "https://t.me/biloliddin_space/334"
-  },
+
   {
     id: 'tg-41',
     telegramUrl: "https://t.me/biloliddin_space/248"
@@ -198,10 +158,7 @@ export const blogPosts: BlogPost[] = [
     id: 'tg-43',
     telegramUrl: "https://t.me/biloliddin_space/211"
   },
-  {
-    id: 'tg-44',
-    telegramUrl: "https://t.me/biloliddin_space/197"
-  },
+
   {
     id: 'tg-45',
     telegramUrl: "https://t.me/biloliddin_space/193"
@@ -210,10 +167,7 @@ export const blogPosts: BlogPost[] = [
     id: 'tg-46',
     telegramUrl: "https://t.me/biloliddin_space/189"
   },
-  {
-    id: 'tg-47',
-    telegramUrl: "https://t.me/biloliddin_space/180"
-  },
+
   {
     id: 'tg-48',
     telegramUrl: "https://t.me/biloliddin_space/178"
