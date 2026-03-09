@@ -174,7 +174,7 @@ export const TRANSLATIONS = {
     notFound: 'Information not found',
     ourTeam: 'Our Team',
     // Action
-    actionTitle: 'Action',
+    actionTitle: 'Movement',
     actionDesc: 'From theory to practice. Our projects and future plans.',
     events: 'Events',
     projects: 'Projects',

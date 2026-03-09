@@ -42,7 +42,7 @@ const Action: React.FC<ActionProps> = ({ onItemClick }) => {
    }, [tab, navigate, language, activeTab, fetchProjects, fetchEvents, fetchArticles, fetchVideos, projects.length, events.length, articles.length, videos.length]);
 
    const tabs: { id: Tab; label: string }[] = [
-      { id: 'articles', label: language === 'uz' ? 'Maqolalar' : language === 'ru' ? 'Статьи' : language === 'tr' ? 'Makaleler' : 'Articles' },
+      { id: 'articles', label: language === 'uz' ? 'Blog' : language === 'ru' ? 'Блог' : language === 'tr' ? 'Blog' : 'Blog' },
       { id: 'videos', label: language === 'uz' ? 'Videolar' : language === 'ru' ? 'Видео' : language === 'tr' ? 'Videolar' : 'Videos' },
       { id: 'projects', label: t.projects },
       { id: 'events', label: t.events }

@@ -42,7 +42,7 @@ export const useStore = create<AppState>((set, get) => ({
 
     fetchArticles: async () => {
         set({ isLoading: true });
-        const { data, error } = await supabase.from('articles').select('*');
+        const { data, error } = await supabase.from('articles').select('*').order('created_at', { ascending: false });
         if (error) {
             set({ error: error.message, isLoading: false });
         } else {
@@ -72,7 +72,7 @@ export const useStore = create<AppState>((set, get) => ({
 
     fetchVideos: async () => {
         set({ isLoading: true });
-        const { data, error } = await supabase.from('videos').select('*');
+        const { data, error } = await supabase.from('videos').select('*').order('created_at', { ascending: false });
         if (error) set({ error: error.message, isLoading: false });
         else set({
             videos: data.map((v: any) => ({
@@ -98,7 +98,7 @@ export const useStore = create<AppState>((set, get) => ({
 
     fetchBooks: async () => {
         set({ isLoading: true });
-        const { data, error } = await supabase.from('books').select('*');
+        const { data, error } = await supabase.from('books').select('*').order('created_at', { ascending: false });
         if (error) set({ error: error.message, isLoading: false });
         else set({
             books: data.map((b: any) => ({
@@ -122,7 +122,7 @@ export const useStore = create<AppState>((set, get) => ({
 
     fetchCreators: async () => {
         set({ isLoading: true });
-        const { data, error } = await supabase.from('creators').select('*');
+        const { data, error } = await supabase.from('creators').select('*').order('created_at', { ascending: false });
         if (error) set({ error: error.message, isLoading: false });
         else set({
             creators: data.map((c: any) => ({
@@ -144,7 +144,7 @@ export const useStore = create<AppState>((set, get) => ({
 
     fetchProjects: async () => {
         set({ isLoading: true });
-        const { data, error } = await supabase.from('projects').select('*');
+        const { data, error } = await supabase.from('projects').select('*').order('created_at', { ascending: false });
         if (error) set({ error: error.message, isLoading: false });
         else set({
             projects: data.map((p: any) => ({
@@ -170,7 +170,7 @@ export const useStore = create<AppState>((set, get) => ({
 
     fetchEvents: async () => {
         set({ isLoading: true });
-        const { data, error } = await supabase.from('events').select('*');
+        const { data, error } = await supabase.from('events').select('*').order('created_at', { ascending: false });
         if (error) set({ error: error.message, isLoading: false });
         else set({
             events: data.map((e: any) => ({
@@ -196,7 +196,7 @@ export const useStore = create<AppState>((set, get) => ({
 
     fetchCreations: async () => {
         set({ isLoading: true });
-        const { data, error } = await supabase.from('creations').select('*');
+        const { data, error } = await supabase.from('creations').select('*').order('created_at', { ascending: false });
         if (error) set({ error: error.message, isLoading: false });
         else set({
             creations: data.map((c: any) => ({
@@ -222,7 +222,7 @@ export const useStore = create<AppState>((set, get) => ({
 
     fetchPortfolio: async () => {
         set({ isLoading: true });
-        const { data, error } = await supabase.from('portfolio').select('*');
+        const { data, error } = await supabase.from('portfolio').select('*').order('created_at', { ascending: false });
         if (error) set({ error: error.message, isLoading: false });
         else set({
             portfolioItems: data.map((p: any) => ({
