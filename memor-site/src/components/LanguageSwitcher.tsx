@@ -15,6 +15,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ currentLang,
     const params = useParams();
 
     const handleLanguageChange = (newLang: Language) => {
+        setIsOpen(false);
         if (newLang === currentLang) return;
 
         // Replace the language segment in the URL

@@ -38,8 +38,25 @@ import { TRANSLATIONS } from '../constants';
 // Sahifa almashganda yuqoriga qaytarish
 const ScrollToTop = () => {
     const { pathname } = useLocation();
+    const prevPathRef = React.useRef(pathname);
+
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const getBasePath = (path: string) => {
+            const segments = path.split('/').filter(Boolean);
+            if (segments.length > 0 && ['uz', 'en', 'ru', 'tr'].includes(segments[0])) {
+                return '/' + segments.slice(1).join('/');
+            }
+            return path;
+        };
+
+        const currentBase = getBasePath(pathname);
+        const prevBase = getBasePath(prevPathRef.current);
+
+        if (currentBase !== prevBase) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        prevPathRef.current = pathname;
     }, [pathname]);
     return null;
 };
