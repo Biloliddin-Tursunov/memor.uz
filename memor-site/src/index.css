@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@source "../../memor-biloliddin/src";
+
 @variant dark (&:where(.dark, .dark *));
 
 @theme {

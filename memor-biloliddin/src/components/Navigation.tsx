@@ -47,7 +47,7 @@ const Navigation: React.FC<NavigationProps> = ({ activePage, onNavigate }) => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-10">
+          <div className="hidden md:flex items-center gap-6 lg:gap-10">
             {navLinks.map((link) => (
               link.external ? (
                 <a
