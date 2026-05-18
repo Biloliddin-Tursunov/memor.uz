@@ -12,7 +12,7 @@ import SEO from '../SEO';
 export const EventDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { events, fetchEvents, isLoading } = useStore();
+  const { events, fetchEvents, eventsLoading } = useStore();
   const event = events.find(e => e.id === id);
   const t = TRANSLATIONS[language];
 
@@ -22,7 +22,7 @@ export const EventDetail: React.FC<{ language: Language }> = ({ language }) => {
     }
   }, [events.length, fetchEvents]);
 
-  if (isLoading && !event) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
+  if (eventsLoading && !event) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
   if (!event) return <div className="p-20 text-center">{t.notFound}</div>;
 
   const { title, description, location } = getLocalizedContent(event, language);

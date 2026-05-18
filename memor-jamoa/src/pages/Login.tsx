@@ -14,9 +14,9 @@ const Login: React.FC = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const success = login(username, password);
+    const success = await login(username, password);
     if (success) {
       navigate('/');
     } else {

@@ -18,7 +18,7 @@ const Knowledge: React.FC = () => {
    const activeTab = (tab || 'books') as Tab;
    const currentLang = (lang || 'uz') as Language;
 
-   const { books, creators, fetchBooks, fetchCreators, isLoading } = useStore();
+   const { books, creators, fetchBooks, fetchCreators, booksLoading, creatorsLoading } = useStore();
 
    useEffect(() => {
       const validTabs = ['books', 'creators'];
@@ -50,7 +50,7 @@ const Knowledge: React.FC = () => {
                            <p className="text-[10px] font-mono text-graphite/40 uppercase">{book.author}</p>
                         </div>
                      );
-                  }) : !isLoading ? (
+                  }) : !(booksLoading || creatorsLoading) ? (
                      <div className="col-span-full text-center py-20 opacity-40 font-serif italic text-2xl">{t.notFound}</div>
                   ) : [1, 2, 3, 4, 5, 6, 7, 8].map(i => <Skeleton key={i} className="aspect-[2/3]" />)}
                </div>
@@ -69,7 +69,7 @@ const Knowledge: React.FC = () => {
                            <p className="text-[10px] font-bold uppercase tracking-widest text-sepia">{role}</p>
                         </div>
                      );
-                  }) : !isLoading ? (
+                  }) : !(booksLoading || creatorsLoading) ? (
                      <div className="col-span-full text-center py-20 opacity-40 font-serif italic text-2xl">{t.notFound}</div>
                   ) : [1, 2, 3, 4].map(i => (
                      <div key={i} className="flex flex-col items-center">

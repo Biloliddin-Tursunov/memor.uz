@@ -11,7 +11,7 @@ import SEO from '../SEO';
 export const ArticleDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const { articles, fetchArticles, isLoading } = useStore();
+  const { articles, fetchArticles, articlesLoading } = useStore();
 
   // Robust slug matching: try exact match, then decoded match
   const article = articles.find(a => a.slug === slug || a.slug === decodeURIComponent(slug || ''));
@@ -23,7 +23,7 @@ export const ArticleDetail: React.FC<{ language: Language }> = ({ language }) =>
     }
   }, [articles.length, fetchArticles]);
 
-  if (isLoading && !article) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
+  if (articlesLoading && !article) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
 
   if (!article) {
     console.log('Article not found for slug:', slug, 'Articles available:', articles.length);

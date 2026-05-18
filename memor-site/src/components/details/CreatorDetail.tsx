@@ -12,7 +12,7 @@ import SEO from '../SEO';
 export const CreatorDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { creators, fetchCreators, isLoading } = useStore();
+  const { creators, fetchCreators, creatorsLoading } = useStore();
   const creator = creators.find(u => u.id === id);
   const t = TRANSLATIONS[language];
 
@@ -22,7 +22,7 @@ export const CreatorDetail: React.FC<{ language: Language }> = ({ language }) =>
     }
   }, [creators.length, fetchCreators]);
 
-  if (isLoading && !creator) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
+  if (creatorsLoading && !creator) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
   if (!creator) return <div className="p-20 text-center">{t.notFound}</div>;
 
   const { role, bio } = getLocalizedContent(creator, language);

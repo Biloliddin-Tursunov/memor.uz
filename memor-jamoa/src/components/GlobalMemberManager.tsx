@@ -74,7 +74,7 @@ const GlobalMemberManager: React.FC<GlobalMemberManagerProps> = ({ isOpen, onClo
       setEditingId(member.id);
       setFormData({ ...member });
       setFormTeams(getMemberTeams(member.id));
-      setShowAuth(!!(member.password));
+      setShowAuth(!!member.email);
   };
 
   const handleCreate = () => {
@@ -84,9 +84,7 @@ const GlobalMemberManager: React.FC<GlobalMemberManagerProps> = ({ isOpen, onClo
           name: '', 
           role: '', 
           isVolunteer: false, 
-          email: '', 
-          password: '' 
-      });
+          email: ''});
       setFormTeams([]);
       setShowAuth(false);
   };
@@ -104,7 +102,7 @@ const GlobalMemberManager: React.FC<GlobalMemberManagerProps> = ({ isOpen, onClo
 
       const cleanData = { ...formData };
       if (!showAuth) {
-          delete cleanData.password;
+          delete cleanData.email;
       }
 
       saveGlobalMember(cleanData, formTeams);
@@ -349,20 +347,7 @@ const GlobalMemberManager: React.FC<GlobalMemberManagerProps> = ({ isOpen, onClo
                                             initial={{ height: 0, opacity: 0 }}
                                             animate={{ height: 'auto', opacity: 1 }}
                                             className="grid grid-cols-1 gap-6"
-                                        >
-                                            <div className="space-y-2">
-                                                <label className="block font-typewriter text-[10px] uppercase tracking-widest text-ink/40">Password</label>
-                                                <div className="flex gap-2">
-                                                    <input 
-                                                        type="text"
-                                                        value={formData.password || ''}
-                                                        onChange={(e) => setFormData({...formData, password: e.target.value})}
-                                                        className="w-full bg-white border border-ink/10 focus:border-ink outline-none px-4 py-3 text-ink font-typewriter text-sm rounded-sm"
-                                                        placeholder="Create a password"
-                                                    />
-                                                </div>
-                                                <p className="text-[10px] text-ink/40 italic">Visible to Super Admins only.</p>
-                                            </div>
+                                        >
                                         </motion.div>
                                     )}
                                 </div>

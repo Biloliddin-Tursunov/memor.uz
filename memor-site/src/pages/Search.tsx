@@ -24,7 +24,7 @@ const Search: React.FC = () => {
         creators,
         events,
         fetchAllData,
-        isLoading
+        articlesLoading, videosLoading, booksLoading, creatorsLoading, eventsLoading, projectsLoading, creationsLoading
     } = useStore();
 
     const [searchParams, setSearchParams] = useSearchParams();
@@ -153,7 +153,7 @@ const Search: React.FC = () => {
             </div>
 
             <div className="mt-12">
-                {isLoading ? (
+                {(articlesLoading || videosLoading || booksLoading || creatorsLoading || eventsLoading || projectsLoading || creationsLoading) ? (
                     <div className="flex flex-col items-center justify-center py-20">
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal"></div>
                         <p className="mt-4 text-graphite/50 font-mono text-xs uppercase tracking-widest">{currentLang === 'uz' ? 'Yuklanmoqda...' : 'Loading...'}</p>

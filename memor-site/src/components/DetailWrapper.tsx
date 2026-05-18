@@ -11,6 +11,7 @@ const DetailWrapper: React.FC = () => {
     const { id, slug, lang } = useParams<{ id?: string; slug?: string; lang?: string }>();
     const navigate = useNavigate();
     const store = useStore();
+  const isStoreLoading = store.isLoading || store.articlesLoading || store.videosLoading || store.booksLoading || store.creatorsLoading || store.projectsLoading || store.eventsLoading || store.creationsLoading || store.portfolioLoading;
     const [item, setItem] = useState<DisplayItem | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -92,13 +93,13 @@ const DetailWrapper: React.FC = () => {
                 // For now, let's assume if it's not in the populated lists, we might need to fetch individual?
                 // Or stick to fetchAllData logic above.
                 // Let's assume fetchAllData matches the hook state update.
-                if (!store.isLoading && !item) { // if not loading and not found
+                if (!isStoreLoading && !item) { // if not loading and not found
                     // It might be that we haven't fetched yet
                     store.fetchAllData();
                 }
             }
         }
-    }, [id, slug, store.articles.length, store.isLoading]);
+    }, [id, slug, store.articles.length, isStoreLoading]);
     // Dependency on store.articles.length is a heuristic to re-check when data loads.
 
     // Better useEffect for finding item:
@@ -124,14 +125,14 @@ const DetailWrapper: React.FC = () => {
         if (found) {
             setItem(found as DisplayItem);
             setLoading(false);
-        } else if (!store.isLoading && store.articles.length === 0) {
+        } else if (!isStoreLoading && store.articles.length === 0) {
             // Only fetch if empty or likely missing
             store.fetchAllData();
-        } else if (!store.isLoading && store.articles.length > 0) {
+        } else if (!isStoreLoading && store.articles.length > 0) {
             // Data is here but item not found
             setLoading(false);
         }
-    }, [id, slug, store.articles, store.videos, store.books, store.creators, store.projects, store.events, store.creations, store.portfolioItems, store.isLoading]);
+    }, [id, slug, store.articles, store.videos, store.books, store.creators, store.projects, store.events, store.creations, store.portfolioItems, isStoreLoading]);
 
     const textMatch = (t1?: string, t2?: string) => {
         if (!t1 || !t2) return false;

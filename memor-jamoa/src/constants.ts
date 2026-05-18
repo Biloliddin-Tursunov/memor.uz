@@ -32,7 +32,7 @@ export const TEAM_MEMBERS: Record<string, Member[]> = {
     { id: U_ZUHRA, name: 'Zuhra', bio: DEFAULT_BIO },
     { id: U_FOTIMA, name: 'Fotima', bio: DEFAULT_BIO },
     { id: 'a4', name: 'Jasmina', bio: DEFAULT_BIO },
-    { id: U_CIGDEM, name: 'Dr. Çiğdem Canbay Türkyılmaz', username: 'Türkyılmaz', password: 'Türkyılmaz', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
+    { id: U_CIGDEM, name: 'Dr. Çiğdem Canbay Türkyılmaz', username: 'Türkyılmaz', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
     { id: U_DILNOZA, name: 'Dr. Dilnoza Kamalova', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
   ],
   architects: [
@@ -48,7 +48,7 @@ export const TEAM_MEMBERS: Record<string, Member[]> = {
     { id: U_BILOLIDDIN, name: 'Biloliddin', bio: DEFAULT_BIO },
     { id: U_BUNYOD, name: 'Bunyod', bio: DEFAULT_BIO },
     { id: U_OTABEK, name: 'Otabek', bio: DEFAULT_BIO },
-    { id: U_CIGDEM, name: 'Dr. Çiğdem Canbay Türkyılmaz', username: 'Türkyılmaz', password: 'Türkyılmaz', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
+    { id: U_CIGDEM, name: 'Dr. Çiğdem Canbay Türkyılmaz', username: 'Türkyılmaz', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
     { id: U_DILNOZA, name: 'Dr. Dilnoza Kamalova', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
   ],
   translators: [
@@ -59,7 +59,7 @@ export const TEAM_MEMBERS: Record<string, Member[]> = {
     { id: 't4', name: "Asilbek", isVolunteer: true, bio: DEFAULT_BIO },
     { id: 't5', name: "Zilola", bio: DEFAULT_BIO },
     { id: U_MUSLIM, name: "Muslimbek", bio: DEFAULT_BIO },
-    { id: U_CIGDEM, name: 'Dr. Çiğdem Canbay Türkyılmaz', username: 'Türkyılmaz', password: 'Türkyılmaz', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
+    { id: U_CIGDEM, name: 'Dr. Çiğdem Canbay Türkyılmaz', username: 'Türkyılmaz', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
     { id: U_DILNOZA, name: 'Dr. Dilnoza Kamalova', isVolunteer: true, role: 'Supervisor', bio: DEFAULT_BIO },
   ],
   media: [

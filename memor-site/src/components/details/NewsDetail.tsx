@@ -12,7 +12,7 @@ import SEO from '../SEO';
 export const NewsDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { articles: newsData, fetchArticles: fetchNews, isLoading } = useStore();
+  const { articles: newsData, fetchArticles: fetchNews, articlesLoading } = useStore();
   const news = newsData.find(n => n.id === id);
   const t = TRANSLATIONS[language];
 
@@ -22,7 +22,7 @@ export const NewsDetail: React.FC<{ language: Language }> = ({ language }) => {
     }
   }, [newsData.length, fetchNews]);
 
-  if (isLoading && !news) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
+  if (articlesLoading && !news) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
   if (!news) return <div className="p-20 text-center">{t.notFound}</div>;
 
   const { title, description: excerpt, content } = getLocalizedContent(news, language);

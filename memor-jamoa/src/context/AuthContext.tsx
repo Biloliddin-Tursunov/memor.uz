@@ -1,84 +1,82 @@
-
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { useTeams } from './TeamContext';
 import { Member } from '../types';
+import { supabase } from '../lib/supabase';
 
 interface AuthContextType {
-  isAdmin: boolean; // Means "Is Logged In" basically
-  isSuperAdmin: boolean; // Specifically Otabek or Biloliddin
+  isAdmin: boolean;
+  isSuperAdmin: boolean;
   currentUser: Member | null;
-  login: (username: string, pass: string) => boolean;
-  logout: () => void;
+  login: (username: string, pass: string) => Promise<boolean>;
+  logout: () => Promise<void>;
   updateCurrentUser: (updates: Partial<Member>) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const normalize = (value: string) => value.trim().toLowerCase();
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<Member | null>(null);
   const { getAllMembers, saveGlobalMember, getMemberTeams } = useTeams();
 
-  const isSuperAdmin = currentUser ? ['biloliddin', 'otabek'].includes(currentUser.name.toLowerCase()) : false;
-  const isAdmin = !!currentUser; // Any logged in creator is an "admin" of tasks
+  const isSuperAdmin = currentUser ? ['biloliddin', 'otabek'].includes(normalize(currentUser.name)) : false;
+  const isAdmin = !!currentUser;
 
-  // Check storage on mount
+  const findMemberForAuthUser = (authUser: any): Member | null => {
+    const userEmail = authUser?.email ? normalize(authUser.email) : '';
+    const userMetadata = authUser?.user_metadata || {};
+    return getAllMembers().find(m => {
+      const memberEmail = m.email ? normalize(m.email) : '';
+      const memberUsername = m.username ? normalize(m.username) : '';
+      return m.id === userMetadata.member_id || (userEmail && memberEmail === userEmail) || (userEmail && memberUsername === userEmail);
+    }) || null;
+  };
+
   useEffect(() => {
-    const storedId = localStorage.getItem('memor_user_id');
-    if (storedId) {
-      const allMembers = getAllMembers();
-      const user = allMembers.find(m => m.id === storedId);
-      if (user) {
-          setCurrentUser(user);
-      }
-    }
-  }, [getAllMembers]); // Dependency on getAllMembers to keep user data fresh
+    let isMounted = true;
 
-  const login = (username: string, pass: string): boolean => {
-    const allMembers = getAllMembers();
-    
-    // Check against username field first, then name field
-    const memberUser = allMembers.find(m => 
-        (m.username && m.username.toLowerCase() === username.toLowerCase()) ||
-        m.name.toLowerCase() === username.toLowerCase()
-    );
-    
-    if (memberUser) {
-        // Validation check
-        const validPassword = memberUser.password 
-            ? memberUser.password === pass 
-            : memberUser.name === pass;
+    supabase.auth.getUser().then(({ data }: any) => {
+      if (!isMounted || !data?.user) return;
+      setCurrentUser(findMemberForAuthUser(data.user));
+    });
 
-        if (validPassword) {
-            setCurrentUser(memberUser);
-            localStorage.setItem('memor_user_id', memberUser.id);
-            return true;
-        }
+    const { data } = supabase.auth.onAuthStateChange((_event: string, session: any) => {
+      setCurrentUser(session?.user ? findMemberForAuthUser(session.user) : null);
+    });
+
+    return () => {
+      isMounted = false;
+      data.subscription.unsubscribe();
+    };
+  }, [getAllMembers]);
+
+  const login = async (username: string, pass: string): Promise<boolean> => {
+    const email = username.trim();
+    if (!email || !pass) return false;
+
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password: pass });
+    if (error || !data?.user) return false;
+
+    const memberUser = findMemberForAuthUser(data.user);
+    if (!memberUser) {
+      await supabase.auth.signOut();
+      return false;
     }
 
-    // Fallback
-    if (username.toLowerCase() === 'biloliddin' && pass === '12345') {
-         const tempUser: Member = { id: 'superuser', name: 'Biloliddin', isVolunteer: false };
-         setCurrentUser(tempUser);
-         return true;
-    }
-
-    return false;
+    setCurrentUser(memberUser);
+    return true;
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await supabase.auth.signOut();
     setCurrentUser(null);
-    localStorage.removeItem('memor_user_id');
   };
 
-  // Self-update profile
   const updateCurrentUser = (updates: Partial<Member>) => {
-      if (!currentUser) return;
-      const updatedUser = { ...currentUser, ...updates };
-      setCurrentUser(updatedUser);
-      
-      // Persist to global state
-      const myTeams = getMemberTeams(currentUser.id);
-      saveGlobalMember(updatedUser, myTeams);
+    if (!currentUser) return;
+    const updatedUser = { ...currentUser, ...updates };
+    setCurrentUser(updatedUser);
+    saveGlobalMember(updatedUser, getMemberTeams(currentUser.id));
   };
 
   return (
@@ -90,8 +88,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
+  if (!context) throw new Error('useAuth must be used within an AuthProvider');
   return context;
 };

@@ -12,7 +12,7 @@ export const VideoDetail: React.FC<{ language: Language }> = ({ language }) => {
   // Endi id emas, URL'dan videoning slugini (tozalangan sarlavhasini) olamiz
   const { slug } = useParams();
   const navigate = useNavigate();
-  const { videos, fetchVideos, isLoading } = useStore();
+  const { videos, fetchVideos, videosLoading } = useStore();
 
   // Videoni slug bo'yicha qidiramiz.
   const video = videos.find(v => v.slug === slug || v.id === slug);
@@ -25,7 +25,7 @@ export const VideoDetail: React.FC<{ language: Language }> = ({ language }) => {
     }
   }, [videos.length, fetchVideos]);
 
-  if (isLoading && !video) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
+  if (videosLoading && !video) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
   if (!video) return <div className="p-20 text-center">{t.notFound}</div>;
 
   const { title, description } = getLocalizedContent(video, language);

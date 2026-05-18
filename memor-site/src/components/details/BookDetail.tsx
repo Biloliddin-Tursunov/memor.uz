@@ -12,7 +12,7 @@ import SEO from '../SEO';
 export const BookDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { books, fetchBooks, isLoading } = useStore();
+  const { books, fetchBooks, booksLoading } = useStore();
   const book = books.find(b => b.id === id);
   const t = TRANSLATIONS[language];
 
@@ -22,7 +22,7 @@ export const BookDetail: React.FC<{ language: Language }> = ({ language }) => {
     }
   }, [books.length, fetchBooks]);
 
-  if (isLoading && !book) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
+  if (booksLoading && !book) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
   if (!book) return <div className="p-20 text-center">{t.notFound}</div>;
 
   const { title, description } = getLocalizedContent(book, language);

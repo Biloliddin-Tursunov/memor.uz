@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/react"
 import MainLayout from './layouts/MainLayout';
 
 // Biloliddin Personal Site (Lazy Loaded)
-const BiloliddinApp = lazy(() => import('./biloliddin/App'));
+const BiloliddinApp = lazy(() => import('../../memor-biloliddin/src/App'));
 const Paper = lazy(() => import('./components/paper/Paper'));
 
 const App: React.FC = () => {

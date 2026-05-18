@@ -58,6 +58,8 @@ if (supabaseUrl && supabaseAnonKey && supabaseUrl.startsWith('http')) {
     from: () => createMockChain(),
     auth: {
       getUser: () => Promise.resolve({ data: { user: null }, error: null }),
+      signInWithPassword: () => Promise.resolve({ data: { user: null }, error: { message: "Authentication is not connected." } }),
+      signOut: () => Promise.resolve({ error: null }),
       onAuthStateChange: () => ({ data: { subscription: { unsubscribe: () => {} } } }),
     },
     channel: () => ({

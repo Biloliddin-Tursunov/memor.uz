@@ -24,7 +24,7 @@ const News: React.FC<NewsProps> = ({ onItemClick }) => {
     projects,
     creations,
     fetchAllData,
-    isLoading
+    articlesLoading, videosLoading, booksLoading, eventsLoading, projectsLoading, creationsLoading
   } = useStore();
 
   React.useEffect(() => {
@@ -34,7 +34,7 @@ const News: React.FC<NewsProps> = ({ onItemClick }) => {
   const [mixedData, setMixedData] = React.useState<any[]>([]);
 
   React.useEffect(() => {
-    if (isLoading) return;
+    if ((articlesLoading || videosLoading || booksLoading || eventsLoading || projectsLoading || creationsLoading)) return;
 
     // Normalize and combine data
     const combined = [
@@ -48,7 +48,7 @@ const News: React.FC<NewsProps> = ({ onItemClick }) => {
 
     // Shuffle slightly to give a "feed" feel since real dates are scarce
     setMixedData(combined.sort(() => Math.random() - 0.5));
-  }, [articles, videos, books, events, projects, creations, isLoading]);
+  }, [articles, videos, books, events, projects, creations, (articlesLoading || videosLoading || booksLoading || eventsLoading || projectsLoading || creationsLoading)]);
 
   const Skeleton = () => (
     <div className="animate-pulse bg-white dark:bg-white/5 border border-graphite/5 overflow-hidden flex flex-col h-full">
@@ -124,7 +124,7 @@ const News: React.FC<NewsProps> = ({ onItemClick }) => {
               </div>
             </div>
           );
-        }) : isLoading ? (
+        }) : (articlesLoading || videosLoading || booksLoading || eventsLoading || projectsLoading || creationsLoading) ? (
           [1, 2, 3, 4, 5, 6].map(i => <Skeleton key={i} />)
         ) : (
           <div className="col-span-full text-center py-20 opacity-40 font-serif italic text-2xl">{t.notFound}</div>

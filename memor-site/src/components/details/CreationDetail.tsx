@@ -44,7 +44,7 @@ const MarqueeRow: React.FC<{
 export const CreationDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const { creations, fetchCreations, isLoading } = useStore();
+  const { creations, fetchCreations, creationsLoading } = useStore();
 
   const creation = creations.find(c => c.slug === slug || c.id === slug || c.slug === decodeURIComponent(slug || ''));
   const t = TRANSLATIONS[language];
@@ -67,7 +67,7 @@ export const CreationDetail: React.FC<{ language: Language }> = ({ language }) =
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedImage]);
 
-  if (isLoading && !creation) {
+  if (creationsLoading && !creation) {
     return (
       <div className="p-20 text-center min-h-screen flex items-center justify-center">
         <div className="animate-pulse font-display text-2xl opacity-50 text-teal uppercase tracking-widest">Yuklanmoqda...</div>

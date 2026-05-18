@@ -20,9 +20,7 @@ export interface Member {
   // Profile
   avatar?: string; // URL or Base64
   bio?: string;
-  // Auth credentials
-  email?: string; // Optional legacy or recovery
-  password?: string;
+  email?: string;
 }
 
 export interface Task {

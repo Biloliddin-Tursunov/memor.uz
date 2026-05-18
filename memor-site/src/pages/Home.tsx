@@ -21,7 +21,8 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ onNavigate, onItemClick, language }) => {
   const navigate = useNavigate();
   const t = TRANSLATIONS[language];
-  const { articles, projects, events, creations, fetchAllData, isLoading } = useStore();
+  const { articles, projects, events, creations, fetchAllData, articlesLoading, projectsLoading, eventsLoading, creationsLoading } = useStore();
+  const isHomeLoading = articlesLoading || projectsLoading || eventsLoading || creationsLoading;
 
   React.useEffect(() => {
     // Always fetch data on mount to ensure Hero has content
@@ -139,7 +140,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onItemClick, language }) => {
                       </div>
                     </div>
                   );
-                }) : !isLoading ? <div className="text-center opacity-50 py-10">Yangiliklar yo'q</div> : [1, 2, 3].map(i => <Skeleton key={i} className="h-24 w-full" type="news-item" />)}
+                }) : !isHomeLoading ? <div className="text-center opacity-50 py-10">Yangiliklar yo'q</div> : [1, 2, 3].map(i => <Skeleton key={i} className="h-24 w-full" type="news-item" />)}
               </div>
             </div>
           </div>

@@ -12,7 +12,7 @@ const Creation: React.FC = () => {
    const navigate = useNavigate();
    const language = (lang || 'uz') as keyof typeof TRANSLATIONS;
    const t = TRANSLATIONS[language];
-   const { creations, fetchCreations, isLoading } = useStore();
+   const { creations, fetchCreations, creationsLoading } = useStore();
 
    React.useEffect(() => {
       if (creations.length === 0) fetchCreations();
@@ -85,7 +85,7 @@ const Creation: React.FC = () => {
                      </div>
                   );
                })
-            ) : !isLoading ? (
+            ) : !creationsLoading ? (
                <div className="col-span-full text-center py-20 opacity-40 font-serif italic text-2xl">{t.notFound}</div>
             ) : (
                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full">

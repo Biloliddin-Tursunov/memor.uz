@@ -20,7 +20,6 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({ isOpen, onClose }) 
   const [name, setName] = useState('');
   const [bio, setBio] = useState('');
   const [avatar, setAvatar] = useState('');
-  const [password, setPassword] = useState('');
   const [myTeams, setMyTeams] = useState<string[]>([]);
 
   useEffect(() => {
@@ -28,7 +27,6 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({ isOpen, onClose }) 
       setName(currentUser.name);
       setBio(currentUser.bio || '');
       setAvatar(currentUser.avatar || '');
-      setPassword(currentUser.password || '');
       setMyTeams(getMemberTeams(currentUser.id));
     }
   }, [currentUser, getMemberTeams, isOpen]);
@@ -39,8 +37,7 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({ isOpen, onClose }) 
           ...currentUser,
           name,
           bio,
-          avatar,
-          password
+          avatar
       };
       saveGlobalMember(updatedUser, myTeams);
       updateCurrentUser(updatedUser); 
@@ -167,18 +164,6 @@ const UserProfileModal: React.FC<UserProfileModalProps> = ({ isOpen, onClose }) 
                         </div>
                     </div>
 
-                    {/* Security */}
-                    <div className="border border-ink/10 rounded-sm p-6 bg-red-50/30">
-                        <div className="flex items-center gap-2 text-ink/70 font-serif text-lg mb-4">
-                            <Shield size={18} /> {t("Access Code")}
-                        </div>
-                        <input 
-                            type="text"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="w-full bg-white border border-ink/10 focus:border-ink outline-none px-3 py-2 text-ink font-typewriter text-sm tracking-widest"
-                        />
-                    </div>
                 </div>
 
                 <div className="p-6 border-t border-ink/10 flex justify-end gap-3 bg-paper-white">

@@ -12,7 +12,7 @@ import SEO from '../SEO';
 export const ProjectDetail: React.FC<{ language: Language }> = ({ language }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { projects, fetchProjects, isLoading } = useStore();
+  const { projects, fetchProjects, projectsLoading } = useStore();
   const project = projects.find(p => p.id === id);
 
   React.useEffect(() => {
@@ -21,7 +21,7 @@ export const ProjectDetail: React.FC<{ language: Language }> = ({ language }) =>
     }
   }, [projects.length, fetchProjects]);
 
-  if (isLoading && !project) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
+  if (projectsLoading && !project) return <div className="p-20 text-center"><div className="animate-pulse font-display text-2xl opacity-50">Yuklanmoqda...</div></div>;
   if (!project) return <div className="p-20 text-center">{TRANSLATIONS[language].notFound}</div>;
 
   const { title, description, location } = getLocalizedContent(project, language);

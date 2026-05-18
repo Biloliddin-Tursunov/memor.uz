@@ -24,7 +24,7 @@ const Action: React.FC<ActionProps> = ({ onItemClick }) => {
    const {
       projects, events, articles, videos,
       fetchProjects, fetchEvents, fetchArticles, fetchVideos,
-      isLoading
+      projectsLoading, eventsLoading, articlesLoading, videosLoading
    } = useStore();
 
    useEffect(() => {
@@ -74,7 +74,7 @@ const Action: React.FC<ActionProps> = ({ onItemClick }) => {
                            </div>
                         </div>
                      );
-                  }) : !isLoading ? (
+                  }) : !(projectsLoading || eventsLoading || articlesLoading || videosLoading) ? (
                      <div className="col-span-full text-center py-20 opacity-40 font-serif italic text-2xl">{t.notFound}</div>
                   ) : [1, 2, 3].map(i => <Skeleton key={i} className="h-[400px]" />)}
                </div>
@@ -105,7 +105,7 @@ const Action: React.FC<ActionProps> = ({ onItemClick }) => {
                            </div>
                         </div>
                      );
-                  }) : !isLoading ? (
+                  }) : !(projectsLoading || eventsLoading || articlesLoading || videosLoading) ? (
                      <div className="col-span-full text-center py-20 opacity-40 font-serif italic text-2xl">{t.notFound}</div>
                   ) : [1, 2, 3, 4].map(i => <Skeleton key={i} className="h-40" />)}
                </div>
@@ -133,7 +133,7 @@ const Action: React.FC<ActionProps> = ({ onItemClick }) => {
                            </div>
                         </div>
                      );
-                  }) : !isLoading ? (
+                  }) : !(projectsLoading || eventsLoading || articlesLoading || videosLoading) ? (
                      <div className="col-span-full text-center py-20 opacity-40 font-serif italic text-2xl">{t.notFound}</div>
                   ) : [1, 2, 3, 4].map(i => <Skeleton key={i} className="h-64" />)}
                </div>
@@ -153,7 +153,7 @@ const Action: React.FC<ActionProps> = ({ onItemClick }) => {
                            <p className="text-[10px] font-mono uppercase tracking-widest text-graphite/40 mt-1">{video.author}</p>
                         </div>
                      );
-                  }) : !isLoading ? (
+                  }) : !(projectsLoading || eventsLoading || articlesLoading || videosLoading) ? (
                      <div className="col-span-full text-center py-20 opacity-40 font-serif italic text-2xl">{t.notFound}</div>
                   ) : [1, 2, 3, 4, 5, 6].map(i => <Skeleton key={i} className="aspect-video" />)}
                </div>

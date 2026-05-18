@@ -1,0 +1,20 @@
+{
+  "name": "memor-uz",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "memor-ai",
+    "memor-cms",
+    "memor-jamoa",
+    "memor-site",
+    "memor-biloliddin"
+  ],
+  "scripts": {
+    "dev:ai": "npm --workspace memor-ai run dev",
+    "dev:cms": "npm --workspace memor-cms run dev",
+    "dev:jamoa": "npm --workspace memor-jamoa run dev",
+    "dev:site": "npm --workspace memor-site run dev",
+    "dev:biloliddin": "npm --workspace memor-biloliddin run dev",
+    "build": "npm run build --workspaces --if-present"
+  }
+}
